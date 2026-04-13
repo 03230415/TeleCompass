@@ -123,7 +123,7 @@
         border-radius:2px; 
         transition:all var(--t); 
     }
-
+/* .ci - ci i labeled */
     .nav-brand .ci {
     /* the thing around the compass logo */
       width: 36px; 
@@ -708,42 +708,81 @@
     }
 
     /* ══════════════ RESPONSIVE ══════════════ */
+    /*///// for phone ////////*/
+    /* nav bar remains hidden unless javascript for nav opens 
+    rest are for styling the nav link on phone which remains hidden behind the bar */
     @media(max-width:900px){
-      .hero-inner { grid-template-columns:1fr; gap:2.5rem; }
-      .two-col { grid-template-columns:1fr; }
+      .hero-inner { 
+        grid-template-columns:1fr; 
+        gap:2.5rem; 
+      }
+      .two-col { 
+        grid-template-columns:1fr; 
+      }
     }
     @media(max-width:680px){
       .nav-links {
-        display:none; flex-direction:column;
-        position:absolute; top:var(--nav-h); left:0; right:0;
-        background:rgba(8,46,54,0.97); padding:1rem;
-        border-bottom:1px solid var(--glass-border); gap:0.15rem;
+        display:none; 
+        flex-direction:column;
+        position:absolute; 
+        /* places menu right below navbar */
+        top:var(--nav-h); 
+        left:0; right:0;
+        background:rgba(8,46,54,0.97); 
+        padding:1rem;
+        border-bottom:1px solid var(--glass-border); 
+        gap:0.15rem;
       }
-      .nav-links.open { display:flex; }
-      .nav-links li button { padding:0.75rem 1rem; font-size:1rem; width:100%; text-align:left; }
-      .nav-toggle { display:flex; }
-      nav { position:relative; }
+      .nav-links.open { 
+        display:flex; 
+      }
+      .nav-links li button { 
+        padding:0.75rem 1rem; 
+        font-size:1rem; 
+        width:100%; 
+        text-align:left; 
+      }
+      /* hamburger menu button (☰ icon) on mobile. */
+      .nav-toggle { display:flex;}
+      /* tells the browser: “Use this nav as the anchor for positioning dropdown menu” */
+      nav {position:relative;}
     }
+/* IMPORTANT: prevents anchor links (#section) from hiding under fixed navbar */
+/* scroll padding for sticky nav */
 
-    /* scroll padding for sticky nav */
-    html { scroll-padding-top: var(--nav-h); }
+    /* html { scroll-padding-top: var(--nav-h); } */
+    
   </style>
 </head>
+
+
 <body>
+<!-- ══════════════ ☰ (menu icon) ══════════════ -->
 <div class="page-bg">
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 
   <!-- ══════════════ NAVBAR ══════════════ -->
+   <!-- The main navigation section of your website -->
   <nav id="mainNav">
+    <!-- display the logo -->
     <div class="nav-brand" onclick="showPage('home')">
+      <!-- “ci” is just a custom class name you created -->
+       <!-- ci is the label and CSS targets .ci for styling and design -->
       <div class="ci">🧭</div>
+      <!-- It displays: TeleCompass -->
+       <!-- inline HTML element used to group small pieces of text -->
+        <!-- “em” = emphasis tag - makes text italic by default -->
       <span>Tele<em>Compass</em></span>
     </div>
 
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-
+     <!-- js for nav bar -->
+      <!-- This is your navigation menu list -->
+       <!-- nav-links - CSS target     navLinks - javascripthook-->
     <ul class="nav-links" id="navLinks">
+      <!-- onclick="showPage('home')" - use of home button -->
+      <!-- id="nav-home" - something to do with the highlight on home button -->
         <li><button onclick="showPage('home')" id="nav-home" class="active">Home</button></li>
         <li><button onclick="showPage('about')" id="nav-about">About Us</button></li>
         <li><button onclick="showPage('dashboard')" id="nav-dashboard">Dashboard</button></li>
@@ -755,33 +794,60 @@
   <main>
 
     <!-- ══════════════ HOME PAGE ══════════════ -->
+     <!-- container for homepage -->
     <div class="page active" id="page-home">
 
+      <!-- the outermost box -->
       <section class="hero">
+        <!-- This controls how things are arranged inside -->
         <div class="hero-inner">
+          <!-- holds only the text part -->
+           <!-- hero-text (LEFT SIDE → text, buttons, stats) -->
           <div class="hero-text">
+
+            <!-- "badge" class - badge like icon on every section -->
             <span class="badge" style="margin-bottom:1rem; display:inline-block;">🇧🇹 Bhutan Connectivity Study</span>
             <h1>Kuzu <em>Zangpo La</em></h1>
-            <p class="subtitle">A guide for better connectivity — exploring mobile &amp; Wi-Fi usage patterns across Bhutan to empower communities with data-driven insights.</p>
+            <p class="subtitle">A guide for better connectivity — explore available internet service across Bhutan &amp; helping you choose the right internet service for your need.</p>
             <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+              <!-- the small button on the homepage -->
               <button class="btn btn-gold" onclick="showPage('dashboard')">📊 View Dashboard</button>
               <button class="btn btn-outline" onclick="showPage('about')">Learn More</button>
             </div>
+
+            <!-- information box on the homepage  -->
+             <!-- information for this code is connected to STAT CSS section "num" -->
+              <!-- num is upper wording and lbl is lower wordings -->
             <div class="stat-row">
-              <div class="stat-box"><span class="num">3</span><span class="lbl">Telecoms</span></div>
-              <div class="stat-box"><span class="num">20</span><span class="lbl">Dzongkhags</span></div>
-              <div class="stat-box"><span class="num">4</span><span class="lbl">Key Insights</span></div>
-              <div class="stat-box"><span class="num">100+</span><span class="lbl">Respondents</span></div>
+              <div class="stat-box">
+                <span class="num">3</span>
+                <span class="lbl">Telecoms</span>
+              </div>
+              <div class="stat-box">
+                <span class="num">20</span>
+                <span class="lbl">Dzongkhags</span>
+              </div>
+              <div class="stat-box">
+                <span class="num">3</span>
+                <span class="lbl">Key Insights</span>
+              </div>
+              <div class="stat-box">
+                <span class="num">100+</span>
+                <span class="lbl">Respondents</span>
+              </div>
             </div>
           </div>
         <div class="hero-image">
+          <!-- wifi vs data img.png -->
             <img src="img3.png" alt="teleBhutan">
+            <!-- 📍 Thimphu, Bhutan -->
             <div class="img-caption">📍 Thimphu, Bhutan</div>
             </div>
         </div>
       </section>
 
       <section class="section" style="padding-top:0; padding-bottom:4rem;">
+        <!-- nav bar below -->
         <div class="qlinks">
           <div class="qlink-card" onclick="showPage('about')">
             <div class="q-icon">👤</div>
