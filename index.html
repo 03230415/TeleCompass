@@ -810,7 +810,7 @@
             <h1>Kuzu <em>Zangpo La</em></h1>
             <p class="subtitle">A guide for better connectivity — explore available internet service across Bhutan &amp; helping you choose the right internet service for your need.</p>
             <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-              <!-- the small button on the homepage -->
+              <!-- the small buttons on the homepage -->
               <button class="btn btn-gold" onclick="showPage('dashboard')">📊 View Dashboard</button>
               <button class="btn btn-outline" onclick="showPage('about')">Learn More</button>
             </div>
@@ -849,6 +849,7 @@
       <section class="section" style="padding-top:0; padding-bottom:4rem;">
         <!-- nav bar below -->
         <div class="qlinks">
+          <!-- q-icon, q-title, q-sub - they are the class names for CSS -->
           <div class="qlink-card" onclick="showPage('about')">
             <div class="q-icon">👤</div>
             <div class="q-title">About Us</div>
@@ -857,17 +858,17 @@
           <div class="qlink-card" onclick="showPage('dashboard')">
             <div class="q-icon">📈</div>
             <div class="q-title">Dashboard</div>
-            <div class="q-sub">Interactive Tableau insights</div>
+            <div class="q-sub">Tableau insights from survey data</div>
           </div>
           <div class="qlink-card" onclick="showPage('company')">
             <div class="q-icon">🏢</div>
             <div class="q-title">Companies</div>
-            <div class="q-sub">BT, Tashi InfoComm &amp; Starlink</div>
+            <div class="q-sub">BT, TashiCell &amp; Starlink</div>
           </div>
           <div class="qlink-card" onclick="showPage('contact')">
-            <div class="q-icon">✉️</div>
+            <div class="q-icon">📬</div>
             <div class="q-title">Contact</div>
-            <div class="q-sub">Get in touch with us</div>
+            <div class="q-sub">We're here to listen to your feedback</div>
           </div>
         </div>
       </section>
@@ -887,7 +888,9 @@
           <!-- About Me Glass Card -->
           <div class="glass-card">
             <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem;">
-              <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;box-shadow:0 0 16px rgba(232,160,32,0.4);">🎓</div>
+              <!-- 🎓 -->
+               <!-- border-radius:50%; - perfect circle -->
+              <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--teal-dark),rgb(10, 160, 115));display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;box-shadow:0 0 16px rgba(232,160,32,0.4);">🎓</div>
               <div>
                 <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);">Intern Researcher</div>
                 <div style="color:var(--gold-light);font-size:0.82rem;letter-spacing:0.04em;text-transform:uppercase;">Connectivity &amp; Analytics Division</div>
