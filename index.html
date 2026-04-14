@@ -1166,13 +1166,13 @@
     <!-- ══════════════ CONTACT PAGE ══════════════ -->
     <div class="page" id="page-contact">
       <div class="page-hero">
-        <span class="badge">✉️ Get in Touch</span>
+        <span class="badge">📬 Share Your Feedback</span>
         <h1 class="section-title" style="margin-top:0.75rem;">Contact Us</h1>
-        <p style="color:var(--text-light);margin-bottom:0.5rem;">Have questions about the research, the dashboard, or Bhutan's connectivity landscape? We'd love to hear from you.</p>
+        <p style="color:#e5e7eb;font-weight:500;margin-bottom:0.5rem;">Have questions about the project or insights? Share your feedback to help us improve and better understand connectivity needs.</p>
         <div class="divider"></div>
       </div>
 
-      <section class="section" style="padding-top:0;padding-bottom:4rem;">
+      <section class="section" style="padding-top:0; padding-bottom:4rem;">
         <div class="two-col">
 
           <!-- Contact Form -->
@@ -1182,7 +1182,7 @@
 
             <div class="form-group">
               <label for="cname">Full Name</label>
-              <input type="text" id="cname" placeholder="e.g. Tshering Wangchuk" />
+              <input type="text" id="cname" placeholder="e.g. Sonam Yangchen" />
             </div>
             <div class="form-group">
               <label for="cemail">Email Address</label>
@@ -1194,9 +1194,7 @@
                 <option value="" disabled selected>Select a topic…</option>
                 <option value="general">General Inquiry</option>
                 <option value="research">Research Collaboration</option>
-                <option value="dashboard">Dashboard / Data</option>
                 <option value="telecom">Telecom Feedback</option>
-                <option value="media">Media &amp; Press</option>
                 <option value="other">Other</option>
               </select>
             </div>
@@ -1214,44 +1212,48 @@
             <div class="glass-card">
               <div style="font-size:1.5rem;margin-bottom:0.75rem;">📍</div>
               <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem;">Location</h3>
-              <p style="color:var(--text-light);font-size:0.9rem;line-height:1.6;">Tsirang Dzongkhag<br/>Bhutan 🇧🇹</p>
+              <p style="color:var(--text-light);font-size:0.9rem;line-height:1.6;">Chhukha Dzongkhag<br/>Bhutan 🇧🇹</p>
             </div>
             <div class="glass-card">
-              <div style="font-size:1.5rem;margin-bottom:0.75rem;">🕐</div>
-              <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem;">Response Time</h3>
-              <p style="color:var(--text-light);font-size:0.9rem;line-height:1.6;">We aim to reply within <strong style="color:var(--gold-light);">2 business days</strong>. For urgent matters, please mention it in your topic.</p>
+              <div style="font-size:1.5rem; margin-bottom:0.75rem;">🕐</div>
+              <h3 style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); margin-bottom:0.4rem;">Response Time</h3>
+              <p style="color:var(--text-light); font-size:0.9rem; line-height:1.6;">We aim to reply within 2 business days.</p>
             </div>
             <div class="glass-card">
-              <div style="font-size:1.5rem;margin-bottom:0.75rem;">🔗</div>
-              <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);margin-bottom:0.75rem;">Quick Links</h3>
-              <div style="display:flex;flex-direction:column;gap:0.5rem;">
+              <div style="font-size:1.5rem; margin-bottom:0.75rem;">🔗</div>
+              <h3 style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); margin-bottom:0.75rem;">Quick Links</h3>
+              <div style="display:flex; flex-direction:column; gap:0.5rem;">
                 <button class="btn btn-outline" onclick="showPage('dashboard')" style="font-size:0.88rem;padding:0.55rem 1rem;">📊 View Dashboard</button>
                 <button class="btn btn-outline" onclick="showPage('company')" style="font-size:0.88rem;padding:0.55rem 1rem;">🏢 Company Info</button>
                 <button class="btn btn-outline" onclick="showPage('about')" style="font-size:0.88rem;padding:0.55rem 1rem;">👤 About the Project</button>
               </div>
             </div>
           </div>
-
         </div>
       </section>
     </div>
-
   </main>
+
 <!-- ══════════════ FOOTER ══════════════ -->
 <footer>
-  © 2026 <strong>TeleCompass</strong> · Bhutan Connectivity Research &nbsp;|&nbsp;
-  <span onclick="showPage('contact')">Contact</span>
+  © 2026 <strong>TeleCompass</strong> · Bhutan Connectivity Research &nbsp;|&nbsp; <span onclick="showPage('contact')">Contact</span>
 </footer>
-
 </div> <!-- Closing main container -->
 
 <script>
   // ── Navigation (mobile menu toggle) ──
+  // const - creates a variable navToggle and navLinks
+  // getElementById - find element by its id
+  // if - check if something is true
+  // navToggle(☰ icon) && navLinks - both must exist
+
   const navToggle = document.getElementById('navToggle');
   const navLinks  = document.getElementById('navLinks');
   if (navToggle && navLinks) {
-    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-  }
+    // When you click the menu button (☰), it shows or hides the navigation menu.
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));}
+  // 👉 Click button → menu opens
+// 👉 Click again → menu closes
 
   // ////////// //
  // java script//
@@ -1277,31 +1279,31 @@
   }
 
   // ── Contact Form ──
+  // Create a function called when user submits the form
   function handleContact() {
+     // ?. - safty check - continue only if element exists
     const name  = document.getElementById('cname')?.value.trim();
     const email = document.getElementById('cemail')?.value.trim();
     const topic = document.getElementById('ctopic')?.value;
     const msg   = document.getElementById('cmsg')?.value.trim();
-    
+    // warning for missing information
     if (!name || !email || !topic || !msg) {
       alert('Please fill in all fields before submitting.');
       return;
     }
-
+    // Find the success message element and store it
     const successEl = document.getElementById('contactSuccess');
+    // Find the success message element and store it
     if (successEl) successEl.style.display = 'block';
-
+    // submitContactBtn - id of button
     const btn = document.getElementById('submitContactBtn');
     if (btn) {
+      // Change button text to ‘Sent
       btn.textContent = '✅ Sent!';
+      // Disable the button (cannot click again)
       btn.disabled = true;
     }
   }
-  
-
-
-
-
   // ── Company Quiz ──
   // recommendation box 
   // submit box
