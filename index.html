@@ -321,13 +321,13 @@
       font-size:1.8rem; 
       font-weight:900; 
       /* color:var(--cream);  */
-      color:rgb(211, 133, 64);
+      color:var(--teal-light);
       display:block; 
     }
     /* lower letter */
     .stat-box .lbl { 
       font-size:0.76rem; 
-      color:var(--text-light); 
+      color:var(--cream); 
       text-transform:uppercase; 
       letter-spacing:0.06em; 
     }
@@ -404,7 +404,7 @@
     /* ══════════════ CARDS From About Us══════════════ */
      /*background of the information */
     .glass-card {
-      background: var(--glass-bg);   
+      background: rgb(23, 90, 68);   
       border: 1px solid var(--glass-border);
       border-radius: var(--radius);
       backdrop-filter: blur(12px); 
@@ -887,40 +887,61 @@
 
           <!-- About Me Glass Card -->
           <div class="glass-card">
+          
             <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem;">
               <!-- 🎓 -->
                <!-- border-radius:50%; - perfect circle -->
               <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--teal-dark),rgb(10, 160, 115));display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;box-shadow:0 0 16px rgba(232,160,32,0.4);">🎓</div>
               <div>
-                <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--white);">Intern Researcher</div>
-                <div style="color:var(--gold-light);font-size:0.82rem;letter-spacing:0.04em;text-transform:uppercase;">Connectivity &amp; Analytics Division</div>
+                <div style="font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--cream); letter-spacing:0.095rem;">Intern Researcher</div>
+                <div style="color:rgb(180, 220, 220);font-size:0.85rem;letter-spacing:0.075em;text-transform:uppercase;"><span>Data Practitioner -</span><span><br></span> Turning Data into Insights</span></div>
               </div>
             </div>
+            <!-- gap between each line - marginbuttom between two para-->
+            <div style="text-align:justify;">
             <p style="line-height:1.75;margin-bottom:1.2rem;color:var(--text-light);">
-              As part of an internship programme, this project investigates the current state of telecommunications and internet connectivity across Bhutan. The work combines survey data, field observations, and interactive visualisations to surface actionable insights for policymakers, service providers, and communities alike.
+              I am an intern at Bhutan Data Scientists Pvt Ltd. This intern project explores telecommunications service usage in Bhutan, focusing on customer preferences and satisfaction. The website aims to provide personalized service recommendations based on user needs.
             </p>
+            <!-- second paragraph -->
             <p style="line-height:1.75;color:var(--text-light);">
-              Guided by the principle of <em style="color:var(--gold-light);">Gross National Happiness</em>, the research aims to bridge the digital divide and ensure equitable access to modern connectivity throughout all 20 dzongkhags — from bustling Thimphu to the most remote highland villages.
+              The project focuses on reducing Bhutan's digital divide by 
+              <em style="color:rgb(195, 237, 237);">understanding connectivity gaps and promoting fair access,</em> 
+              to telecommunications services across all 20 dzongkhags.
             </p>
+            </div>
             <div class="stat-row" style="margin-top:1.75rem;">
-              <div class="stat-box"><span class="num">20</span><span class="lbl">Dzongkhags</span></div>
-              <div class="stat-box"><span class="num">500+</span><span class="lbl">Respondents</span></div>
-              <div class="stat-box"><span class="num">2026</span><span class="lbl">Study Year</span></div>
+              <div class="stat-box">
+                <span class="num">20</span>
+                <span class="lbl">Dzongkhags</span>
+              </div>
+              <div class="stat-box">
+                <span class="num">100+</span>
+                <span class="lbl">Respondents</span>
+              </div>
+              <div class="stat-box">
+                <span class="num">2026</span>
+                <span class="lbl">Study Year</span>
+              </div>
             </div>
           </div>
 
           <!-- Project Highlights White Card -->
+           <!-- 🏔️ -->
           <div class="white-card">
             <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem;">
-              <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--teal),var(--teal-light));display:flex;align-items:center;justify-content:center;font-size:1.2rem;">🏔️</div>
-              <h2 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-dark);">Project Highlights</h2>
+              <!-- linear-gradient(...) → blends two or more colors smoothly -->
+               <!-- 135deg → direction of the gradient, starts from top-left area flows toward bottom-right area -->
+              <div style="width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,var(--teal-dark),var(--teal-light));display:flex;align-items:center;justify-content:center;font-size:1.2rem;">🏔️</div>
+              <h2 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-light);">Project Highlights</h2>
             </div>
             <ul class="highlight-list">
-              <li><div><strong style="display:block;margin-bottom:0.2rem;color:var(--teal-dark);">Understanding Mobile &amp; Wi-Fi Usage Patterns</strong>Mapping how citizens across urban and rural Bhutan access the internet — what devices they use, how frequently, and for what purposes.</div></li>
-              <li><div><strong style="display:block;margin-bottom:0.2rem;color:var(--teal-dark);">Analysing Customer Satisfaction</strong>Measuring satisfaction levels with service quality, network reliability, and pricing across Bhutan Telecom, Tashi InfoComm, and Starlink.</div></li>
-              <li><div><strong style="display:block;margin-bottom:0.2rem;color:var(--teal-dark);">Creating a Responsive Dashboard for Insights</strong>Building an interactive Tableau-powered dashboard that enables stakeholders to explore data visually, filter by region, and spot trends at a glance.</div></li>
-              <li><div><strong style="display:block;margin-bottom:0.2rem;color:var(--teal-dark);">Sharing Recommendations for Better Connectivity</strong>Translating data into practical recommendations — from infrastructure expansion priorities to customer experience improvements and policy proposals.</div></li>
+            <div style="text-align:justify;">
+              <li><div><strong style="display:block;margin-bottom:0.2rem;color:var(--teal-dark);">Understanding Mobile data package &amp; Wi-Fi Usage Patterns</strong>Examining the internet service usage pattern across urban and rural area of Bhutan, including what is their primary purpose and their needs based on occupation.</div></li>
+              <li><div><strong style="display:block;margin-bottom:0.2rem;color:var(--teal-dark);">Analysing Customer Satisfaction</strong>Measuring satisfaction levels with service quality, network reliability, and pricing, and how these factors influence daily usage of different services.</div></li>
+              <li><div><strong style="display:block;margin-bottom:0.2rem;color:var(--teal-dark);">Responsive Dashboard for Insights</strong>Building an interactive Tableau dashboard that enables users to explore data visually, filter by region, and identify trends at a glance, helping them better understand services based on their needs.</div></li>
+              <li><div><strong style="display:block;margin-bottom:0.2rem;color:var(--teal-dark);">Recommendations for Better Connectivity</strong>Having a better connectivity recommendations is our priority, and we welcome user feedback that goes beyond the scope of this project, helping us improve and provide better, more tailored services.</div></li>
             </ul>
+            <!-- "showPage('dashboard')" -->
             <div style="margin-top:2rem;padding-top:1.25rem;border-top:1px solid rgba(13,79,92,0.1);">
               <button class="btn btn-teal" onclick="showPage('dashboard')" style="font-size:0.9rem;">📊 Explore the Dashboard →</button>
             </div>
