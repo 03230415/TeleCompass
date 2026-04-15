@@ -52,7 +52,9 @@
     body {
       font-family: 'DM Sans', sans-serif;                    /* if DM Sans not available then sans-serif  */
       color: var(--text-dark);
-      background: var(--teal-dark);
+      /* background: var(--teal-dark); */
+            background: linear-gradient(90deg, #ebd846, #f26118);
+
       min-height: 100vh;
     }
 
@@ -62,6 +64,8 @@
       min-height: 100vh;
       background:
         linear-gradient(to bottom, rgba(23, 27, 28, 0.2) 0%, rgba(8, 46, 54, 0.54) 100%),
+        /* linear-gradient(90deg, #ebd846, #f26118); */
+
         url(https://tse2.mm.bing.net/th/id/OIP.MQwV26GDpGXRkEuAFaYj3AHaE8?rs=1&pid=ImgDetMain&o=7&rm=3)
         center/cover no-repeat fixed;
     }
@@ -73,7 +77,8 @@
       top: 0; 
       z-index: 1000;
       height: var(--nav-h);
-      background: rgba(11, 53, 44, 0.92);
+      /* background: rgba(11, 53, 44, 0.92); */
+      background: linear-gradient(90deg, #f3cf31, #a03b08);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--glass-border);
@@ -90,7 +95,9 @@
     .nav-links li button:hover,
     .nav-links li button.active { 
         color:var(--teal-light); 
-        background:rgba(255, 255, 255, 0.35); }
+        /* background:rgba(255, 255, 255, 0.35);  */
+        background: linear-gradient(90deg, #ebd846, #f26118);
+}
     .nav-links li button {
       display:block; 
       padding:0.45rem 0.9rem; 
@@ -129,7 +136,9 @@
       width: 36px; 
       height: 36px; 
       /* background: var(--gold);  */
-      background: var(--teal-light);
+      background: linear-gradient(90deg, #ebd846, #f26118);
+
+      /* background: var(--teal-light); */
       border-radius: 50%;
     /*this is for the logo design*/
       display: flex;   
@@ -243,7 +252,8 @@
       position:absolute; 
       bottom:-1rem; 
       right:-1rem;
-      background:var(--teal-light); 
+      /* background:var(--teal-light);  */
+      background: linear-gradient(90deg, #ebd846, #f26118);
       color:rgb(243, 236, 231);
       padding:0.5rem 1rem; 
       border-radius:50px; 
@@ -253,16 +263,25 @@
       box-shadow:var(--shadow-sm);
     }
     .story {
+      text-align:justify;
       display:flex;
-      padding-top: 100px;
+      margin-top:30px;
+      padding: 50px 45px;
       font-family: arial;
       font-weight:400;
       letter-spacing:0.12rem;
-      background:rgba(5, 6, 5, 0.7);
+      background:rgba(3, 44, 37, 0.7);
+      border-radius:2rem;
       color:var(--white);
-
-
+      display:block;
     }
+    .story-title{
+      text-align: center; 
+      background: linear-gradient(90deg, #ebd846, #f26118);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
 
     /* ══════════════ QUICK-LINKS GRID ══════════════ */
     /* the navbar below */
@@ -277,19 +296,23 @@
       text-align:center; 
       cursor:pointer;
       box-shadow:var(--shadow-sm);
-      background:rgba(14, 69, 69, 0.75);
+      /* background:rgba(14, 69, 69, 0.75); */
+      background: linear-gradient(90deg, #ebd846, #f26118);
       border:1px solid var(--glass-border);
       border-radius:var(--radius); 
       backdrop-filter:blur(12px);
       transition:transform var(--t),box-shadow var(--t),background var(--t);
-      /* color:var(--text-light);  */
-      /* text-decoration:none;  */
-      /* display:block; */
+      color:var(--text-light); 
+      text-decoration:none; 
+      display:block;
     }
     .qlink-card:hover { 
       transform:translateY(-5px); 
       box-shadow:var(--shadow-lg); 
-      background:rgba(8,46,54,0.88); 
+      /* background:rgba(210, 162, 139, 0.88);  */     
+      background: linear-gradient(90deg, #e4da8e, #ef7639);
+
+      
     }
     .qlink-card .q-icon { 
       font-size:2rem; 
@@ -304,9 +327,9 @@
     }
     .qlink-card .q-sub { 
       font-size:0.83rem; 
-      color:rgb(174, 239, 223); 
-      font-width: 600;
-      letter-spacing: 1.2px;
+      color:rgb(6, 14, 10); 
+      font-width: 800;
+      letter-spacing: 1px;
     }
 
   /* ══════════════ STATS ══════════════ */
@@ -320,7 +343,8 @@
     .stat-box {
       flex:1;                                         /* changes shape equally*/
       min-width:110px; 
-      background:rgba(2, 15, 13, 0.75);
+      background:rgba(53, 41, 26, 0.75);
+      /* background: linear-gradient(90deg, #f5f3e2, #ef7639); */
       border:1px solid rgba(17, 155, 100, 0.25); 
       border-radius:var(--radius-sm);
       padding:0.9rem 1rem; 
@@ -362,10 +386,14 @@
     }
      /* view dashboard in homepage */
     .btn-gold { 
-      background:var(--teal-light); 
+      /* background:var(--teal-light);  */
+      background: linear-gradient(90deg, #ebd846, #f26118);
+
       border-color:var(--teal); }    
     .btn-gold:hover { 
-      background:var(--teal); 
+      /* background:var(--teal);  */
+      background: linear-gradient(90deg, #ebd846, #f26118);
+
       border-color:var(--teal-light); 
       transform:translateY(-2px); 
     }
@@ -383,12 +411,16 @@
 
       /* return home button in companies section */
     .btn-teal { 
-      background:var(--teal-light); 
+      /* background:var(--teal-light);  */
+            background: linear-gradient(90deg, #ebd846, #f26118);
+
       color:var(--white); 
       border-color:var(--teal-light); 
     }
     .btn-teal:hover { 
-      background:var(--teal); 
+      /* background:var(--teal);  */
+      background: linear-gradient(90deg, #ebd846, #f26118);
+
       border-color:var(--teal); 
       transform:translateY(-2px); 
     }
@@ -483,7 +515,9 @@
     .badge {
       /* display:inline-block;      */
       padding:0.2rem 0.65rem;
-      background:rgba(70, 94, 94, 0.15);
+      /* background:rgba(70, 94, 94, 0.15); */
+      background: linear-gradient(90deg, #ebd846, #f26118);
+
       color:var(--teal-light);
       border:0.1px solid var(--teal);
       border-radius:50px;
@@ -517,7 +551,9 @@
     .company-card .co-icon {
       width:52px; 
       height:52px;
-      background:linear-gradient(135deg,var(--teal),var(--teal-light));
+      /* background:linear-gradient(135deg,var(--teal),var(--teal-light)); */
+            background: linear-gradient(90deg, #ebd846, #f26118);
+
       border-radius:12px; 
       display:flex; 
       align-items:center; 
@@ -885,8 +921,9 @@
             <div class="q-sub">We're here to listen to your feedback</div>
           </div>
         </div>
-        <span class="story"><p>Telecommunication Service Usage in Bhutan
-          TeleCompass — A Guide for Better Connectivity
+        <section>
+        <span class="story"><h1 class="story-title">Telecommunication Service Usage in Bhutan</h1>
+          <p>TeleCompass — A Guide for Better Connectivity
           When I got enrolled as an intern under Bhutan Data Scientist doing remote work, I depended heavily on mobile data for everything—online research, Zoom meetings, gaming, TikTok, YouTube, and Netflix.
           Because I was using mobile data for almost all my activities, the cost quickly became very high. I was spending around Nu. 699 in a week, and even when I tried a Nu. 1199 plan, I still had to recharge twice a month, and it still barely lasted. In total, I ended up spending more than Nu. 2000.
           I often struggled with uncertainty. I was confused about which telecommunication service to choose or whether I should continue with my current plan. My thoughts kept going back and forth, especially when trying to manage internet costs. I even worried, “What if my investment in Wi-Fi fails?”
@@ -896,9 +933,8 @@
           The difference was clear.
           With Wi-Fi, I could do my work smoothly, attend Zoom meetings without interruption, and freely use the internet for research and entertainment like YouTube, TikTok, games, and dramas without worrying about running out of data.
           It also became more affordable, costing around Nu. 1450 per month, which was much better than what I was spending on mobile data.
-          This experience taught me that the type of internet connection matters a lot, depending on how you use it. For remote work and daily usage, Wi-Fi was simply more stable, practical, and cost-effective for me.
-
-</p></span>
+          This experience taught me that the type of internet connection matters a lot, depending on how you use it. For remote work and daily usage, Wi-Fi was simply more stable, practical, and cost-effective for me.</p>
+        </span>
       </section>
     </div>
 
