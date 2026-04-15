@@ -52,8 +52,8 @@
     body {
       font-family: 'DM Sans', sans-serif;                    /* if DM Sans not available then sans-serif  */
       color: var(--text-dark);
-      /* background: var(--teal-dark); */
-            background: linear-gradient(90deg, #ebd846, #f26118);
+      background: var(--teal-dark);
+            /* background: linear-gradient(90deg, #ebd846, #f26118); */
 
       min-height: 100vh;
     }
@@ -77,8 +77,8 @@
       top: 0; 
       z-index: 1000;
       height: var(--nav-h);
-      /* background: rgba(11, 53, 44, 0.92); */
-      background: linear-gradient(90deg, #f3cf31, #a03b08);
+      background: rgba(11, 53, 44, 0.92);
+      /* background: linear-gradient(90deg, #f3cf31, #a03b08); */
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--glass-border);
@@ -95,8 +95,8 @@
     .nav-links li button:hover,
     .nav-links li button.active { 
         color:var(--teal-light); 
-        /* background:rgba(255, 255, 255, 0.35);  */
-        background: linear-gradient(90deg, #ebd846, #f26118);
+        background:rgba(140, 122, 122, 0.35); 
+        /* background: linear-gradient(90deg, #ebd846, #f26118); */
 }
     .nav-links li button {
       display:block; 
@@ -136,7 +136,7 @@
       width: 36px; 
       height: 36px; 
       /* background: var(--gold);  */
-      background: linear-gradient(90deg, #ebd846, #f26118);
+      background: linear-gradient(90deg, #72ddc9ab, #034637a5);
 
       /* background: var(--teal-light); */
       border-radius: 50%;
@@ -223,7 +223,7 @@
       margin-bottom:0.5rem;
     }
     .hero-text h1 em { 
-      color:var(--teal-light); 
+      color:rgb(151, 203, 203); 
       font-style:normal; 
       display:block; 
     }
@@ -252,8 +252,8 @@
       position:absolute; 
       bottom:-1rem; 
       right:-1rem;
-      /* background:var(--teal-light);  */
-      background: linear-gradient(90deg, #ebd846, #f26118);
+      background:var(--teal-light); 
+      /* background: linear-gradient(90deg, #ebd846, #f26118); */
       color:rgb(243, 236, 231);
       padding:0.5rem 1rem; 
       border-radius:50px; 
@@ -281,6 +281,12 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+    .story h4{
+      margin-top:1.2rem;
+    }
+    .story p {
+      margin-top: 1.5rem;
+    }
 
 
     /* ══════════════ QUICK-LINKS GRID ══════════════ */
@@ -296,8 +302,8 @@
       text-align:center; 
       cursor:pointer;
       box-shadow:var(--shadow-sm);
-      /* background:rgba(14, 69, 69, 0.75); */
-      background: linear-gradient(90deg, #ebd846, #f26118);
+      background:rgba(20, 96, 96, 0.75);
+      /* background: linear-gradient(90deg, #ebd846, #f26118); */
       border:1px solid var(--glass-border);
       border-radius:var(--radius); 
       backdrop-filter:blur(12px);
@@ -309,8 +315,8 @@
     .qlink-card:hover { 
       transform:translateY(-5px); 
       box-shadow:var(--shadow-lg); 
-      /* background:rgba(210, 162, 139, 0.88);  */     
-      background: linear-gradient(90deg, #e4da8e, #ef7639);
+      background:rgba(95, 125, 125, 0.88);      
+      /* background: linear-gradient(90deg, #e4da8e, #ef7639); */
 
       
     }
@@ -327,7 +333,7 @@
     }
     .qlink-card .q-sub { 
       font-size:0.83rem; 
-      color:rgb(6, 14, 10); 
+      color:var(--cream); 
       font-width: 800;
       letter-spacing: 1px;
     }
@@ -343,7 +349,7 @@
     .stat-box {
       flex:1;                                         /* changes shape equally*/
       min-width:110px; 
-      background:rgba(53, 41, 26, 0.75);
+      background:rgba(34, 70, 47, 0.75);
       /* background: linear-gradient(90deg, #f5f3e2, #ef7639); */
       border:1px solid rgba(17, 155, 100, 0.25); 
       border-radius:var(--radius-sm);
@@ -386,13 +392,13 @@
     }
      /* view dashboard in homepage */
     .btn-gold { 
-      /* background:var(--teal-light);  */
-      background: linear-gradient(90deg, #ebd846, #f26118);
+      background:var(--teal-light); 
+      /* background: linear-gradient(90deg, #ebd846, #f26118); */
 
       border-color:var(--teal); }    
     .btn-gold:hover { 
-      /* background:var(--teal);  */
-      background: linear-gradient(90deg, #ebd846, #f26118);
+      background:var(--teal); 
+      /* background: linear-gradient(90deg, #ebd846, #f26118); */
 
       border-color:var(--teal-light); 
       transform:translateY(-2px); 
@@ -411,15 +417,15 @@
 
       /* return home button in companies section */
     .btn-teal { 
-      /* background:var(--teal-light);  */
-            background: linear-gradient(90deg, #ebd846, #f26118);
+      background:var(--teal-light); 
+            /* background: linear-gradient(90deg, #ebd846, #f26118); */
 
       color:var(--white); 
       border-color:var(--teal-light); 
     }
     .btn-teal:hover { 
-      /* background:var(--teal);  */
-      background: linear-gradient(90deg, #ebd846, #f26118);
+      background:var(--teal); 
+      /* background: linear-gradient(90deg, #ebd846, #f26118); */
 
       border-color:var(--teal); 
       transform:translateY(-2px); 
@@ -515,8 +521,8 @@
     .badge {
       /* display:inline-block;      */
       padding:0.2rem 0.65rem;
-      /* background:rgba(70, 94, 94, 0.15); */
-      background: linear-gradient(90deg, #ebd846, #f26118);
+      background:rgba(70, 94, 94, 0.15);
+      /* background: linear-gradient(90deg, #ebd846, #f26118); */
 
       color:var(--teal-light);
       border:0.1px solid var(--teal);
@@ -551,8 +557,8 @@
     .company-card .co-icon {
       width:52px; 
       height:52px;
-      /* background:linear-gradient(135deg,var(--teal),var(--teal-light)); */
-            background: linear-gradient(90deg, #ebd846, #f26118);
+      background:linear-gradient(135deg,var(--teal),var(--teal-light));
+            /* background: linear-gradient(90deg, #ebd846, #f26118); */
 
       border-radius:12px; 
       display:flex; 
@@ -858,7 +864,7 @@
             <!-- "badge" class - badge like icon on every section -->
             <span class="badge" style="margin-bottom:1rem; display:inline-block;">🇧🇹 Bhutan Connectivity Study</span>
             <h1>Kuzu <em>Zangpo La</em></h1> 
-            <p style= "color:#74edeb;font-weight:bold;"class="subtitle";><strong style="font-family:italic;color:darkcyan;font-weight:bolder;">“This page is designed to guide you toward better connectivity choices that match your needs and lifestyle.”</strong><br><br>A guide for better connectivity — explore available internet service across Bhutan &amp; helping you choose the right internet service for your need.</p>
+            <p style= "color:#74edeb;font-weight:bold;"class="subtitle";><strong style="font-family:italic;color:rgb(147, 237, 237);font-weight:bolder;">“This page is designed to guide you toward better connectivity choices that match your needs and lifestyle.”</strong><br><br>A guide for better connectivity — explore available internet service across Bhutan &amp; helping you choose the right internet service for your need.</p>
             <div style="display:flex; gap:1rem; flex-wrap:wrap;">
               <!-- the small buttons on the homepage -->
               <button class="btn btn-gold" onclick="showPage('dashboard')">📊 View Dashboard</button>
@@ -923,17 +929,30 @@
         </div>
         <section>
         <span class="story"><h1 class="story-title">Telecommunication Service Usage in Bhutan</h1>
-          <p>TeleCompass — A Guide for Better Connectivity
-          When I got enrolled as an intern under Bhutan Data Scientist doing remote work, I depended heavily on mobile data for everything—online research, Zoom meetings, gaming, TikTok, YouTube, and Netflix.
-          Because I was using mobile data for almost all my activities, the cost quickly became very high. I was spending around Nu. 699 in a week, and even when I tried a Nu. 1199 plan, I still had to recharge twice a month, and it still barely lasted. In total, I ended up spending more than Nu. 2000.
-          I often struggled with uncertainty. I was confused about which telecommunication service to choose or whether I should continue with my current plan. My thoughts kept going back and forth, especially when trying to manage internet costs. I even worried, “What if my investment in Wi-Fi fails?”
-          When I inquired at a service counter, I was advised to reconsider carefully. I was told that if the internet strength in my area was weak, the Wi-Fi performance would also be poor, and in such cases, refunds would not be possible. At the same time, I heard rumors circulating that Wi-Fi services were no longer as reliable as before, with some users requesting refunds and others complaining about cost and stability all over social media. This made me even more uncertain and overwhelmed, and for nearly a month, I kept going back and forth with my decision.
-          Over time, I had to become more careful about how I used the internet. I started limiting gaming, reducing time on videos, and avoiding watching dramas freely because of data constraints.
-          I was always stressed about running out of data and not being able to watch videos or play music freely. Later, my cousin suggested that I try using Wi-Fi instead. So, she kindly let me use her router, and I started working through it.
-          The difference was clear.
-          With Wi-Fi, I could do my work smoothly, attend Zoom meetings without interruption, and freely use the internet for research and entertainment like YouTube, TikTok, games, and dramas without worrying about running out of data.
-          It also became more affordable, costing around Nu. 1450 per month, which was much better than what I was spending on mobile data.
-          This experience taught me that the type of internet connection matters a lot, depending on how you use it. For remote work and daily usage, Wi-Fi was simply more stable, practical, and cost-effective for me.</p>
+          <h4 class="story-title">TeleCompass — A Guide for Better Connectivity</h4>
+          <p>When I got enrolled as an intern under Bhutan Data Scientist doing remote work, I depended heavily on 
+            mobile data for everything—online research, Zoom meetings, gaming, TikTok, YouTube, and Netflix.<br><br>
+          Because I was using mobile data for almost all my activities, the cost quickly became very high. I was 
+          spending around Nu. 699 in a week, and even when I tried a Nu. 1199 plan, I still had to recharge twice 
+          a month, and it still barely lasted. In total, I ended up spending more than Nu. 2500.<br><br>I often struggled 
+          with uncertainty. I was confused about which telecommunication service to choose or whether I should 
+          continue with my current plan. My thoughts kept going back and forth, especially when trying to manage 
+          internet costs. I even worried, “What if my investment in Wi-Fi fails?”<br><br>When I inquired at a service 
+          counter, I was advised to reconsider carefully. I was told that if the internet strength in my area was weak,
+          the Wi-Fi performance would also be poor, and in such cases, refunds would not be possible. At the same time,
+           I heard rumors circulating that Wi-Fi services were no longer as reliable as before, with some users 
+           requesting refunds and others complaining about cost and stability all over social media. This made me even 
+           more uncertain and overwhelmed, and for nearly a month, I kept going back and forth with my decision.<br><br>
+          Over time, I had to become more careful about how I used the internet. I started limiting gaming, reducing 
+          time on videos, and avoiding watching dramas freely because of data constraints.<br><br>I was always stressed about 
+          running out of data and not being able to watch videos or play music freely. Later, my cousin suggested that 
+          I try using Wi-Fi instead. So, she kindly let me use her router, and I started working through it.<br><br><br>The 
+          difference was clear.<br><br><br>With Wi-Fi, I could do my work smoothly, attend Zoom meetings without interruption, and 
+          freely use the internet for research and entertainment like YouTube, TikTok, games, and dramas without worrying 
+          about running out of data.<br><br>It also became more affordable, costing around Nu. 1450 per month, which was much 
+          better than what I was spending on mobile data.<br><br>This experience taught me that the type of internet connection 
+          matters a lot, depending on how you use it. For remote work and daily usage, Wi-Fi was simply more stable, 
+          practical, and cost-effective for me.</p>
         </span>
       </section>
     </div>
