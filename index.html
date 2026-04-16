@@ -470,6 +470,18 @@
       transform:translateY(-4px); 
       box-shadow:var(--shadow-lg); 
     }
+    .glass-card a {
+      color:var(--text-light);
+      text-decoration: none;
+
+    }
+    .glass-card a:hover{
+      text-decoration:underline;
+      text-decoration-thickness: 1.5px;
+      
+
+
+    }
     /* project highlight card */
     .white-card {
       background: var(--card-bg); 
@@ -1131,7 +1143,11 @@
             <h3>Bhutan Telecom Limited</h3>
             <span class="badge" style="margin-bottom:0.75rem;display:inline-block;">State-Owned · Est. 2000</span>
             <p>The B-Mobile network, now has a comprehensive reach, covering all 205 gewogs across the country, ensuring connectivity even in remote areas.</p>
-            <div class="tag-row"><span class="badge">4G LTE</span><span class="badge">Fibre</span><span class="badge">Fixed-Line</span></div>
+            <div class="tag-row">
+              <span class="badge">4G LTE / 5G</span>
+              <span class="badge">Fibre Broadband</span>
+              <span class="badge">Fixed-Line</span>
+            </div>
           </article>
 
           <article class="company-card">
@@ -1139,7 +1155,12 @@
             <h3>Tashi InfoComm Pvt Ltd</h3>
             <span class="badge" style="margin-bottom:0.75rem;display:inline-block;">Private · Est. 2008</span>
             <p>Offers mobile services across urban and growing semi-urban areas. Known for its competitive pricing and customer-focused plan</p>
-            <div class="tag-row"><span class="badge">4G LTE</span><span class="badge">TashiCell</span><span class="badge">Competitive Pricing</span></div>
+            <div class="tag-row">
+              <span class="badge">4G LTE / 5G</span>
+              <span class="badge">Mobile Network</span>
+              <span class="badge">Urban Coverage</span>
+            </div>
+
           </article>
 
           <article class="company-card">
@@ -1148,14 +1169,16 @@
             <span class="badge" style="margin-bottom:0.75rem;display:inline-block;">Global · SpaceX LEO Satellite</span>
             <p> A satellite-based internet service, increasingly available in Bhutan as an alternative for remote and high-altitude areas. Better connectivity ideal for Bhutan's mountainous terrain. </p>
             <div class="tag-row">
-              <span class="badge">Satellite</span>
-              <span class="badge">Rural Focus</span>
-              <span class="badge">Low Earth Orbit</span></div>
+              <span class="badge">Satellite Internet</span>
+              <span class="badge">Low Earth Orbit (LEO)</span>
+              <span class="badge">Remote Coverage</span>
+            </div>
           </article>
 
         </div>
 
         <!-- Comparison Table -->
+         <!-- (overflow) - If content is too wide, (-x) - show a horizontal (:auto)- scroll bar ONLY when needed. -->
         <div class="glass-card" style="overflow-x:auto;margin-bottom:2.5rem;">
           <h2 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--white);margin-bottom:1.25rem;">Quick Comparison</h2>
           <table class="comp-table">
@@ -1163,43 +1186,33 @@
               <th>Provider</th><th>Type</th><th>Coverage</th><th>Strength</th>
             </tr></thead>
             <tbody>
-              <tr><td><strong>Bhutan Telecom</strong></td><td>State / Mobile / Fixed</td><td>Nationwide</td><td>Widest infrastructure</td></tr>
-              <tr><td><strong>Tashi InfoComm</strong></td><td>Private / Mobile</td><td>Urban + growing rural</td><td>Competitive pricing</td></tr>
-              <tr><td><strong>Starlink</strong></td><td>Satellite</td><td>Remote / High-altitude</td><td>Low-latency satellite</td></tr>
+              <tr>
+                <td><strong>
+                  <a href="https://www.bt.bt/" target = "_blank">Bhutan Telecom</a>
+                </strong></td>
+                <td>State / Mobile / Fixed</td>
+                <td>Nationwide</td>
+                <td>Widest infrastructure</td>
+              </tr>
+              <tr>
+                <td><strong>
+                  <a href="https://www.tashicell.com/" target="_blank">Tashi InfoComm</a>
+                </strong></td>
+                <td>Private / Mobile</td>
+                <td>Urban + growing rural</td>
+                <td>Competitive pricing</td>
+              </tr>
+              <tr>
+                <td><strong>
+                <a href="https://www.bicma.gov.bt/?page_id=8623" target = "_blank">Starlink</a>
+              </strong></td>
+              <td>Satellite</td>
+              <td>Remote / High-altitude</td>
+              <td>Low-latency satellite</td>
+            </tr>
             </tbody>
           </table>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
