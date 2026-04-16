@@ -1,1516 +1,1494 @@
-<!-- code using HTML -->
- <!-- styled using CSS -->
-  <!-- shows result using JavaScript -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TeleCompass — Bhutan Connectivity</title>
-  <!-- links to different fonts keeping them preconnected for later use -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- code using HTML -->
+  <!-- styled using CSS -->
+    <!-- shows result using JavaScript -->
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TeleCompass — Bhutan Connectivity</title>
+    <!-- links to different fonts keeping them preconnected for later use -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <style>
-    /* ═══════════════════════════════════════════════════════════
-       TeleCompass — Single Page Application
-       Aesthetic: Himalayan Altitude · Teal + Saffron + Glass
-    ═══════════════════════════════════════════════════════════ */
-
-
-/* this are the color code to be used in later code */
-    :root {
-      --teal:        #0d4f5c;
-      --teal-light:  #0c7576;
-      --teal-dark:   #082e36;
-      --gold:        #e8a020;
-      --gold-light:  #f5c050;
-      --cream:       #fdf6ec;
-      --white:       #ffffff;
-      --text-dark:   #0d1f24;
-      --text-mid:    #2a4a52;
-      --text-light:  rgba(255,255,255,0.88);
-      --glass-bg:    rgba(187, 83, 52, 0.74);
-      --glass-border:rgba(15, 224, 182, 0.25);
-      --card-bg:     rgba(255,255,255,0.94);
-      --shadow-sm:   0 2px 12px rgba(13,79,92,0.18);
-      --shadow-md:   0 6px 28px rgba(13,79,92,0.28);
-      --shadow-lg:   0 14px 48px rgba(13,79,92,0.38);
-      --radius:      14px;
-      --radius-sm:   8px;
-      --nav-h:       68px;
-      --t:           0.3s cubic-bezier(0.4,0,0.2,1);
-    }
-/* pseudo - applying same padding and margin to all normal elements */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    
+    <style>
+      /* ═══════════════════════════════════════════════════════════
+        TeleCompass — Single Page Application
+        Aesthetic: Himalayan Altitude · Teal + Saffron + Glass
+      ═══════════════════════════════════════════════════════════ */
 
 
-    /* default mood of whole website */
-    body {
-      font-family: 'DM Sans', sans-serif;                    /* if DM Sans not available then sans-serif  */
-      color: var(--text-dark);
-      background: var(--teal-dark);
-            /* background: linear-gradient(90deg, #ebd846, #f26118); */
-
-      min-height: 100vh;
-    }
-
-
-    /* ── Global BG ── */
-    .page-bg {
-      min-height: 100vh;
-      background:
-        linear-gradient(to bottom, rgba(23, 27, 28, 0.2) 0%, rgba(8, 46, 54, 0.54) 100%),
-        /* linear-gradient(90deg, #ebd846, #f26118); */
-
-        url(https://tse2.mm.bing.net/th/id/OIP.MQwV26GDpGXRkEuAFaYj3AHaE8?rs=1&pid=ImgDetMain&o=7&rm=3)
-        center/cover no-repeat fixed;
-    }
-
-    /* ══════════════ NAVIGATION ══════════════ */
-    /* navigation bar at the top corner */
-    nav {
-      position: sticky; 
-      top: 0; 
-      z-index: 1000;
-      height: var(--nav-h);
-      background: rgba(11, 53, 44, 0.92);
-      /* background: linear-gradient(90deg, #f3cf31, #a03b08); */
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--glass-border);
-      display: flex; 
-      align-items: center;
-      padding: 0 clamp(1rem,5vw,3rem);   /*padding <top-buttom><left-right>*/
-      gap: 2rem;}
-    .nav-links {
-        display:flex; 
-        gap:0.2rem; 
-        list-style:none; 
-        margin-left:auto; 
-        align-items:center; }
-    .nav-links li button:hover,
-    .nav-links li button.active { 
-        color:var(--teal-light); 
-        background:rgba(140, 122, 122, 0.35); 
-        /* background: linear-gradient(90deg, #ebd846, #f26118); */
-}
-    .nav-links li button {
-      display:block; 
-      padding:0.45rem 0.9rem; 
-      color:var(--text-light);
-      background:none;                                    /* background color showing up if not used*/
-      border:none;                                        /* if you dont want border around button*/
-      font-family:'DM Sans',sans-serif;
-      font-size:0.9rem; 
-      font-weight:500;
-      border-radius:var(--radius-sm);                     /* border of button  */
-      transition:color var(--t),background var(--t);      /* the duration where the prev button color disappears - transition*/
-      cursor:pointer; 
-      letter-spacing:0.02em;           
-    }
-    /* phone navigation  */
-    .nav-toggle {
-      display:none; 
-      flex-direction:column; 
-      gap:5px; 
-      cursor:pointer;
-      margin-left:auto; 
-      padding:6px; 
-      background:none; 
-      border:none;}
-    .nav-toggle span {      
-        display:block; 
-        width:24px; 
-        height:2px; 
-        background:var(--white); 
-        border-radius:2px; 
-        transition:all var(--t); 
-    }
-/* .ci - ci i labeled */
-    .nav-brand .ci {
-    /* the thing around the compass logo */
-      width: 36px; 
-      height: 36px; 
-      /* background: var(--gold);  */
-      background: linear-gradient(90deg, #72ddc9ab, #034637a5);
-
-      /* background: var(--teal-light); */
-      border-radius: 50%;
-    /*this is for the logo design*/
-      display: flex;   
-      align-items: center; 
-      justify-content: center;
-      font-size: 1.5rem; 
-      box-shadow: 0 0 12px rgba(15, 8, 212, 0.45);
-      transition: transform var(--t), 
-      box-shadow var(--t);}
-    .nav-brand:hover .ci { 
-        transform: rotate(45deg); 
-        box-shadow: 0 0 22px rgba(28, 189, 178, 0.7); 
-    }
-
-    /* logo design */
-    .nav-brand span { 
-        font-family:'Playfair Display',serif; 
-        font-size:1.35rem; 
-        font-weight:700; 
-        color:var(--white);}
-    .nav-brand span em { 
-        color:var(--teal-light); 
-        font-style:normal; }
-    .nav-brand {
-      display: flex; 
-      align-items: center; 
-      gap: 0.6rem;
-      text-decoration: none; 
-      flex-shrink: 0; 
-      cursor: pointer;
-    }
-
-
-    /* ══════════════ PAGE SECTIONS ══════════════ */
-/* display page - each section is given to their respective section */
-    .page { 
-        display:none; 
-        animation: fadeUp 0.55s ease both;} 
-    .page.active { 
-        display:block;}
-     @keyframes fadeUp {                                        /*adding animation transition - fadeUp */
-      from { opacity:0; 
-        transform:translateY(22px);}
-      to   { 
-        opacity:1; 
-        transform:translateY(0);}
-    }
-
-    .section {
-       padding: clamp(3rem,7vw,5rem) clamp(1rem,5vw,3rem);  /*top&buttom left&right - Min, Ideal, Max*/
-       max-width: 1160px;                                   /* max width- the space the items takes*/
-       margin: 0 auto;                                      /* to bring items in center*/
-      /* ex: margin: 5px 10px 15px 20px; /* top, right, bottom, left */ 
-       width: 100%;
-    }
-    
-
-    /* ══════════════ HERO ══════════════ */
-    /* homepage screen overall*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    #intro {
-  position: fixed;
-  inset: 0;
-  background: rgba(15, 23, 42, 0.95);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  z-index: 999;
-}
-
-.intro-box {
-  max-width: 500px;
-  padding: 30px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 16px;
-  text-align: center;
-  backdrop-filter: blur(10px);
-}
-
-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 10px;
-  background: #00C2A8;
-  cursor: pointer;
-}
-
-
-
-
-
-
-
-
-
-
-
-    .hero {
-      min-height: calc(100vh - var(--nav-h));  /* height of home screen is vh - navbar height*/
-      display:flex; 
-      align-items:center;
-      padding: clamp(3rem,8vw,6rem) clamp(1rem,5vw,3rem);
-    }
-    /* centers text + image with each other */
-    .hero-inner {
-      max-width:1160px; 
-      margin:0 auto; 
-      width:100%;
-      display:grid; 
-      grid-template-columns:1fr 1fr; 
-      gap:4rem; 
-      align-items:center;
-    }
-    .hero-text h1 {
-      font-family:'Playfair Display',serif;
-      font-size:clamp(2.5rem,6vw,4rem); 
-      font-weight:900;
-      color:var(--cream); 
-      line-height:1.1; 
-      margin-bottom:0.5rem;
-    }
-    .hero-text h1 em { 
-      color:rgb(151, 203, 203); 
-      font-style:normal; 
-      display:block; 
-    }
-    .hero-text .subtitle { 
-      font-size:clamp(1rem,2vw,1.15rem); 
-      color:var(--text-light); 
-      margin-bottom:2rem; 
-      line-height:1.7; 
-      max-width:460px; 
-    }
-
-    /* image size and ratio */
-    .hero-image img { 
-      width:100%; 
-      border-radius:var(--radius); 
-      box-shadow:var(--shadow-lg); 
-      /* object-fit:cover;  */
-      aspect-ratio:auto; 
-      border:2px solid var(--glass-border); 
-    }
-    /* 📍 Thimphu, Bhutan */
-    .hero-image { 
-      position:relative; 
-    }
-    .hero-image .img-caption {
-      position:absolute; 
-      bottom:-1rem; 
-      right:-1rem;
-      background:var(--teal-light); 
-      /* background: linear-gradient(90deg, #ebd846, #f26118); */
-      color:rgb(243, 236, 231);
-      padding:0.5rem 1rem; 
-      border-radius:50px; 
-      font-size:0.78rem;
-      font-weight:700; 
-      letter-spacing:0.04em; 
-      box-shadow:var(--shadow-sm);
-    }
-    .story {
-      text-align:justify;
-      display:flex;
-      margin-top:30px;
-      padding: 50px 45px;
-      font-family: arial;
-      font-weight:400;
-      letter-spacing:0.12rem;
-      background:rgba(3, 44, 37, 0.7);
-      border-radius:2rem;
-      color:var(--white);
-      display:block;
-    }
-    .story-title{
-      text-align: center; 
-      background: linear-gradient(90deg, #ebd846, #f26118);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .story h4{
-      margin-top:1.2rem;
-    }
-    .story p {
-      margin-top: 1.5rem;
-    }
-
-
-    /* ══════════════ QUICK-LINKS GRID ══════════════ */
-    /* the navbar below */
-    .qlinks { 
-      display:grid; 
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); 
-      gap:1.25rem; 
-    }
-    /* background of navebar */
-    .qlink-card {
-      padding:1.75rem 1.5rem; 
-      text-align:center; 
-      cursor:pointer;
-      box-shadow:var(--shadow-sm);
-      background:rgba(20, 96, 96, 0.75);
-      /* background: linear-gradient(90deg, #ebd846, #f26118); */
-      border:1px solid var(--glass-border);
-      border-radius:var(--radius); 
-      backdrop-filter:blur(12px);
-      transition:transform var(--t),box-shadow var(--t),background var(--t);
-      color:var(--text-light); 
-      text-decoration:none; 
-      display:block;
-    }
-    .qlink-card:hover { 
-      transform:translateY(-5px); 
-      box-shadow:var(--shadow-lg); 
-      background:rgba(95, 125, 125, 0.88);      
-      /* background: linear-gradient(90deg, #e4da8e, #ef7639); */
-
-      
-    }
-    .qlink-card .q-icon { 
-      font-size:2rem; 
-      margin-bottom:0.6rem; 
-    }
-    .qlink-card .q-title { 
-      font-family:'Playfair Display',serif; 
-      font-size:1.05rem; 
-      font-weight:700; 
-      color:var(--white); 
-      margin-bottom:0.3rem; 
-    }
-    .qlink-card .q-sub { 
-      font-size:0.83rem; 
-      color:var(--cream); 
-      font-width: 800;
-      letter-spacing: 1px;
-    }
-
-  /* ══════════════ STATS ══════════════ */
-    /* information bar in homepage */
-    .stat-row { 
-      display:flex; 
-      gap:1.25rem; 
-      flex-wrap:wrap; 
-      margin:1.5rem 0; 
-    }
-    .stat-box {
-      flex:1;                                         /* changes shape equally*/
-      min-width:110px; 
-      background:rgba(34, 70, 47, 0.75);
-      /* background: linear-gradient(90deg, #f5f3e2, #ef7639); */
-      border:1px solid rgba(17, 155, 100, 0.25); 
-      border-radius:var(--radius-sm);
-      padding:0.9rem 1rem; 
-      text-align:center;
-    }
-    /* upper info */
-    .stat-box .num { 
-      font-family:'Playfair Display',serif; 
-      font-size:1.8rem; 
-      font-weight:900; 
-      /* color:var(--cream);  */
-      color:var(--teal-light);
-      display:block; 
-    }
-    /* lower letter */
-    .stat-box .lbl { 
-      font-size:0.76rem; 
-      color:var(--cream); 
-      text-transform:uppercase; 
-      letter-spacing:0.06em; 
-    }
-
-        /* ══════════════ BUTTONS ══════════════ */
-    /* shape of view dashboard and learn more buttons */
-    .btn {
-      border-radius:50px;   
-      cursor:pointer;   
-      padding:0.5rem 1.5rem; 
-      font-size:1rem; 
-      font-family:'DM Sans',sans-serif;
-      font-weight:600;
-      transition:all var(--t); 
-      letter-spacing:0.05rem;
-      text-decoration:none;
-      border:2px solid transparent;
-      /* display:inline-flex;  */
-      /* align-items:center;  */
-      /* gap:0.5rem; */
-    }
-     /* view dashboard in homepage */
-    .btn-gold { 
-      background:var(--teal-light); 
-      /* background: linear-gradient(90deg, #ebd846, #f26118); */
-
-      border-color:var(--teal); }    
-    .btn-gold:hover { 
-      background:var(--teal); 
-      /* background: linear-gradient(90deg, #ebd846, #f26118); */
-
-      border-color:var(--teal-light); 
-      transform:translateY(-2px); 
-    }
-/* learn more button */
-    .btn-outline { 
-      background:transparent; 
-      color:var(--white); 
-      border-color:rgba(255,255,255,0.5); 
-    }
-    .btn-outline:hover { 
-      background:rgba(255,255,255,0.1); 
-      /* border-color:var(--teal-dark);  */
-      /* color:var(--teal-light);  */
-      transform:translateY(-2px); }
-
-      /* return home button in companies section */
-    .btn-teal { 
-      background:var(--teal-light); 
-            /* background: linear-gradient(90deg, #ebd846, #f26118); */
-
-      color:var(--white); 
-      border-color:var(--teal-light); 
-    }
-    .btn-teal:hover { 
-      background:var(--teal); 
-      /* background: linear-gradient(90deg, #ebd846, #f26118); */
-
-      border-color:var(--teal); 
-      transform:translateY(-2px); 
-    }
-
-    /* ══════════════ About Us SECTIONS ══════════════ */
-    /* about us heading and divider*/
-    .page-hero {                                           
-      padding: clamp(3rem,6vw,4.5rem) clamp(1rem,5vw,3rem) 2rem;
-      max-width: 1160px; 
-      margin: 0 auto;}
-    .section-title {
-      background: linear-gradient(90deg, #25d997, #095bd4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-family:'Playfair Display',serif;
-      font-size: clamp(1.8rem,4vw,2.8rem);
-      font-weight:700; 
-      color:var(--white); 
-      margin-bottom:0.5rem; 
-      line-height:1.2;  }
-    .divider { 
-      height:3px; 
-      background:linear-gradient(90deg,var(--teal),var(--teal-light)); 
-      border-radius:2px; 
-      margin-bottom:2rem; }
-
-    /* ══════════════ CARDS From About Us══════════════ */
-     /*background of the information */
-    .glass-card {
-      background: rgb(23, 90, 68);   
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius);
-      backdrop-filter: blur(12px); 
-      -webkit-backdrop-filter: blur(12px);
-      padding: clamp(1.5rem,4vw,2.5rem);
-      box-shadow: var(--shadow-md); 
-      color: var(--text-light);
-      transition: transform var(--t), box-shadow var(--t);
-    }
-    .glass-card:hover { 
-      transform:translateY(-4px); 
-      box-shadow:var(--shadow-lg); 
-    }
-    .glass-card a {
-      color:var(--text-light);
-      text-decoration: none;
-
-    }
-    .glass-card a:hover{
-      text-decoration:underline;
-      text-decoration-thickness: 1.5px;
+  /* this are the color code to be used in later code */
+      :root {
+        --teal:        #0d4f5c;
+        --teal-light:  #0c7576;
+        --teal-dark:   #082e36;
+        --gold:        #e8a020;
+        --gold-light:  #f5c050;
+        --cream:       #fdf6ec;
+        --white:       #ffffff;
+        --text-dark:   #0d1f24;
+        --text-mid:    #2a4a52;
+        --text-light:  rgba(255,255,255,0.88);
+        --glass-bg:    rgba(187, 83, 52, 0.74);
+        --glass-border:rgba(15, 224, 182, 0.25);
+        --card-bg:     rgba(255,255,255,0.94);
+        --shadow-sm:   0 2px 12px rgba(13,79,92,0.18);
+        --shadow-md:   0 6px 28px rgba(13,79,92,0.28);
+        --shadow-lg:   0 14px 48px rgba(13,79,92,0.38);
+        --radius:      14px;
+        --radius-sm:   8px;
+        --nav-h:       68px;
+        --t:           0.3s cubic-bezier(0.4,0,0.2,1);
+      }
+  /* pseudo - applying same padding and margin to all normal elements */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; font-size: 16px; }
       
 
 
-    }
-    /* project highlight card */
-    .white-card {
-      background: var(--card-bg); 
-      border-radius: var(--radius);
-      padding: clamp(1.5rem,4vw,2.5rem); 
-      box-shadow: var(--shadow-md); 
-      color:var(--text-dark);
-      transition: transform var(--t), box-shadow var(--t);
-    }
-    .white-card:hover { 
-      transform:translateY(-4px); 
-      box-shadow:var(--shadow-lg); 
-    }
+      /* default mood of whole website */
+      body {
+        font-family: 'DM Sans', sans-serif;                    /* if DM Sans not available then sans-serif  */
+        color: var(--text-dark);
+        background: var(--teal-dark);
+              /* background: linear-gradient(90deg, #ebd846, #f26118); */
 
-    /* ══════════════ HIGHLIGHT LIST ══════════════ */
-    .highlight-list { 
-      list-style:none; 
-      display:flex; 
-      flex-direction:column;  
-      gap:0.85rem; 
-    }
-    .highlight-list li { 
-      display:flex;  /*align text with bulletin*/
-      align-items:flex-start; 
-      gap:0.75rem; 
-      font-size:0.97rem; 
-      line-height:1.5; 
-      color:var(--text-mid); 
-    }
-    .highlight-list li::before { 
-      content:'◆'; 
-      color:var(--teal); 
-      font-size:0.75rem; 
-      margin-top:0.25rem; 
-      flex-shrink:0; 
-    }
-
-    /* ══════════════ TWO-COL ══════════════ */
-    /* about us and contact section */
-    .two-col { 
-      display:grid; 
-      grid-template-columns:1fr 1fr;   /* one faction of the space*/
-      gap:2rem; 
-    }
-
-    /* ══════════════ COMPANY SECTION ══════════════ */
-    /* ══════════════ BADGE ══════════════ */ 
-    /* Bhutan Connectivity - homepage and information badge - companies  */
-    .badge {
-      /* display:inline-block;      */
-      padding:0.2rem 0.65rem;
-      background:rgba(70, 94, 94, 0.15);
-      /* background: linear-gradient(90deg, #ebd846, #f26118); */
-
-      color:var(--teal-light);
-      border:0.1px solid var(--teal);
-      border-radius:50px;
-      font-size:0.75rem;
-      font-weight:700;  
-      letter-spacing:0.04em; 
-      text-transform:uppercase;
-    }
-
-    /* companies section */
-    .company-grid { 
-      display:grid; 
-      grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); 
-      gap:1.5rem; 
-      margin-bottom:2.5rem; 
-    }
-
-    .company-card {
-      background:var(--card-bg); 
-      border-radius:var(--radius);                      /* 14px*/
-      padding:1.75rem; 
-      box-shadow:var(--shadow-sm); 
-      border-top:4px solid var(--teal);
-      transition:transform var(--t),box-shadow var(--t);
-    }
-    .company-card:hover { 
-      transform:translateY(-5px); 
-      box-shadow:var(--shadow-md); 
-    }
-    /* icon emoji */
-    .company-card .co-icon {
-      width:52px; 
-      height:52px;
-      background:linear-gradient(135deg,var(--teal),var(--teal-light));
-            /* background: linear-gradient(90deg, #ebd846, #f26118); */
-
-      border-radius:12px; 
-      display:flex; 
-      align-items:center; 
-      justify-content:center;
-      font-size:1.5rem; 
-      margin-bottom:1rem; 
-      box-shadow:var(--shadow-sm);
-    }
-    .company-card h3 { 
-      font-family:'Playfair Display',serif; 
-      font-size:1.1rem; 
-      font-weight:700; 
-      color:var(--teal-dark); 
-      margin-bottom:0.4rem; 
-    }
-    .company-card p { 
-      font-size:0.91rem; 
-      color:var(--text-mid); 
-      line-height:1.55; 
-    }
-    .tag-row { 
-      display:flex; 
-      gap:0.45rem; 
-      flex-wrap:wrap; 
-      margin-top:1rem; 
-      padding-top:1rem; 
-      border-top:1px solid rgba(13,79,92,0.1); 
-    }
-
-    /* ══════════════ TABLEAU ══════════════ */
-    .tableau-wrapper {
-      width:100%; 
-      border-radius:var(--radius); 
-      overflow:hidden;
-      box-shadow:var(--shadow-lg); 
-      border:1px solid var(--glass-border);
-      background:var(--white); 
-      min-height:600px;
-    }
-    .tableau-wrapper iframe { 
-      width:100%; 
-      height:600px; 
-      border:none; 
-      display:block; 
-    }
-
-    /* ══════════════ FORMS ══════════════ */
-    /* the form from both companies and contact section */
-    .form-group { 
-      display:flex; 
-      flex-direction:column; 
-      gap:0.4rem; 
-      margin-bottom:1.2rem; 
-    }
-    /* your location and purpose head */
-    .form-group h3 { 
-      font-size:0.82rem; 
-      font-weight:600; 
-      color:var(--teal); 
-      text-transform:uppercase; 
-      letter-spacing:0.06em; 
-    }
-    /* occupation box */
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      padding:0.75rem 1rem; 
-      border:2.5px solid rgba(13,79,92,0.2);
-      border-radius:var(--radius-sm); 
-      font-family:'DM Sans',sans-serif;
-      font-size:0.95rem; 
-      color:var(--text-dark); 
-      background:rgba(255,255,255,0.85);
-      outline:none; 
-      transition:border-color var(--t),box-shadow var(--t);
-    }
-    /* focus on option dropdown box*/
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color:var(--teal-light);       
-      box-shadow:0 0 0 3px rgba(26,122,138,0.15); 
-      background:var(--white);
-    }
-    .form-group textarea { 
-      resize:vertical; 
-      min-height:120px;
-     
-    }
-    /* options for purpose and location arrangement */
-    .radio-group { 
-      display:flex; 
-      flex-direction:column; 
-      gap:0.5rem;                                     /* the gap between each item*/
-    }
-     /* location and purpose options */
-    .radio-group label { 
-      display:flex; 
-      align-items:center; 
-      letter-spacing:0rem;
-      text-transform:none; 
-      gap:0.6rem; 
-      font-size:0.93rem; 
-      color:var(--text-dark); 
-      font-weight:400;      
-      cursor:pointer; 
-    }
-
-    .radio-group input { 
-      accent-color:var(--teal-light); 
-     } 
-
-/* recommendation dialog box */
-    .success-msg {
-      display:none; 
-      background:rgba(13,79,92,0.15); 
-      border:1.5px solid var(--teal-light);
-      border-radius:var(--radius-sm); 
-      padding:0.9rem 1.2rem; 
-      color:var(--teal);
-      font-weight:500; 
-      font-size:0.95rem; 
-      margin-top:1rem;
-    }
-
-    /* ══════════════ TABLE ══════════════ */
-    /* main wording */
-    .comp-table { 
-      gap:1rem; 
-      margin-bottom:2rem; 
-      width:100%; 
-      border-collapse:collapse; 
-      font-size:0.95rem; 
-      color:var(--cream); 
-      min-width:520px; 
-    }
-    /* heading underline */
-    .comp-table thead tr { 
-      border-bottom:1px solid var(--cream); 
-    }
-    /* provider | type | coverage | */
-    .comp-table th { 
-      text-align:left; 
-      padding:0.65rem 1rem; 
-      color:var(--cream); 
-      font-weight:600; 
-      text-transform:uppercase; 
-      font-size:1rem; 
-      letter-spacing:0.06em; 
-    }
-    /* sub-underlines */
-    .comp-table td { 
-      padding:0.65rem 1rem;  
-      border-bottom:1px solid rgba(255,255,255,0.12); 
-    }
-
-    /* ══════════════ VIZ STAT CARDS ══════════════ */
-    .viz-grid { 
-      display:grid; 
-      grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); 
-      gap:1rem; 
-      margin-bottom:2rem; 
-    }
-      /* stat box */
-    .viz-card { 
-      background:rgb(255, 255, 255,0.82); 
-      border-radius:var(--radius-sm); 
-      padding:1.25rem; 
-      text-align:center; 
-      border-top:3.5px solid var(--teal-dark); 
-    }
-    .viz-card .vnum { 
-      font-family:'Playfair Display',serif; 
-      font-size:1.25rem; 
-      font-weight:900; 
-      color:var(--teal-dark); 
-    }
-    .viz-card .vlbl { 
-      font-size:0.8rem; 
-      color:var(--text-mid); 
-      font-weight:900;
-      text-transform:uppercase; 
-      letter-spacing:0.05em; 
-      margin-top:0.5rem; 
-    }
-
-    /* ══════════════ FOOTER ══════════════ */
-    footer {
-      background:rgba(5,26,30,0.96); 
-      border-top:1px solid var(--glass-border);
-      padding:1.5rem clamp(1rem,5vw,3rem); 
-      text-align:center;
-      color:rgba(255,255,255,0.45); 
-      font-size:0.85rem; 
-      letter-spacing:0.03em;
-    }
-    footer span { 
-      color:var(--teal-light); 
-      cursor:pointer; 
-    }
-    footer span:hover { 
-      color:var(--teal); 
-      text-decoration:underline; 
-    }
-
-    /* ══════════════ RESPONSIVE ══════════════ */
-    /*///// for phone ////////*/
-    /* nav bar remains hidden unless javascript for nav opens 
-    rest are for styling the nav link on phone which remains hidden behind the bar */
-    @media(max-width:900px){
-      .hero-inner { 
-        grid-template-columns:1fr; 
-        gap:2.5rem; 
+        min-height: 100vh;
       }
-      .two-col { 
-        grid-template-columns:1fr; 
+
+
+      /* ── Global BG ── */
+      .page-bg {
+        min-height: 100vh;
+        background:
+          linear-gradient(to bottom, rgba(23, 27, 28, 0.2) 0%, rgba(8, 46, 54, 0.54) 100%),
+          /* linear-gradient(90deg, #ebd846, #f26118); */
+
+          url(https://tse2.mm.bing.net/th/id/OIP.MQwV26GDpGXRkEuAFaYj3AHaE8?rs=1&pid=ImgDetMain&o=7&rm=3)
+          center/cover no-repeat fixed;
       }
-    }
-    @media(max-width:680px){
+
+      /* ══════════════ NAVIGATION ══════════════ */
+      /* navigation bar at the top corner */
+      nav {
+        position: sticky; 
+        top: 0; 
+        z-index: 1000;
+        height: var(--nav-h);
+        background: rgba(11, 53, 44, 0.92);
+        /* background: linear-gradient(90deg, #f3cf31, #a03b08); */
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--glass-border);
+        display: flex; 
+        align-items: center;
+        padding: 0 clamp(1rem,5vw,3rem);   /*padding <top-buttom><left-right>*/
+        gap: 2rem;}
       .nav-links {
+          display:flex; 
+          gap:0.2rem; 
+          list-style:none; 
+          margin-left:auto; 
+          align-items:center; }
+      .nav-links li button:hover,
+      .nav-links li button.active { 
+          color:var(--teal-light); 
+          background:rgba(140, 122, 122, 0.35); 
+          /* background: linear-gradient(90deg, #ebd846, #f26118); */
+  }
+      .nav-links li button {
+        display:block; 
+        padding:0.45rem 0.9rem; 
+        color:var(--text-light);
+        background:none;                                    /* background color showing up if not used*/
+        border:none;                                        /* if you dont want border around button*/
+        font-family:'DM Sans',sans-serif;
+        font-size:0.9rem; 
+        font-weight:500;
+        border-radius:var(--radius-sm);                     /* border of button  */
+        transition:color var(--t),background var(--t);      /* the duration where the prev button color disappears - transition*/
+        cursor:pointer; 
+        letter-spacing:0.02em;           
+      }
+      /* phone navigation  */
+      .nav-toggle {
         display:none; 
-        flex-direction:column;
-        position:absolute; 
-        /* places menu right below navbar */
-        top:var(--nav-h); 
-        left:0; right:0;
-        background:rgba(8,46,54,0.97); 
-        padding:1rem;
-        border-bottom:1px solid var(--glass-border); 
-        gap:0.15rem;
+        flex-direction:column; 
+        gap:5px; 
+        cursor:pointer;
+        margin-left:auto; 
+        padding:6px; 
+        background:none; 
+        border:none;}
+      .nav-toggle span {      
+          display:block; 
+          width:24px; 
+          height:2px; 
+          background:var(--white); 
+          border-radius:2px; 
+          transition:all var(--t); 
       }
-      .nav-links.open { 
+  /* .ci - ci i labeled */
+      .nav-brand .ci {
+      /* the thing around the compass logo */
+        width: 36px; 
+        height: 36px; 
+        /* background: var(--gold);  */
+        background: linear-gradient(90deg, #72ddc9ab, #034637a5);
+
+        /* background: var(--teal-light); */
+        border-radius: 50%;
+      /*this is for the logo design*/
+        display: flex;   
+        align-items: center; 
+        justify-content: center;
+        font-size: 1.5rem; 
+        box-shadow: 0 0 12px rgba(15, 8, 212, 0.45);
+        transition: transform var(--t), 
+        box-shadow var(--t);}
+      .nav-brand:hover .ci { 
+          transform: rotate(45deg); 
+          box-shadow: 0 0 22px rgba(28, 189, 178, 0.7); 
+      }
+
+      /* logo design */
+      .nav-brand span { 
+          font-family:'Playfair Display',serif; 
+          font-size:1.35rem; 
+          font-weight:700; 
+          color:var(--white);}
+      .nav-brand span em { 
+          color:var(--teal-light); 
+          font-style:normal; }
+      .nav-brand {
+        display: flex; 
+        align-items: center; 
+        gap: 0.6rem;
+        text-decoration: none; 
+        flex-shrink: 0; 
+        cursor: pointer;
+      }
+
+
+      /* ══════════════ PAGE SECTIONS ══════════════ */
+  /* display page - each section is given to their respective section */
+      .page { 
+          display:none; 
+          animation: fadeUp 0.55s ease both;} 
+      .page.active { 
+          display:block;}
+      @keyframes fadeUp {                                        /*adding animation transition - fadeUp */
+        from { opacity:0; 
+          transform:translateY(22px);}
+        to   { 
+          opacity:1; 
+          transform:translateY(0);}
+      }
+
+      .section {
+        padding: clamp(3rem,7vw,5rem) clamp(1rem,5vw,3rem);  /*top&buttom left&right - Min, Ideal, Max*/
+        max-width: 1160px;                                   /* max width- the space the items takes*/
+        margin: 0 auto;                                      /* to bring items in center*/
+        /* ex: margin: 5px 10px 15px 20px; /* top, right, bottom, left */ 
+        width: 100%;
+      }
+      
+
+      /* ══════════════ HERO ══════════════ */
+      /* homepage screen overall*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      #intro{
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 40, 31, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--cream);
+    z-index: 999;
+    overflow-y: auto; /* IMPORTANT */
+  }
+  
+  .intro-box {
+    /* max-width: 900px; */
+    padding: 30px;
+    /* background: rgba(3, 158, 111, 0.968); */
+    border-radius: 16px;
+    /* text-align: center; */
+    /* backdrop-filter: blur(10px); */
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #cbeae6;
+    cursor: pointer;
+  }
+
+  
+
+
+
+
+
+
+
+
+
+      .hero {
+        min-height: calc(100vh - var(--nav-h));  /* height of home screen is vh - navbar height*/
         display:flex; 
+        align-items:center;
+        padding: clamp(3rem,8vw,6rem) clamp(1rem,5vw,3rem);
       }
-      .nav-links li button { 
-        padding:0.75rem 1rem; 
-        font-size:1rem; 
+      /* centers text + image with each other */
+      .hero-inner {
+        max-width:1160px; 
+        margin:0 auto; 
+        width:100%;
+        display:grid; 
+        grid-template-columns:1fr 1fr; 
+        gap:4rem; 
+        align-items:center;
+      }
+      .hero-text h1 {
+        font-family:'Playfair Display',serif;
+        font-size:clamp(2.5rem,6vw,4rem); 
+        font-weight:900;
+        color:var(--cream); 
+        line-height:1.1; 
+        margin-bottom:0.5rem;
+      }
+      .hero-text h1 em { 
+        color:rgb(151, 203, 203); 
+        font-style:normal; 
+        display:block; 
+      }
+      .hero-text .subtitle { 
+        font-size:clamp(1rem,2vw,1.15rem); 
+        color:var(--text-light); 
+        margin-bottom:2rem; 
+        line-height:1.7; 
+        max-width:460px; 
+      }
+
+      /* image size and ratio */
+      .hero-image img { 
         width:100%; 
-        text-align:left; 
+        border-radius:var(--radius); 
+        box-shadow:var(--shadow-lg); 
+        /* object-fit:cover;  */
+        aspect-ratio:auto; 
+        border:2px solid var(--glass-border); 
       }
-      /* hamburger menu button (☰ icon) on mobile. */
-      .nav-toggle { display:flex;}
-      /* tells the browser: “Use this nav as the anchor for positioning dropdown menu” */
-      nav {position:relative;}
-    }
-/* IMPORTANT: prevents anchor links (#section) from hiding under fixed navbar */
-/* scroll padding for sticky nav */
-
-    /* html { scroll-padding-top: var(--nav-h); } */
-    
-  </style>
-</head>
-
-
-<body>
-<!-- ══════════════ ☰ (menu icon) ══════════════ -->
-<div class="page-bg">
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-    <span></span><span></span><span></span>
-  </button>
-
-  <!-- ══════════════ NAVBAR ══════════════ -->
-   <!-- The main navigation section of your website -->
-  <nav id="mainNav">
-    <!-- display the logo -->
-    <div class="nav-brand" onclick="showPage('home')">
-      <!-- “ci” is just a custom class name you created -->
-       <!-- ci is the label and CSS targets .ci for styling and design -->
-      <div class="ci">🧭</div>
-      <!-- It displays: TeleCompass -->
-       <!-- inline HTML element used to group small pieces of text -->
-        <!-- “em” = emphasis tag - makes text italic by default -->
-      <span>Tele<em>Compass</em></span>
-    </div>
-
-     <!-- js for nav bar -->
-      <!-- This is your navigation menu list -->
-       <!-- nav-links - CSS target     navLinks - javascripthook-->
-    <ul class="nav-links" id="navLinks">
-      <!-- onclick="showPage('home')" - use of home button -->
-      <!-- id="nav-home" - something to do with the highlight on home button -->
-        <li><button onclick="showPage('home')" id="nav-home" class="active">Home</button></li>
-        <li><button onclick="showPage('about')" id="nav-about">About Us</button></li>
-        <li><button onclick="showPage('dashboard')" id="nav-dashboard">Dashboard</button></li>
-        <li><button onclick="showPage('company')" id="nav-company">Companies</button></li>
-        <li><button onclick="showPage('contact')" id="nav-contact">Contact</button></li>
-    </ul>
-  </nav>
-
-  <main>
-
-    <!-- ══════════════ HOME PAGE ══════════════ -->
+      /* 📍 Thimphu, Bhutan */
+      .hero-image { 
+        position:relative; 
+      }
+      .hero-image .img-caption {
+        position:absolute; 
+        bottom:-1rem; 
+        right:-1rem;
+        background:var(--teal-light); 
+        /* background: linear-gradient(90deg, #ebd846, #f26118); */
+        color:rgb(243, 236, 231);
+        padding:0.5rem 1rem; 
+        border-radius:50px; 
+        font-size:0.78rem;
+        font-weight:700; 
+        letter-spacing:0.04em; 
+        box-shadow:var(--shadow-sm);
+      }
+      .story {
+        text-align:justify;
+        display:flex;
+        margin-top:30px;
+        padding: 50px 45px;
+        font-family: arial;
+        font-weight:400;
+        letter-spacing:0.12rem;
+        background:rgba(48, 56, 55, 0.7);
+        border-radius:2rem;
+        color:var(--white);
+        display:block;
+      }
+      .story-title{
+        text-align: center; 
+        background: linear-gradient(90deg, #ebd846, #f26118);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .story h4{
+        margin-top:1.2rem;
+      }
+      .story p {
+        margin-top: 1.5rem;
+      }
 
 
+      /* ══════════════ QUICK-LINKS GRID ══════════════ */
+      /* the navbar below */
+      .qlinks { 
+        display:grid; 
+        grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); 
+        gap:1.25rem; 
+      }
+      /* background of navebar */
+      .qlink-card {
+        padding:1.75rem 1.5rem; 
+        text-align:center; 
+        cursor:pointer;
+        box-shadow:var(--shadow-sm);
+        background:rgba(20, 96, 96, 0.75);
+        /* background: linear-gradient(90deg, #ebd846, #f26118); */
+        border:1px solid var(--glass-border);
+        border-radius:var(--radius); 
+        backdrop-filter:blur(12px);
+        transition:transform var(--t),box-shadow var(--t),background var(--t);
+        color:var(--text-light); 
+        text-decoration:none; 
+        display:block;
+      }
+      .qlink-card:hover { 
+        transform:translateY(-5px); 
+        box-shadow:var(--shadow-lg); 
+        background:rgba(95, 125, 125, 0.88);      
+        /* background: linear-gradient(90deg, #e4da8e, #ef7639); */
 
-
-
-
-
-
-
-
-
-
-
-<div id="intro">
-  <div class="intro-box">
-    <h1>TeleCompass</h1>
-
-    <h2>Story</h2>
-
-    <p>
-      This project explores how people in Bhutan use mobile and internet services,
-      and how connectivity differs across regions.
-    </p>
-
-    <button onclick="enterSite()">Enter TeleCompass</button>
-  </div>
-</div>
-
-<!-- your main site -->
-<div id="main" style="display:none;">
-  <h1>Home Page</h1>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     <!-- container for homepage -->
-    <div class="page active" id="page-home">
-
-      <!-- the outermost box -->
-      <section class="hero">
-        <!-- This controls how things are arranged inside -->
-        <div class="hero-inner">
-          <!-- holds only the text part -->
-           <!-- hero-text (LEFT SIDE → text, buttons, stats) -->
-          <div class="hero-text">
-
-            <!-- "badge" class - badge like icon on every section -->
-            <span class="badge" style="margin-bottom:1rem; display:inline-block;">🇧🇹 Bhutan Connectivity Study</span>
-            <h1>Kuzu <em>Zangpo La</em></h1> 
-            <p style= "color:#74edeb;font-weight:bold;"class="subtitle";><strong style="font-family:italic;color:rgb(147, 237, 237);font-weight:bolder;">“This page is designed to guide you toward better connectivity choices that match your needs and lifestyle.”</strong><br><br>A guide for better connectivity — explore available internet service across Bhutan &amp; helping you choose the right internet service for your need.</p>
-            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-              <!-- the small buttons on the homepage -->
-              <button class="btn btn-gold" onclick="showPage('dashboard')">📊 View Dashboard</button>
-              <button class="btn btn-outline" onclick="showPage('about')">Learn More</button>
-            </div>
-
-            <!-- information box on the homepage  -->
-             <!-- information for this code is connected to STAT CSS section "num" -->
-              <!-- num is upper wording and lbl is lower wordings -->
-            <div class="stat-row">
-              <div class="stat-box">
-                <span class="num">3</span>
-                <span class="lbl">Telecoms</span>
-              </div>
-              <div class="stat-box">
-                <span class="num">20</span>
-                <span class="lbl">Dzongkhags</span>
-              </div>
-              <div class="stat-box">
-                <span class="num">3</span>
-                <span class="lbl">Key Insights</span>
-              </div>
-              <div class="stat-box">
-                <span class="num">100+</span>
-                <span class="lbl">Respondents</span>
-              </div>
-            </div>
-          </div>
-        <div class="hero-image">
-          <!-- wifi vs data img.png -->
-            <img src="img3.png" alt="teleBhutan">
-            <!-- 📍 Thimphu, Bhutan -->
-            <div class="img-caption">📍 Thimphu, Bhutan</div>
-            </div>
-        </div>
-      </section>
-
-      <section class="section" style="padding-top:0; padding-bottom:4rem;">
-        <!-- nav bar below -->
-        <div class="qlinks">
-          <!-- q-icon, q-title, q-sub - they are the class names for CSS -->
-          <div class="qlink-card" onclick="showPage('about')">
-            <div class="q-icon">👤</div>
-            <div class="q-title">About Us</div>
-            <div class="q-sub">Meet the intern &amp; project goals</div>
-          </div>
-          <div class="qlink-card" onclick="showPage('dashboard')">
-            <div class="q-icon">📈</div>
-            <div class="q-title">Data Insights</div>
-            <div class="q-sub">Tableau insights from survey data</div>
-          </div>
-          <div class="qlink-card" onclick="showPage('company')">
-            <div class="q-icon">🏢</div>
-            <div class="q-title">Compare Networks</div>
-            <div class="q-sub">BT, TashiCell &amp; Starlink</div>
-          </div>
-          <div class="qlink-card" onclick="showPage('contact')">
-            <div class="q-icon">📬</div>
-            <div class="q-title">Contact</div>
-            <div class="q-sub">We're here to listen to your feedback</div>
-          </div>
-        </div>
-        <section>
-        <span class="story"><h1 class="story-title">Telecommunication Service Usage in Bhutan</h1>
-          <h4 class="story-title">TeleCompass — A Guide for Better Connectivity</h4>
-          <p>When I got enrolled as an intern under Bhutan Data Scientist doing remote work, I depended heavily on 
-            mobile data for everything—online research, Zoom meetings, gaming, TikTok, YouTube, and Netflix.<br><br>
-          Because I was using mobile data for almost all my activities, the cost quickly became very high. I was 
-          spending around Nu. 699 in a week, and even when I tried a Nu. 1199 plan, I still had to recharge twice 
-          a month, and it still barely lasted. In total, I ended up spending more than Nu. 2500.<br><br>I often struggled 
-          with uncertainty. I was confused about which telecommunication service to choose or whether I should 
-          continue with my current plan. My thoughts kept going back and forth, especially when trying to manage 
-          internet costs. I even worried, “What if my investment in Wi-Fi fails?”<br><br>When I inquired at a service 
-          counter, I was advised to reconsider carefully. I was told that if the internet strength in my area was weak,
-          the Wi-Fi performance would also be poor, and in such cases, refunds would not be possible. At the same time,
-           I heard rumors circulating that Wi-Fi services were no longer as reliable as before, with some users 
-           requesting refunds and others complaining about cost and stability all over social media. This made me even 
-           more uncertain and overwhelmed, and for nearly a month, I kept going back and forth with my decision.<br><br>
-          Over time, I had to become more careful about how I used the internet. I started limiting gaming, reducing 
-          time on videos, and avoiding watching dramas freely because of data constraints.<br><br>I was always stressed about 
-          running out of data and not being able to watch videos or play music freely. Later, my cousin suggested that 
-          I try using Wi-Fi instead. So, she kindly let me use her router, and I started working through it.<br><br><br>The 
-          difference was clear.<br><br><br>With Wi-Fi, I could do my work smoothly, attend Zoom meetings without interruption, and 
-          freely use the internet for research and entertainment like YouTube, TikTok, games, and dramas without worrying 
-          about running out of data.<br><br>It also became more affordable, costing around Nu. 1450 per month, which was much 
-          better than what I was spending on mobile data.<br><br>This experience taught me that the type of internet connection 
-          matters a lot, depending on how you use it. For remote work and daily usage, Wi-Fi was simply more stable, 
-          practical, and cost-effective for me.</p>
-        </span>
-      </section>
-    </div>
-
-    <!-- ══════════════ ABOUT PAGE ══════════════ -->
-    <div class="page" id="page-about">
-      <div class="page-hero">
-        <span class="badge">👤 About Us</span>
-        <h1 class="section-title" style="margin-top:0.75rem;">Meet the Project</h1>
-        <div class="divider"></div>
-      </div>
-
-      <section class="section" style="padding-top:0;">
-        <div class="two-col">
-
-          <!-- About Me Glass Card -->
-          <div class="glass-card">
-          
-            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem;">
-              <!-- 🎓 -->
-               <!-- border-radius:50%; - perfect circle -->
-              <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--teal-dark),rgb(10, 160, 115));display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;box-shadow:0 0 16px rgba(232,160,32,0.4);">🎓</div>
-              <div>
-                <div style="font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--cream); letter-spacing:0.095rem;">Intern Researcher</div>
-                <div style="color:rgb(180, 220, 220);font-size:0.85rem;letter-spacing:0.075em;text-transform:uppercase;"><span>Data Practitioner -</span><span><br></span> Turning Data into Insights</span></div>
-              </div>
-            </div>
-            <!-- gap between each line - marginbuttom between two para-->
-            <div style="text-align:justify;">
-            <p style="line-height:1.75;margin-bottom:1.2rem;color:var(--text-light);">
-              I am an intern at Bhutan Data Scientists Pvt Ltd. This intern project explores telecommunications service usage in Bhutan, focusing on customer preferences and satisfaction. The website aims to provide personalized service recommendations based on user needs.
-            </p>
-            <!-- second paragraph -->
-            <p style="line-height:1.75;color:var(--text-light);">
-              The project focuses on reducing Bhutan's digital divide by 
-              <em style="color:rgb(195, 237, 237);">understanding connectivity gaps and promoting fair access,</em> 
-              to telecommunications services across all 20 dzongkhags.
-            </p>
-            </div>
-            <div class="stat-row" style="margin-top:1.75rem;">
-              <div class="stat-box">
-                <span class="num">20</span>
-                <span class="lbl">Dzongkhags</span>
-              </div>
-              <div class="stat-box">
-                <span class="num">100+</span>
-                <span class="lbl">Respondents</span>
-              </div>
-              <div class="stat-box">
-                <span class="num">2026</span>
-                <span class="lbl">Study Year</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project Highlights White Card -->
-           <!-- 🏔️ -->
-          <div class="white-card">
-            <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem;">
-              <!-- linear-gradient(...) → blends two or more colors smoothly -->
-               <!-- 135deg → direction of the gradient, starts from top-left area flows toward bottom-right area -->
-              <div style="width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,var(--teal-dark),var(--teal-light));display:flex;align-items:center;justify-content:center;font-size:1.2rem;">🏔️</div>
-              <h2 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-light);">Project Highlights</h2>
-            </div>
-            <ul class="highlight-list">
-            <div style="text-align:justify;">
-              <li><div><strong style="display:block;margin-bottom:0.2rem;color:var(--teal-dark);">Understanding Mobile data package &amp; Wi-Fi Usage Patterns</strong>Examining the internet service usage pattern across urban and rural area of Bhutan, including what is their primary purpose and their needs based on occupation.</div></li>
-              <li><div><strong style="display:block;margin-bottom:0.2rem;color:var(--teal-dark);">Analysing Customer Satisfaction</strong>Measuring satisfaction levels with service quality, network reliability, and pricing, and how these factors influence daily usage of different services.</div></li>
-              <li><div><strong style="display:block;margin-bottom:0.2rem;color:var(--teal-dark);">Responsive Dashboard for Insights</strong>Building an interactive Tableau dashboard that enables users to explore data visually, filter by region, and identify trends at a glance, helping them better understand services based on their needs.</div></li>
-              <li><div><strong style="display:block;margin-bottom:0.2rem;color:var(--teal-dark);">Recommendations for Better Connectivity</strong>Having a better connectivity recommendations is our priority, and we welcome user feedback that goes beyond the scope of this project, helping us improve and provide better, more tailored services.</div></li>
-            </ul>
-            <!-- "showPage('dashboard')" -->
-            <div style="margin-top:2rem;padding-top:1.25rem;border-top:1px solid rgba(13,79,92,0.1);">
-              <button class="btn btn-teal" onclick="showPage('dashboard')" style="font-size:0.9rem;">📊 Explore the Dashboard →</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- mission board -->
-       <!-- 🧭 -->
-      <section class="section" style="padding-top:0;padding-bottom:4rem;">
-        <div class="glass-card" style="text-align:center;padding:2.5rem;">
-          <div style="font-size:2.5rem;margin-bottom:1rem;">🧭</div>
-          <h2 style="font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--cream);margin-bottom:0.75rem;">Our Mission</h2>
-          <p style="max-width:640px;margin:0 auto;color:var(--text-light);line-height:1.75;font-size:1.1rem;font-weight:500;">
-            To provide Bhutan's telecom ecosystem with a clear, data-driven compass helping every individual user navigate toward a more connected, reliable, and prosperous digital future in harmony with the values of Gross National Happiness.
-          </p>
-        </div>
-      </section>
-    </div>
-
-    <!-- ══════════════ DASHBOARD PAGE ══════════════ -->
-    <div class="page" id="page-dashboard">
-      <div class="page-hero">
-        <span class="badge">📊 Data Analytics</span>
-        <h1 class="section-title" style="color:rgb(183, 231, 239);margin-top:0.75rem;">Connectivity Insight Dashboard</h1>
-        <p style="color:var(--cream);margin-bottom:0.5rem;font-weight:400;letter-spacing:0.12rem;">Explore Bhutan's data package and Wi-Fi usage patterns across different regions and purposes, along with demographic trends and user satisfaction, through our interactive Tableau visualisation.</p>
-        <div class="divider"></div>
-      </div>
-
-      <section class="section" style="padding-top:0; max-width:1300px;">
-        <div class="viz-grid">
-          <div class="viz-card">
-            <div class="vnum">94%</div>
-          <div class="vlbl">Mobile Internet Penetration</div>
-        </div>
-          <div class="viz-card"><div class="vnum">3.8★</div><div class="vlbl">Avg. Customer Satisfaction</div></div>
-          <div class="viz-card"><div class="vnum">3</div><div class="vlbl">Active Telecom Providers</div></div>
-          <div class="viz-card"><div class="vnum">Data Package</div><div class="vlbl">Most used service</div></div>
-          <div class="viz-card"><div class="vnum">Students</div><div class="vlbl">Majority of the respondent</div></div>
-                  
-        </div>
-
-        <div class="glass-card" style="padding:1.5rem;margin-bottom:2rem;">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:0.75rem;">
-            <div>
-              <h2 style="font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--white);">📡 Bhutan Connectivity — Interactive View</h2>
-              <p style="color:var(--text-light);font-size:0.88rem;margin-top:0.2rem;">Powered by Tableau Public · Use filters to drill down by region, type of service, or purpose</p>
-            </div>
-            <!-- <span class="badge">Live Data</span> -->
-          </div>
-          <div class="tableau-wrapper">
-
-            <iframe
-              src="https://public.tableau.com/views/internetservicedashboard2/Story1?:showVizHome=no&:embed=y"
-              title="Bhutan Connectivity Dashboard"
-              allowfullscreen>
-            </iframe>
-          </div>
-          <p style="color:rgba(255,255,255,0.4);font-size:0.76rem;margin-top:0.75rem;text-align:right;">ⓘ public.tableau.com - internship project</p>
-        </div>
-
-        <h2 class="section-title" style="font-size:1.5rem;margin-bottom:1.5rem;">Key Findings</h2>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;padding-bottom:4rem;">
-          <div class="white-card">
-            <div style="font-size:1.75rem;margin-bottom:0.75rem;">📱</div>
-            <h3 style="font-family:'Playfair Display',serif;color:var(--teal-dark);margin-bottom:0.5rem;">Mobile Dominance</h3>
-            <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;">Bhutanese access the internet primarily via mobile devices, with 4G/LTE being the most used standard and introduction of 5G service in urban central.</p>
-          </div>
-          <div class="white-card">
-            <div style="font-size:1.75rem;margin-bottom:0.75rem;">🌄</div>
-            <h3 style="font-family:'Playfair Display',serif;color:var(--teal-dark);margin-bottom:0.5rem;">Rural Gap</h3>
-            <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;">A significant issue regarding network connectivity and realibility shows a potential for Starlink's satellite service to help bridge in remote dzongkhags and curb the gap.</p>
-          </div>
-          <div class="white-card">
-            <div style="font-size:1.75rem;margin-bottom:0.75rem;">⭐</div>
-            <h3 style="font-family:'Playfair Display',serif;color:var(--teal-dark);margin-bottom:0.5rem;">Satisfaction Trends</h3>
-            <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;">Average satisfaction scores hover around 3/5, with network reliability and affordable pricing cited as the top improvement priorities.</p>
-          </div>
-          <div class="white-card">
-            <div style="font-size:1.75rem;margin-bottom:0.75rem;">🚀</div>
-            <h3 style="font-family:'Playfair Display',serif;color:var(--teal-dark);margin-bottom:0.5rem;">Growth Opportunity</h3>
-            <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;">Bhutan is strengthening digital infrastructure through the Digital Drukyul initiative, expanding fibre networks and improving rural connectivity.</p>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- ══════════════ COMPANY PAGE ══════════════ -->
-    <div class="page" id="page-company">
-      <div class="page-hero">
-        <span class="badge">🏢 Telecom Providers</span>
         
-        <h1 class="section-title" style="margin-top:0.75rem;">Bhutan's Telecom Companies</h1>
-        <p style="color:var(--text-light);margin-bottom:0.5rem;">Three key players bridging connectivity across the Kingdom of Bhutan.</p>
-        <div class="divider"></div>
+      }
+      .qlink-card .q-icon { 
+        font-size:2rem; 
+        margin-bottom:0.6rem; 
+      }
+      .qlink-card .q-title { 
+        font-family:'Playfair Display',serif; 
+        font-size:1.05rem; 
+        font-weight:700; 
+        color:var(--white); 
+        margin-bottom:0.3rem; 
+      }
+      .qlink-card .q-sub { 
+        font-size:0.83rem; 
+        color:var(--cream); 
+        font-width: 800;
+        letter-spacing: 1px;
+      }
+
+    /* ══════════════ STATS ══════════════ */
+      /* information bar in homepage */
+      .stat-row { 
+        display:flex; 
+        gap:1.25rem; 
+        flex-wrap:wrap; 
+        margin:1.5rem 0; 
+      }
+      .stat-box {
+        flex:1;                                         /* changes shape equally*/
+        min-width:110px; 
+        background:rgba(34, 70, 47, 0.75);
+        /* background: linear-gradient(90deg, #f5f3e2, #ef7639); */
+        border:1px solid rgba(17, 155, 100, 0.25); 
+        border-radius:var(--radius-sm);
+        padding:0.9rem 1rem; 
+        text-align:center;
+      }
+      /* upper info */
+      .stat-box .num { 
+        font-family:'Playfair Display',serif; 
+        font-size:1.8rem; 
+        font-weight:900; 
+        /* color:var(--cream);  */
+        color:var(--teal-light);
+        display:block; 
+      }
+      /* lower letter */
+      .stat-box .lbl { 
+        font-size:0.76rem; 
+        color:var(--cream); 
+        text-transform:uppercase; 
+        letter-spacing:0.06em; 
+      }
+
+          /* ══════════════ BUTTONS ══════════════ */
+      /* shape of view dashboard and learn more buttons */
+      .btn {
+        border-radius:50px;   
+        cursor:pointer;   
+        padding:0.5rem 1.5rem; 
+        font-size:1rem; 
+        font-family:'DM Sans',sans-serif;
+        font-weight:600;
+        transition:all var(--t); 
+        letter-spacing:0.05rem;
+        text-decoration:none;
+        border:2px solid transparent;
+        /* display:inline-flex;  */
+        /* align-items:center;  */
+        /* gap:0.5rem; */
+      }
+      /* view dashboard in homepage */
+      .btn-gold { 
+        background:var(--teal-light); 
+        /* background: linear-gradient(90deg, #ebd846, #f26118); */
+
+        border-color:var(--teal); }    
+      .btn-gold:hover { 
+        background:var(--teal); 
+        /* background: linear-gradient(90deg, #ebd846, #f26118); */
+
+        border-color:var(--teal-light); 
+        transform:translateY(-2px); 
+      }
+  /* learn more button */
+      .btn-outline { 
+        background:transparent; 
+        color:var(--white); 
+        border-color:rgba(255,255,255,0.5); 
+      }
+      .btn-outline:hover { 
+        background:rgba(255,255,255,0.1); 
+        /* border-color:var(--teal-dark);  */
+        /* color:var(--teal-light);  */
+        transform:translateY(-2px); }
+
+        /* return home button in companies section */
+      .btn-teal { 
+        background:var(--teal-light); 
+              /* background: linear-gradient(90deg, #ebd846, #f26118); */
+
+        color:var(--white); 
+        border-color:var(--teal-light); 
+      }
+      .btn-teal:hover { 
+        background:var(--teal); 
+        /* background: linear-gradient(90deg, #ebd846, #f26118); */
+
+        border-color:var(--teal); 
+        transform:translateY(-2px); 
+      }
+
+      /* ══════════════ About Us SECTIONS ══════════════ */
+      /* about us heading and divider*/
+      .page-hero {                                           
+        padding: clamp(3rem,6vw,4.5rem) clamp(1rem,5vw,3rem) 2rem;
+        max-width: 1160px; 
+        margin: 0 auto;}
+      .section-title {
+        background: linear-gradient(90deg, #25d997, #095bd4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-family:'Playfair Display',serif;
+        font-size: clamp(1.8rem,4vw,2.8rem);
+        font-weight:700; 
+        color:var(--white); 
+        margin-bottom:0.5rem; 
+        line-height:1.2;  }
+      .divider { 
+        height:3px; 
+        background:linear-gradient(90deg,var(--teal),var(--teal-light)); 
+        border-radius:2px; 
+        margin-bottom:2rem; }
+
+      /* ══════════════ CARDS From About Us══════════════ */
+      /*background of the information */
+      .glass-card {
+        background: rgb(23, 90, 68);   
+        border: 1px solid var(--glass-border);
+        border-radius: var(--radius);
+        backdrop-filter: blur(12px); 
+        -webkit-backdrop-filter: blur(12px);
+        padding: clamp(1.5rem,4vw,2.5rem);
+        box-shadow: var(--shadow-md); 
+        color: var(--text-light);
+        transition: transform var(--t), box-shadow var(--t);
+      }
+      .glass-card:hover { 
+        transform:translateY(-4px); 
+        box-shadow:var(--shadow-lg); 
+      }
+      .glass-card a {
+        color:var(--text-light);
+        text-decoration: none;
+
+      }
+      .glass-card a:hover{
+        text-decoration:underline;
+        text-decoration-thickness: 1.5px;
+        
+
+
+      }
+      /* project highlight card */
+      .white-card {
+        background: var(--card-bg); 
+        border-radius: var(--radius);
+        padding: clamp(1.5rem,4vw,2.5rem); 
+        box-shadow: var(--shadow-md); 
+        color:var(--text-dark);
+        transition: transform var(--t), box-shadow var(--t);
+      }
+      .white-card:hover { 
+        transform:translateY(-4px); 
+        box-shadow:var(--shadow-lg); 
+      }
+
+      /* ══════════════ HIGHLIGHT LIST ══════════════ */
+      .highlight-list { 
+        list-style:none; 
+        display:flex; 
+        flex-direction:column;  
+        gap:0.85rem; 
+      }
+      .highlight-list li { 
+        display:flex;  /*align text with bulletin*/
+        align-items:flex-start; 
+        gap:0.75rem; 
+        font-size:0.97rem; 
+        line-height:1.5; 
+        color:var(--text-mid); 
+      }
+      .highlight-list li::before { 
+        content:'◆'; 
+        color:var(--teal); 
+        font-size:0.75rem; 
+        margin-top:0.25rem; 
+        flex-shrink:0; 
+      }
+
+      /* ══════════════ TWO-COL ══════════════ */
+      /* about us and contact section */
+      .two-col { 
+        display:grid; 
+        grid-template-columns:1fr 1fr;   /* one faction of the space*/
+        gap:2rem; 
+      }
+
+      /* ══════════════ COMPANY SECTION ══════════════ */
+      /* ══════════════ BADGE ══════════════ */ 
+      /* Bhutan Connectivity - homepage and information badge - companies  */
+      .badge {
+        /* display:inline-block;      */
+        padding:0.2rem 0.65rem;
+        background:rgba(70, 94, 94, 0.15);
+        /* background: linear-gradient(90deg, #ebd846, #f26118); */
+
+        color:var(--teal-light);
+        border:0.1px solid var(--teal);
+        border-radius:50px;
+        font-size:0.75rem;
+        font-weight:700;  
+        letter-spacing:0.04em; 
+        text-transform:uppercase;
+      }
+
+      /* companies section */
+      .company-grid { 
+        display:grid; 
+        grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); 
+        gap:1.5rem; 
+        margin-bottom:2.5rem; 
+      }
+
+      .company-card {
+        background:var(--card-bg); 
+        border-radius:var(--radius);                      /* 14px*/
+        padding:1.75rem; 
+        box-shadow:var(--shadow-sm); 
+        border-top:4px solid var(--teal);
+        transition:transform var(--t),box-shadow var(--t);
+      }
+      .company-card:hover { 
+        transform:translateY(-5px); 
+        box-shadow:var(--shadow-md); 
+      }
+      /* icon emoji */
+      .company-card .co-icon {
+        width:52px; 
+        height:52px;
+        background:linear-gradient(135deg,var(--teal),var(--teal-light));
+              /* background: linear-gradient(90deg, #ebd846, #f26118); */
+
+        border-radius:12px; 
+        display:flex; 
+        align-items:center; 
+        justify-content:center;
+        font-size:1.5rem; 
+        margin-bottom:1rem; 
+        box-shadow:var(--shadow-sm);
+      }
+      .company-card h3 { 
+        font-family:'Playfair Display',serif; 
+        font-size:1.1rem; 
+        font-weight:700; 
+        color:var(--teal-dark); 
+        margin-bottom:0.4rem; 
+      }
+      .company-card p { 
+        font-size:0.91rem; 
+        color:var(--text-mid); 
+        line-height:1.55; 
+      }
+      .tag-row { 
+        display:flex; 
+        gap:0.45rem; 
+        flex-wrap:wrap; 
+        margin-top:1rem; 
+        padding-top:1rem; 
+        border-top:1px solid rgba(13,79,92,0.1); 
+      }
+
+      /* ══════════════ TABLEAU ══════════════ */
+      .tableau-wrapper {
+        width:100%; 
+        border-radius:var(--radius); 
+        overflow:hidden;
+        box-shadow:var(--shadow-lg); 
+        border:1px solid var(--glass-border);
+        background:var(--white); 
+        min-height:600px;
+      }
+      .tableau-wrapper iframe { 
+        width:100%; 
+        height:600px; 
+        border:none; 
+        display:block; 
+      }
+
+      /* ══════════════ FORMS ══════════════ */
+      /* the form from both companies and contact section */
+      .form-group { 
+        display:flex; 
+        flex-direction:column; 
+        gap:0.4rem; 
+        margin-bottom:1.2rem; 
+      }
+      /* your location and purpose head */
+      .form-group h3 { 
+        font-size:0.82rem; 
+        font-weight:600; 
+        color:var(--teal); 
+        text-transform:uppercase; 
+        letter-spacing:0.06em; 
+      }
+      /* occupation box */
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding:0.75rem 1rem; 
+        border:2.5px solid rgba(13,79,92,0.2);
+        border-radius:var(--radius-sm); 
+        font-family:'DM Sans',sans-serif;
+        font-size:0.95rem; 
+        color:var(--text-dark); 
+        background:rgba(255,255,255,0.85);
+        outline:none; 
+        transition:border-color var(--t),box-shadow var(--t);
+      }
+      /* focus on option dropdown box*/
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color:var(--teal-light);       
+        box-shadow:0 0 0 3px rgba(26,122,138,0.15); 
+        background:var(--white);
+      }
+      .form-group textarea { 
+        resize:vertical; 
+        min-height:120px;
+      
+      }
+      /* options for purpose and location arrangement */
+      .radio-group { 
+        display:flex; 
+        flex-direction:column; 
+        gap:0.5rem;                                     /* the gap between each item*/
+      }
+      /* location and purpose options */
+      .radio-group label { 
+        display:flex; 
+        align-items:center; 
+        letter-spacing:0rem;
+        text-transform:none; 
+        gap:0.6rem; 
+        font-size:0.93rem; 
+        color:var(--text-dark); 
+        font-weight:400;      
+        cursor:pointer; 
+      }
+
+      .radio-group input { 
+        accent-color:var(--teal-light); 
+      } 
+
+  /* recommendation dialog box */
+      .success-msg {
+        display:none; 
+        background:rgba(13,79,92,0.15); 
+        border:1.5px solid var(--teal-light);
+        border-radius:var(--radius-sm); 
+        padding:0.9rem 1.2rem; 
+        color:var(--teal);
+        font-weight:500; 
+        font-size:0.95rem; 
+        margin-top:1rem;
+      }
+
+      /* ══════════════ TABLE ══════════════ */
+      /* main wording */
+      .comp-table { 
+        gap:1rem; 
+        margin-bottom:2rem; 
+        width:100%; 
+        border-collapse:collapse; 
+        font-size:0.95rem; 
+        color:var(--cream); 
+        min-width:520px; 
+      }
+      /* heading underline */
+      .comp-table thead tr { 
+        border-bottom:1px solid var(--cream); 
+      }
+      /* provider | type | coverage | */
+      .comp-table th { 
+        text-align:left; 
+        padding:0.65rem 1rem; 
+        color:var(--cream); 
+        font-weight:600; 
+        text-transform:uppercase; 
+        font-size:1rem; 
+        letter-spacing:0.06em; 
+      }
+      /* sub-underlines */
+      .comp-table td { 
+        padding:0.65rem 1rem;  
+        border-bottom:1px solid rgba(255,255,255,0.12); 
+      }
+
+      /* ══════════════ VIZ STAT CARDS ══════════════ */
+      .viz-grid { 
+        display:grid; 
+        grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); 
+        gap:1rem; 
+        margin-bottom:2rem; 
+      }
+        /* stat box */
+      .viz-card { 
+        background:rgb(255, 255, 255,0.82); 
+        border-radius:var(--radius-sm); 
+        padding:1.25rem; 
+        text-align:center; 
+        border-top:3.5px solid var(--teal-dark); 
+      }
+      .viz-card .vnum { 
+        font-family:'Playfair Display',serif; 
+        font-size:1.25rem; 
+        font-weight:900; 
+        color:var(--teal-dark); 
+      }
+      .viz-card .vlbl { 
+        font-size:0.8rem; 
+        color:var(--text-mid); 
+        font-weight:900;
+        text-transform:uppercase; 
+        letter-spacing:0.05em; 
+        margin-top:0.5rem; 
+      }
+
+      /* ══════════════ FOOTER ══════════════ */
+      footer {
+        background:rgba(5,26,30,0.96); 
+        border-top:1px solid var(--glass-border);
+        padding:1.5rem clamp(1rem,5vw,3rem); 
+        text-align:center;
+        color:rgba(255,255,255,0.45); 
+        font-size:0.85rem; 
+        letter-spacing:0.03em;
+      }
+      footer span { 
+        color:var(--teal-light); 
+        cursor:pointer; 
+      }
+      footer span:hover { 
+        color:var(--teal); 
+        text-decoration:underline; 
+      }
+
+      /* ══════════════ RESPONSIVE ══════════════ */
+      /*///// for phone ////////*/
+      /* nav bar remains hidden unless javascript for nav opens 
+      rest are for styling the nav link on phone which remains hidden behind the bar */
+      @media(max-width:900px){
+        .hero-inner { 
+          grid-template-columns:1fr; 
+          gap:2.5rem; 
+        }
+        .two-col { 
+          grid-template-columns:1fr; 
+        }
+      }
+      @media(max-width:680px){
+        .nav-links {
+          display:none; 
+          flex-direction:column;
+          position:absolute; 
+          /* places menu right below navbar */
+          top:var(--nav-h); 
+          left:0; right:0;
+          background:rgba(8,46,54,0.97); 
+          padding:1rem;
+          border-bottom:1px solid var(--glass-border); 
+          gap:0.15rem;
+        }
+        .nav-links.open { 
+          display:flex; 
+        }
+        .nav-links li button { 
+          padding:0.75rem 1rem; 
+          font-size:1rem; 
+          width:100%; 
+          text-align:left; 
+        }
+        /* hamburger menu button (☰ icon) on mobile. */
+        .nav-toggle { display:flex;}
+        /* tells the browser: “Use this nav as the anchor for positioning dropdown menu” */
+        nav {position:relative;}
+      }
+  /* IMPORTANT: prevents anchor links (#section) from hiding under fixed navbar */
+  /* scroll padding for sticky nav */
+
+      /* html { scroll-padding-top: var(--nav-h); } */
+      
+    </style>
+  </head>
+
+
+  <body>
+  <!-- ══════════════ ☰ (menu icon) ══════════════ -->
+  <div class="page-bg">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- ══════════════ NAVBAR ══════════════ -->
+    <!-- The main navigation section of your website -->
+    <nav id="mainNav">
+      <!-- display the logo -->
+      <div class="nav-brand" onclick="showPage('home')">
+        <!-- “ci” is just a custom class name you created -->
+        <!-- ci is the label and CSS targets .ci for styling and design -->
+        <div class="ci">🧭</div>
+        <!-- It displays: TeleCompass -->
+        <!-- inline HTML element used to group small pieces of text -->
+          <!-- “em” = emphasis tag - makes text italic by default -->
+        <span>Tele<em>Compass</em></span>
       </div>
 
-      <section class="section" style="padding-top:0;">  
-        <div class="company-grid">
+      <!-- js for nav bar -->
+        <!-- This is your navigation menu list -->
+        <!-- nav-links - CSS target     navLinks - javascripthook-->
+      <ul class="nav-links" id="navLinks">
+        <!-- onclick="showPage('home')" - use of home button -->
+        <!-- id="nav-home" - something to do with the highlight on home button -->
+          <li><button onclick="showPage('home')" id="nav-home" class="active">Home</button></li>
+          <li><button onclick="showPage('about')" id="nav-about">About Us</button></li>
+          <li><button onclick="showPage('dashboard')" id="nav-dashboard">Dashboard</button></li>
+          <li><button onclick="showPage('company')" id="nav-company">Companies</button></li>
+          <li><button onclick="showPage('contact')" id="nav-contact">Contact</button></li>
+      </ul>
+    </nav>
 
-          <!-- "article" - card -->
-          <article class="company-card">
-            <div class="co-icon">📡</div>
-            <h3>Bhutan Telecom Limited</h3>
-            <span class="badge" style="margin-bottom:0.75rem;display:inline-block;">State-Owned · Est. 2000</span>
-            <p>The B-Mobile network, now has a comprehensive reach, covering all 205 gewogs across the country, ensuring connectivity even in remote areas.</p>
-            <div class="tag-row">
-              <span class="badge">4G LTE / 5G</span>
-              <span class="badge">Fibre Broadband</span>
-              <span class="badge">Fixed-Line</span>
-            </div>
-          </article>
+    <main>
 
-          <article class="company-card">
-            <div class="co-icon">📡</div>
-            <h3>Tashi InfoComm Pvt Ltd</h3>
-            <span class="badge" style="margin-bottom:0.75rem;display:inline-block;">Private · Est. 2008</span>
-            <p>Offers mobile services across urban and growing semi-urban areas. Known for its competitive pricing and customer-focused plan</p>
-            <div class="tag-row">
-              <span class="badge">4G LTE / 5G</span>
-              <span class="badge">Mobile Network</span>
-              <span class="badge">Urban Coverage</span>
-            </div>
-
-          </article>
-
-          <article class="company-card">
-            <div class="co-icon">🛸</div>
-            <h3>Starlink</h3>
-            <span class="badge" style="margin-bottom:0.75rem;display:inline-block;">Global · SpaceX LEO Satellite</span>
-            <p> A satellite-based internet service, increasingly available in Bhutan as an alternative for remote and high-altitude areas. Better connectivity ideal for Bhutan's mountainous terrain. </p>
-            <div class="tag-row">
-              <span class="badge">Satellite Internet</span>
-              <span class="badge">Low Earth Orbit (LEO)</span>
-              <span class="badge">Remote Coverage</span>
-            </div>
-          </article>
-
-        </div>
-
-        <!-- Comparison Table -->
-         <!-- (overflow) - If content is too wide, (-x) - show a horizontal (:auto)- scroll bar ONLY when needed. -->
-        <div class="glass-card" style="overflow-x:auto;margin-bottom:2.5rem;">
-          <h2 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--white);margin-bottom:1.25rem;">Quick Comparison</h2>
-          <table class="comp-table">
-            <thead><tr>
-              <th>Provider</th><th>Type</th><th>Coverage</th><th>Strength</th>
-            </tr></thead>
-            <tbody>
-              <tr>
-                <td><strong>
-                  <a href="https://www.bt.bt/" target = "_blank">Bhutan Telecom</a>
-                </strong></td>
-                <td>State / Mobile / Fixed</td>
-                <td>Nationwide</td>
-                <td>Widest infrastructure</td>
-              </tr>
-              <tr>
-                <td><strong>
-                  <a href="https://www.tashicell.com/" target="_blank">Tashi InfoComm</a>
-                </strong></td>
-                <td>Private / Mobile</td>
-                <td>Urban + growing rural</td>
-                <td>Competitive pricing</td>
-              </tr>
-              <tr>
-                <td><strong>
-                <a href="https://www.bicma.gov.bt/?page_id=8623" target = "_blank">Starlink</a>
-              </strong></td>
-              <td>Satellite</td>
-              <td>Remote / High-altitude</td>
-              <td>Low-latency satellite</td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
+      <!-- ══════════════ HOME PAGE ══════════════ -->
 
 
 
 
 
-        <!----------------------- Quiz Form package -------------------------------->
-        <!-- ask 3 questions - quiz -->
-        <!-- main white card box holding everything -->
-         <!-- white card - CSS card -->
-        <div class="white-card" style="margin-bottom:4rem;">
-        <!-- styles the view -->
-        <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
-            <!-- the design around 📡sign -->
-            <div style="width:40px; height:40px; background:var(--teal-light); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">📡</div>
-            <h2 style="font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--teal-dark);">Find Your Best Connectivity</h2>
-        </div>
-        <!-- cant use gap without display:flex -->
-          <p style="color:var(--text-dark); font-size:0.9rem; margin-bottom:1.75rem; font-weight:600;">👉Let us help you enjoy a better experience with available telecommunication services.👈</p>
-          <!-- no need of display:grid -->
-          <div class="two-col" style="gap:1.5rem;">
 
-    <!-- Question 1 -->
-            <!-- name for styling CSS -->
-             <!-- one big box -->
-            <div class="form-group">
-              <!-- question title -->
-              <h3>Your Location</h3>
-              <!-- container - groups all the options together -->
-               <!-- a neat organized box -->
-              <div class="radio-group">
-                <!-- <label> - clicking - select radio button -->
-                <label><input type="radio" name="location" value="urban" /> Urban area (Thimphu, Phuentsholing, Gelephu.)</label>
-                <label><input type="radio" name="location" value="semi" /> Semi-urban (Dzongkhag town)</label>
-                <label><input type="radio" name="location" value="rural" /> Rural / Remote</label>
-                <label><input type="radio" name="location" value="rural" /> High altitude area</label>
-    <!-- Question 2 -->
-              </div>
-            </div>
-            <div class="form-group">
-              <h3>Primary Purpose</h3>
-              <div class="radio-group">
-                <!-- &amp - ampersand - used for html coding since browser can misread if nto used -->
-                <label><input type="radio" name="purpose" value="social"/> Social media &amp; browsing</label>
-                <label><input type="radio" name="purpose" value="work"/> Remote work / Video conferencing / zoom meeting</label>
-                <label><input type="radio" name="purpose" value="business"/> Business / Enterprise</label>
-                <label><input type="radio" name="purpose" value="gaming"/> Streaming &amp; gaming</label>
-              </div>
-            </div>
-          </div>
-          <!-- input type = "radio" - You want the user to choose ONLY ONE option from many choices. -->
 
-          <div class="form-group" style="margin-top:0.5rem;">
-            <h3>Occupation</h3>
-            <select id="occupation">
-              <option value="" disabled selected>Select Your Occupation…</option>
-              <option value="student">Student</option>
-              <option value="civil">Civil Servant / Government</option>
-              <option value="private">Private Sector Employee</option>
-              <option value="farmer">Farmer / Self-employed</option>
-              <option value="entrepreneur">Entrepreneur / Business Owner</option>
-              <option value="other">Digital Nomad</option>
-              <option value="other">Other...</option>
-            </select>
-          </div>
 
-          <!-- wrap - ✔ move to next line
-                      ✔ stay readable
-                      ✔ adjust to screen size -->
-          
-          <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.5rem;">
-            <!-- onclick - run javascript function -->
-             <!-- two classes 1.btn - common for all button -->
-              <!-- what it looks like depeds on CSS -->
 
-            <button class="btn btn-gold" onclick="submitQuiz()">🔍 Find My Provider</button>
-            <button class="btn btn-outline" onclick="resetQuiz()"style="color:var(--teal-dark);border-color:var(--teal);">↩ Start Over</button>
-            <button class="btn btn-teal" onclick="showPage('home')">🏠 Return Home</button>
-          </div>
-          <!-- output area -->
-          <!-- css styling for result box -->
-          <div class="success-msg" id="quizResult"></div>
-        </div>
-      </section>
+
+
+
+
+
+
+  <div id="intro">
+    <div class="intro-box">
+  <section>
+          <span class="story">
+            <h1 class="story-title">Telecommunication Service Usage in Bhutan</h1>
+            <h4 class="story-title">TeleCompass — A Guide for Better Connectivity</h4>
+            <p>When I got enrolled as an intern under Bhutan Data Scientist doing remote work, I depended heavily on 
+              mobile data for everything—online research, Zoom meetings, gaming, TikTok, YouTube, and Netflix.<br><br>
+            Because I was using mobile data for almost all my activities, the cost quickly became very high. I was 
+            spending around Nu. 699 in a week, and even when I tried a Nu. 1199 plan, I still had to recharge twice 
+            a month, and it still barely lasted. In total, I ended up spending more than Nu. 2500.<br><br>I often struggled 
+            with uncertainty. I was confused about which telecommunication service to choose or whether I should 
+            continue with my current plan. My thoughts kept going back and forth, especially when trying to manage 
+            internet costs. I even worried, “What if my investment in Wi-Fi fails?”<br><br>When I inquired at a service 
+            counter, I was advised to reconsider carefully. I was told that if the internet strength in my area was weak,
+            the Wi-Fi performance would also be poor, and in such cases, refunds would not be possible. At the same time,
+            I heard rumors circulating that Wi-Fi services were no longer as reliable as before, with some users 
+            requesting refunds and others complaining about cost and stability all over social media. This made me even 
+            more uncertain and overwhelmed, and for nearly a month, I kept going back and forth with my decision.<br><br>
+            Over time, I had to become more careful about how I used the internet. I started limiting gaming, reducing 
+            time on videos, and avoiding watching dramas freely because of data constraints.<br><br>I was always stressed about 
+            running out of data and not being able to watch videos or play music freely. Later, my cousin suggested that 
+            I try using Wi-Fi instead. So, she kindly let me use her router, and I started working through it.<br><br><br>The 
+            difference was clear.<br><br><br>With Wi-Fi, I could do my work smoothly, attend Zoom meetings without interruption, and 
+            freely use the internet for research and entertainment like YouTube, TikTok, games, and dramas without worrying 
+            about running out of data.<br><br>It also became more affordable, costing around Nu. 1450 per month, which was much 
+            better than what I was spending on mobile data.<br><br>This experience taught me that the type of internet connection 
+            matters a lot, depending on how you use it. For remote work and daily usage, Wi-Fi was simply more stable, 
+            practical, and cost-effective for me.</p>
+          </span>
+        </section>
+
+      <button onclick="enterSite()">Enter TeleCompass</button>
     </div>
+  </div>
 
-    <!-- ══════════════ CONTACT PAGE ══════════════ -->
-    <div class="page" id="page-contact">
-      <div class="page-hero">
-        <span class="badge">📬 Share Your Feedback</span>
-        <h1 class="section-title" style="margin-top:0.75rem;">Contact Us</h1>
-        <p style="color:#e5e7eb;font-weight:500;margin-bottom:0.5rem;">Have questions about the project or insights? Share your feedback to help us improve and better understand connectivity needs.</p>
-        <div class="divider"></div>
+
+
+
+
+
+
+
+
+
+
+
+      <!-- container for homepage -->
+      <div class="page active" id="page-home">
+
+        <!-- the outermost box -->
+        <section class="hero">
+          <!-- This controls how things are arranged inside -->
+          <div class="hero-inner">
+            <!-- holds only the text part -->
+            <!-- hero-text (LEFT SIDE → text, buttons, stats) -->
+            <div class="hero-text">
+              <button style="position:fixed; top:20px; left:20px; z-index:1000;" conclick="backToStory()">
+                📖 Back to Story
+              </button>
+              <!-- "badge" class - badge like icon on every section -->
+              <span class="badge" style="margin-bottom:1rem; display:inline-block;">🇧🇹 Bhutan Connectivity Study</span>
+              <h1>Kuzu <em>Zangpo La</em></h1> 
+              <p style= "color:#74edeb;font-weight:bold;"class="subtitle";><strong style="font-family:italic;color:rgb(147, 237, 237);font-weight:bolder;">“This page is designed to guide you toward better connectivity choices that match your needs and lifestyle.”</strong><br><br>A guide for better connectivity — explore available internet service across Bhutan &amp; helping you choose the right internet service for your need.</p>
+              <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                <!-- the small buttons on the homepage -->
+                <button class="btn btn-gold" onclick="showPage('dashboard')">📊 View Dashboard</button>
+                <button class="btn btn-outline" onclick="showPage('about')">Learn More</button>
+
+              </div>
+
+              <!-- information box on the homepage  -->
+              <!-- information for this code is connected to STAT CSS section "num" -->
+                <!-- num is upper wording and lbl is lower wordings -->
+              <div class="stat-row">
+                <div class="stat-box">
+                  <span class="num">3</span>
+                  <span class="lbl">Telecoms</span>
+                </div>
+                <div class="stat-box">
+                  <span class="num">20</span>
+                  <span class="lbl">Dzongkhags</span>
+                </div>
+                <div class="stat-box">
+                  <span class="num">3</span>
+                  <span class="lbl">Key Insights</span>
+                </div>
+                <div class="stat-box">
+                  <span class="num">100+</span>
+                  <span class="lbl">Respondents</span>
+                </div>
+              </div>
+            </div>
+          <div class="hero-image">
+            <!-- wifi vs data img.png -->
+              <img src="img3.png" alt="teleBhutan">
+              <!-- 📍 Thimphu, Bhutan -->
+              <div class="img-caption">📍 Thimphu, Bhutan</div>
+              </div>
+          </div>
+        </section>
+
+        <section class="section" style="padding-top:0; padding-bottom:4rem;">
+          <!-- nav bar below -->
+          <div class="qlinks">
+            <!-- q-icon, q-title, q-sub - they are the class names for CSS -->
+            <div class="qlink-card" onclick="showPage('about')">
+              <div class="q-icon">👤</div>
+              <div class="q-title">About Us</div>
+              <div class="q-sub">Meet the intern &amp; project goals</div>
+            </div>
+            <div class="qlink-card" onclick="showPage('dashboard')">
+              <div class="q-icon">📈</div>
+              <div class="q-title">Data Insights</div>
+              <div class="q-sub">Tableau insights from survey data</div>
+            </div>
+            <div class="qlink-card" onclick="showPage('company')">
+              <div class="q-icon">🏢</div>
+              <div class="q-title">Compare Networks</div>
+              <div class="q-sub">BT, TashiCell &amp; Starlink</div>
+            </div>
+            <div class="qlink-card" onclick="showPage('contact')">
+              <div class="q-icon">📬</div>
+              <div class="q-title">Contact</div>
+              <div class="q-sub">We're here to listen to your feedback</div>
+            </div>
+          </div>
+              </div>
+
+      <!-- ══════════════ ABOUT PAGE ══════════════ -->
+      <div class="page" id="page-about">
+        <div class="page-hero">
+          <span class="badge">👤 About Us</span>
+          <h1 class="section-title" style="margin-top:0.75rem;">Meet the Project</h1>
+          <div class="divider"></div>
+        </div>
+
+        <section class="section" style="padding-top:0;">
+          <div class="two-col">
+
+            <!-- About Me Glass Card -->
+            <div class="glass-card">
+            
+              <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem;">
+                <!-- 🎓 -->
+                <!-- border-radius:50%; - perfect circle -->
+                <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--teal-dark),rgb(10, 160, 115));display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;box-shadow:0 0 16px rgba(232,160,32,0.4);">🎓</div>
+                <div>
+                  <div style="font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--cream); letter-spacing:0.095rem;">Intern Researcher</div>
+                  <div style="color:rgb(180, 220, 220);font-size:0.85rem;letter-spacing:0.075em;text-transform:uppercase;"><span>Data Practitioner -</span><span><br></span> Turning Data into Insights</span></div>
+                </div>
+              </div>
+              <!-- gap between each line - marginbuttom between two para-->
+              <div style="text-align:justify;">
+              <p style="line-height:1.75;margin-bottom:1.2rem;color:var(--text-light);">
+                I am an intern at Bhutan Data Scientists Pvt Ltd. This intern project explores telecommunications service usage in Bhutan, focusing on customer preferences and satisfaction. The website aims to provide personalized service recommendations based on user needs.
+              </p>
+              <!-- second paragraph -->
+              <p style="line-height:1.75;color:var(--text-light);">
+                The project focuses on reducing Bhutan's digital divide by 
+                <em style="color:rgb(195, 237, 237);">understanding connectivity gaps and promoting fair access,</em> 
+                to telecommunications services across all 20 dzongkhags.
+              </p>
+              </div>
+              <div class="stat-row" style="margin-top:1.75rem;">
+                <div class="stat-box">
+                  <span class="num">20</span>
+                  <span class="lbl">Dzongkhags</span>
+                </div>
+                <div class="stat-box">
+                  <span class="num">100+</span>
+                  <span class="lbl">Respondents</span>
+                </div>
+                <div class="stat-box">
+                  <span class="num">2026</span>
+                  <span class="lbl">Study Year</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Highlights White Card -->
+            <!-- 🏔️ -->
+            <div class="white-card">
+              <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem;">
+                <!-- linear-gradient(...) → blends two or more colors smoothly -->
+                <!-- 135deg → direction of the gradient, starts from top-left area flows toward bottom-right area -->
+                <div style="width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,var(--teal-dark),var(--teal-light));display:flex;align-items:center;justify-content:center;font-size:1.2rem;">🏔️</div>
+                <h2 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-light);">Project Highlights</h2>
+              </div>
+              <ul class="highlight-list">
+              <div style="text-align:justify;">
+                <li><div><strong style="display:block;margin-bottom:0.2rem;color:var(--teal-dark);">Understanding Mobile data package &amp; Wi-Fi Usage Patterns</strong>Examining the internet service usage pattern across urban and rural area of Bhutan, including what is their primary purpose and their needs based on occupation.</div></li>
+                <li><div><strong style="display:block;margin-bottom:0.2rem;color:var(--teal-dark);">Analysing Customer Satisfaction</strong>Measuring satisfaction levels with service quality, network reliability, and pricing, and how these factors influence daily usage of different services.</div></li>
+                <li><div><strong style="display:block;margin-bottom:0.2rem;color:var(--teal-dark);">Responsive Dashboard for Insights</strong>Building an interactive Tableau dashboard that enables users to explore data visually, filter by region, and identify trends at a glance, helping them better understand services based on their needs.</div></li>
+                <li><div><strong style="display:block;margin-bottom:0.2rem;color:var(--teal-dark);">Recommendations for Better Connectivity</strong>Having a better connectivity recommendations is our priority, and we welcome user feedback that goes beyond the scope of this project, helping us improve and provide better, more tailored services.</div></li>
+              </ul>
+              <!-- "showPage('dashboard')" -->
+              <div style="margin-top:2rem;padding-top:1.25rem;border-top:1px solid rgba(13,79,92,0.1);">
+                <button class="btn btn-teal" onclick="showPage('dashboard')" style="font-size:0.9rem;">📊 Explore the Dashboard →</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- mission board -->
+        <!-- 🧭 -->
+        <section class="section" style="padding-top:0;padding-bottom:4rem;">
+          <div class="glass-card" style="text-align:center;padding:2.5rem;">
+            <div style="font-size:2.5rem;margin-bottom:1rem;">🧭</div>
+            <h2 style="font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--cream);margin-bottom:0.75rem;">Our Mission</h2>
+            <p style="max-width:640px;margin:0 auto;color:var(--text-light);line-height:1.75;font-size:1.1rem;font-weight:500;">
+              To provide Bhutan's telecom ecosystem with a clear, data-driven compass helping every individual user navigate toward a more connected, reliable, and prosperous digital future in harmony with the values of Gross National Happiness.
+            </p>
+          </div>
+        </section>
       </div>
-      <section class="section" style="padding-top:0; padding-bottom:4rem;">
-        <div class="two-col">
 
-          <!-- Contact Form -->
-          <div class="white-card">
-            <h2 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-dark);margin-bottom:0.25rem;">Send a Message</h2>
-            <p style="color:var(--text-mid);font-size:0.88rem;margin-bottom:1.75rem;">Fill in the form and we'll respond within 2 business days.</p>
-            <div class="form-group">
-              <label for="cname">Full Name</label>
-              <input type="text" id="cname" placeholder="e.g. Sonam Yangchen" />
+      <!-- ══════════════ DASHBOARD PAGE ══════════════ -->
+      <div class="page" id="page-dashboard">
+        <div class="page-hero">
+          <span class="badge">📊 Data Analytics</span>
+          <h1 class="section-title" style="color:rgb(183, 231, 239);margin-top:0.75rem;">Connectivity Insight Dashboard</h1>
+          <p style="color:var(--cream);margin-bottom:0.5rem;font-weight:400;letter-spacing:0.12rem;">Explore Bhutan's data package and Wi-Fi usage patterns across different regions and purposes, along with demographic trends and user satisfaction, through our interactive Tableau visualisation.</p>
+          <div class="divider"></div>
+        </div>
+
+        <section class="section" style="padding-top:0; max-width:1300px;">
+          <div class="viz-grid">
+            <div class="viz-card">
+              <div class="vnum">94%</div>
+            <div class="vlbl">Mobile Internet Penetration</div>
+          </div>
+            <div class="viz-card"><div class="vnum">3.8★</div><div class="vlbl">Avg. Customer Satisfaction</div></div>
+            <div class="viz-card"><div class="vnum">3</div><div class="vlbl">Active Telecom Providers</div></div>
+            <div class="viz-card"><div class="vnum">Data Package</div><div class="vlbl">Most used service</div></div>
+            <div class="viz-card"><div class="vnum">Students</div><div class="vlbl">Majority of the respondent</div></div>
+                    
+          </div>
+
+          <div class="glass-card" style="padding:1.5rem;margin-bottom:2rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:0.75rem;">
+              <div>
+                <h2 style="font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--white);">📡 Bhutan Connectivity — Interactive View</h2>
+                <p style="color:var(--text-light);font-size:0.88rem;margin-top:0.2rem;">Powered by Tableau Public · Use filters to drill down by region, type of service, or purpose</p>
+              </div>
+              <!-- <span class="badge">Live Data</span> -->
             </div>
-            <div class="form-group">
-              <!-- for="cname" - connects label to input -->
-              <label for="cemail">Email Address</label>
-              <!-- Browser checks if input looks like an email -->
-              <input type="email" id="cemail" placeholder="your@email.com" />
+            <div class="tableau-wrapper">
+
+              <iframe
+                src="https://public.tableau.com/views/internetservicedashboard2/Story1?:showVizHome=no&:embed=y"
+                title="Bhutan Connectivity Dashboard"
+                allowfullscreen>
+              </iframe>
             </div>
-            <div class="form-group">
-              <label for="ctopic">Topic</label>
-              <select id="ctopic">
-                <option value="" disabled selected>Select a topic…</option>
-                <option value="general">General Inquiry</option>
-                <option value="research">Research Collaboration</option>
-                <option value="telecom">Telecom Feedback</option>
-                <option value="other">Other</option>
+            <p style="color:rgba(255,255,255,0.4);font-size:0.76rem;margin-top:0.75rem;text-align:right;">ⓘ public.tableau.com - internship project</p>
+          </div>
+
+          <h2 class="section-title" style="font-size:1.5rem;margin-bottom:1.5rem;">Key Findings</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;padding-bottom:4rem;">
+            <div class="white-card">
+              <div style="font-size:1.75rem;margin-bottom:0.75rem;">📱</div>
+              <h3 style="font-family:'Playfair Display',serif;color:var(--teal-dark);margin-bottom:0.5rem;">Mobile Dominance</h3>
+              <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;">Bhutanese access the internet primarily via mobile devices, with 4G/LTE being the most used standard and introduction of 5G service in urban central.</p>
+            </div>
+            <div class="white-card">
+              <div style="font-size:1.75rem;margin-bottom:0.75rem;">🌄</div>
+              <h3 style="font-family:'Playfair Display',serif;color:var(--teal-dark);margin-bottom:0.5rem;">Rural Gap</h3>
+              <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;">A significant issue regarding network connectivity and realibility shows a potential for Starlink's satellite service to help bridge in remote dzongkhags and curb the gap.</p>
+            </div>
+            <div class="white-card">
+              <div style="font-size:1.75rem;margin-bottom:0.75rem;">⭐</div>
+              <h3 style="font-family:'Playfair Display',serif;color:var(--teal-dark);margin-bottom:0.5rem;">Satisfaction Trends</h3>
+              <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;">Average satisfaction scores hover around 3/5, with network reliability and affordable pricing cited as the top improvement priorities.</p>
+            </div>
+            <div class="white-card">
+              <div style="font-size:1.75rem;margin-bottom:0.75rem;">🚀</div>
+              <h3 style="font-family:'Playfair Display',serif;color:var(--teal-dark);margin-bottom:0.5rem;">Growth Opportunity</h3>
+              <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.6;">Bhutan is strengthening digital infrastructure through the Digital Drukyul initiative, expanding fibre networks and improving rural connectivity.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ══════════════ COMPANY PAGE ══════════════ -->
+      <div class="page" id="page-company">
+        <div class="page-hero">
+          <span class="badge">🏢 Telecom Providers</span>
+          
+          <h1 class="section-title" style="margin-top:0.75rem;">Bhutan's Telecom Companies</h1>
+          <p style="color:var(--text-light);margin-bottom:0.5rem;">Three key players bridging connectivity across the Kingdom of Bhutan.</p>
+          <div class="divider"></div>
+        </div>
+
+        <section class="section" style="padding-top:0;">  
+          <div class="company-grid">
+
+            <!-- "article" - card -->
+            <article class="company-card">
+              <div class="co-icon">📡</div>
+              <h3>Bhutan Telecom Limited</h3>
+              <span class="badge" style="margin-bottom:0.75rem;display:inline-block;">State-Owned · Est. 2000</span>
+              <p>The B-Mobile network, now has a comprehensive reach, covering all 205 gewogs across the country, ensuring connectivity even in remote areas.</p>
+              <div class="tag-row">
+                <span class="badge">4G LTE / 5G</span>
+                <span class="badge">Fibre Broadband</span>
+                <span class="badge">Fixed-Line</span>
+              </div>
+            </article>
+
+            <article class="company-card">
+              <div class="co-icon">📡</div>
+              <h3>Tashi InfoComm Pvt Ltd</h3>
+              <span class="badge" style="margin-bottom:0.75rem;display:inline-block;">Private · Est. 2008</span>
+              <p>Offers mobile services across urban and growing semi-urban areas. Known for its competitive pricing and customer-focused plan</p>
+              <div class="tag-row">
+                <span class="badge">4G LTE / 5G</span>
+                <span class="badge">Mobile Network</span>
+                <span class="badge">Urban Coverage</span>
+              </div>
+
+            </article>
+
+            <article class="company-card">
+              <div class="co-icon">🛸</div>
+              <h3>Starlink</h3>
+              <span class="badge" style="margin-bottom:0.75rem;display:inline-block;">Global · SpaceX LEO Satellite</span>
+              <p> A satellite-based internet service, increasingly available in Bhutan as an alternative for remote and high-altitude areas. Better connectivity ideal for Bhutan's mountainous terrain. </p>
+              <div class="tag-row">
+                <span class="badge">Satellite Internet</span>
+                <span class="badge">Low Earth Orbit (LEO)</span>
+                <span class="badge">Remote Coverage</span>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- Comparison Table -->
+          <!-- (overflow) - If content is too wide, (-x) - show a horizontal (:auto)- scroll bar ONLY when needed. -->
+          <div class="glass-card" style="overflow-x:auto;margin-bottom:2.5rem;">
+            <h2 style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--white);margin-bottom:1.25rem;">Quick Comparison</h2>
+            <table class="comp-table">
+              <thead><tr>
+                <th>Provider</th><th>Type</th><th>Coverage</th><th>Strength</th>
+              </tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>
+                    <a href="https://www.bt.bt/" target = "_blank">Bhutan Telecom</a>
+                  </strong></td>
+                  <td>State / Mobile / Fixed</td>
+                  <td>Nationwide</td>
+                  <td>Widest infrastructure</td>
+                </tr>
+                <tr>
+                  <td><strong>
+                    <a href="https://www.tashicell.com/" target="_blank">Tashi InfoComm</a>
+                  </strong></td>
+                  <td>Private / Mobile</td>
+                  <td>Urban + growing rural</td>
+                  <td>Competitive pricing</td>
+                </tr>
+                <tr>
+                  <td><strong>
+                  <a href="https://www.bicma.gov.bt/?page_id=8623" target = "_blank">Starlink</a>
+                </strong></td>
+                <td>Satellite</td>
+                <td>Remote / High-altitude</td>
+                <td>Low-latency satellite</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+
+
+
+          <!----------------------- Quiz Form package -------------------------------->
+          <!-- ask 3 questions - quiz -->
+          <!-- main white card box holding everything -->
+          <!-- white card - CSS card -->
+          <div class="white-card" style="margin-bottom:4rem;">
+          <!-- styles the view -->
+          <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.5rem;">
+              <!-- the design around 📡sign -->
+              <div style="width:40px; height:40px; background:var(--teal-light); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">📡</div>
+              <h2 style="font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--teal-dark);">Find Your Best Connectivity</h2>
+          </div>
+          <!-- cant use gap without display:flex -->
+            <p style="color:var(--text-dark); font-size:0.9rem; margin-bottom:1.75rem; font-weight:600;">👉Let us help you enjoy a better experience with available telecommunication services.👈</p>
+            <!-- no need of display:grid -->
+            <div class="two-col" style="gap:1.5rem;">
+
+      <!-- Question 1 -->
+              <!-- name for styling CSS -->
+              <!-- one big box -->
+              <div class="form-group">
+                <!-- question title -->
+                <h3>Your Location</h3>
+                <!-- container - groups all the options together -->
+                <!-- a neat organized box -->
+                <div class="radio-group">
+                  <!-- <label> - clicking - select radio button -->
+                  <label><input type="radio" name="location" value="urban" /> Urban area (Thimphu, Phuentsholing, Gelephu.)</label>
+                  <label><input type="radio" name="location" value="semi" /> Semi-urban (Dzongkhag town)</label>
+                  <label><input type="radio" name="location" value="rural" /> Rural / Remote</label>
+                  <label><input type="radio" name="location" value="rural" /> High altitude area</label>
+      <!-- Question 2 -->
+                </div>
+              </div>
+              <div class="form-group">
+                <h3>Primary Purpose</h3>
+                <div class="radio-group">
+                  <!-- &amp - ampersand - used for html coding since browser can misread if nto used -->
+                  <label><input type="radio" name="purpose" value="social"/> Social media &amp; browsing</label>
+                  <label><input type="radio" name="purpose" value="work"/> Remote work / Video conferencing / zoom meeting</label>
+                  <label><input type="radio" name="purpose" value="business"/> Business / Enterprise</label>
+                  <label><input type="radio" name="purpose" value="gaming"/> Streaming &amp; gaming</label>
+                </div>
+              </div>
+            </div>
+            <!-- input type = "radio" - You want the user to choose ONLY ONE option from many choices. -->
+
+            <div class="form-group" style="margin-top:0.5rem;">
+              <h3>Occupation</h3>
+              <select id="occupation">
+                <option value="" disabled selected>Select Your Occupation…</option>
+                <option value="student">Student</option>
+                <option value="civil">Civil Servant / Government</option>
+                <option value="private">Private Sector Employee</option>
+                <option value="farmer">Farmer / Self-employed</option>
+                <option value="entrepreneur">Entrepreneur / Business Owner</option>
+                <option value="other">Digital Nomad</option>
+                <option value="other">Other...</option>
               </select>
             </div>
-            <div class="form-group">
-              <label for="cmsg">Your Message</label>
-              <!-- for long messages -->
-              <textarea id="cmsg" placeholder="Tell us what's on your mind…"></textarea>
-            </div>
 
-            <button class="btn btn-gold" id="submitContactBtn" onclick="handleContact()" style="width:100%;justify-content:center;">Send Message ✈️</button>
-            <div class="success-msg" id="contactSuccess">✅ Thank you! Your message has been received. We'll be in touch soon.</div>
+            <!-- wrap - ✔ move to next line
+                        ✔ stay readable
+                        ✔ adjust to screen size -->
+            
+            <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.5rem;">
+              <!-- onclick - run javascript function -->
+              <!-- two classes 1.btn - common for all button -->
+                <!-- what it looks like depeds on CSS -->
+
+              <button class="btn btn-gold" onclick="submitQuiz()">🔍 Find My Provider</button>
+              <button class="btn btn-outline" onclick="resetQuiz()"style="color:var(--teal-dark);border-color:var(--teal);">↩ Start Over</button>
+              <button class="btn btn-teal" onclick="showPage('home')">🏠 Return Home</button>
+            </div>
+            <!-- output area -->
+            <!-- css styling for result box -->
+            <div class="success-msg" id="quizResult"></div>
           </div>
+        </section>
+      </div>
 
-          <!-- Sidebar -->
-          <div style="display:flex;flex-direction:column;gap:1.25rem;">
-            <div class="glass-card">
-              <div style="font-size:1.5rem;margin-bottom:0.75rem;">📍</div>
-              <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem;">Location</h3>
-              <p style="color:var(--text-light);font-size:0.9rem;line-height:1.6;">Chhukha Dzongkhag<br/>Bhutan 🇧🇹</p>
+      <!-- ══════════════ CONTACT PAGE ══════════════ -->
+      <div class="page" id="page-contact">
+        <div class="page-hero">
+          <span class="badge">📬 Share Your Feedback</span>
+          <h1 class="section-title" style="margin-top:0.75rem;">Contact Us</h1>
+          <p style="color:#e5e7eb;font-weight:500;margin-bottom:0.5rem;">Have questions about the project or insights? Share your feedback to help us improve and better understand connectivity needs.</p>
+          <div class="divider"></div>
+        </div>
+        <section class="section" style="padding-top:0; padding-bottom:4rem;">
+          <div class="two-col">
+
+            <!-- Contact Form -->
+            <div class="white-card">
+              <h2 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--teal-dark);margin-bottom:0.25rem;">Send a Message</h2>
+              <p style="color:var(--text-mid);font-size:0.88rem;margin-bottom:1.75rem;">Fill in the form and we'll respond within 2 business days.</p>
+              <div class="form-group">
+                <label for="cname">Full Name</label>
+                <input type="text" id="cname" placeholder="e.g. Sonam Yangchen" />
+              </div>
+              <div class="form-group">
+                <!-- for="cname" - connects label to input -->
+                <label for="cemail">Email Address</label>
+                <!-- Browser checks if input looks like an email -->
+                <input type="email" id="cemail" placeholder="your@email.com" />
+              </div>
+              <div class="form-group">
+                <label for="ctopic">Topic</label>
+                <select id="ctopic">
+                  <option value="" disabled selected>Select a topic…</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="research">Research Collaboration</option>
+                  <option value="telecom">Telecom Feedback</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="cmsg">Your Message</label>
+                <!-- for long messages -->
+                <textarea id="cmsg" placeholder="Tell us what's on your mind…"></textarea>
+              </div>
+
+              <button class="btn btn-gold" id="submitContactBtn" onclick="handleContact()" style="width:100%;justify-content:center;">Send Message ✈️</button>
+              <div class="success-msg" id="contactSuccess">✅ Thank you! Your message has been received. We'll be in touch soon.</div>
             </div>
-            <div class="glass-card">
-              <div style="font-size:1.5rem; margin-bottom:0.75rem;">🕐</div>
-              <h3 style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); margin-bottom:0.4rem;">Response Time</h3>
-              <p style="color:var(--text-light); font-size:0.9rem; line-height:1.6;">We aim to reply within 2 business days.</p>
-            </div>
-            <div class="glass-card">
-              <div style="font-size:1.5rem; margin-bottom:0.75rem;">🔗</div>
-              <h3 style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); margin-bottom:0.75rem;">Quick Links</h3>
-              <div style="display:flex; flex-direction:column; gap:0.5rem;">
-                <button class="btn btn-outline" onclick="showPage('dashboard')" style="font-size:0.88rem;padding:0.55rem 1rem;">📊 View Dashboard</button>
-                <button class="btn btn-outline" onclick="showPage('company')" style="font-size:0.88rem;padding:0.55rem 1rem;">🏢 Company Info</button>
-                <button class="btn btn-outline" onclick="showPage('about')" style="font-size:0.88rem;padding:0.55rem 1rem;">👤 About the Project</button>
+
+            <!-- Sidebar -->
+            <div style="display:flex;flex-direction:column;gap:1.25rem;">
+              <div class="glass-card">
+                <div style="font-size:1.5rem;margin-bottom:0.75rem;">📍</div>
+                <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);margin-bottom:0.4rem;">Location</h3>
+                <p style="color:var(--text-light);font-size:0.9rem;line-height:1.6;">Chhukha Dzongkhag<br/>Bhutan 🇧🇹</p>
+              </div>
+              <div class="glass-card">
+                <div style="font-size:1.5rem; margin-bottom:0.75rem;">🕐</div>
+                <h3 style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); margin-bottom:0.4rem;">Response Time</h3>
+                <p style="color:var(--text-light); font-size:0.9rem; line-height:1.6;">We aim to reply within 2 business days.</p>
+              </div>
+              <div class="glass-card">
+                <div style="font-size:1.5rem; margin-bottom:0.75rem;">🔗</div>
+                <h3 style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--white); margin-bottom:0.75rem;">Quick Links</h3>
+                <div style="display:flex; flex-direction:column; gap:0.5rem;">
+                  <button class="btn btn-outline" onclick="showPage('dashboard')" style="font-size:0.88rem;padding:0.55rem 1rem;">📊 View Dashboard</button>
+                  <button class="btn btn-outline" onclick="showPage('company')" style="font-size:0.88rem;padding:0.55rem 1rem;">🏢 Company Info</button>
+                  <button class="btn btn-outline" onclick="showPage('about')" style="font-size:0.88rem;padding:0.55rem 1rem;">👤 About the Project</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
-  </main>
+        </section>
+      </div>
+    </main>
 
-  <!-- ══════════════ FOOTER ══════════════ -->
-<footer>
-  © 2026 <strong>TeleCompass</strong> · Built for telecom data exploration in Bhutan
-</footer>
-</div> <!-- Closing main container -->
+    <!-- ══════════════ FOOTER ══════════════ -->
+  <footer>
+    © 2026 <strong>TeleCompass</strong> · Built for telecom data exploration in Bhutan
+  </footer>
+  </div> <!-- Closing main container -->
 
-<script>
-  // ── Navigation (mobile menu toggle) ──
-  // const - creates a variable navToggle and navLinks
-  // getElementById - find element by its id
-  // if - check if something is true
-  // navToggle(☰ icon) && navLinks - both must exist
-  const navToggle = document.getElementById('navToggle');
-  const navLinks  = document.getElementById('navLinks');
-  if (navToggle && navLinks) {
-    // When you click the menu button (☰), it shows or hides the navigation menu.
-    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));}
-  // 👉 Click button → menu opens
-// 👉 Click again → menu closes
+  <script>
+    // ── Navigation (mobile menu toggle) ──
+    // const - creates a variable navToggle and navLinks
+    // getElementById - find element by its id
+    // if - check if something is true
+    // navToggle(☰ icon) && navLinks - both must exist
+    const navToggle = document.getElementById('navToggle');
+    const navLinks  = document.getElementById('navLinks');
+    if (navToggle && navLinks) {
+      // When you click the menu button (☰), it shows or hides the navigation menu.
+      navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));}
+    // 👉 Click button → menu opens
+  // 👉 Click again → menu closes
 
-  // ////////// //
- // java script//
-// ////////// // 
-
-
-
-
-
-
-
-
-
-
-function enterSite() {
-  document.getElementById("intro").style.display = "none";
-  document.getElementById("main").style.display = "block";
-}
+    // ////////// //
+  // java script//
+  // ////////// // 
 
 
 
@@ -1521,143 +1499,16 @@ function enterSite() {
 
 
 
-
-
-  // ── Page Router ──
-  // movement between section
-  const pages = ['home','about','dashboard','company','contact'];
-
-  function showPage(id) {      // you are trying to show one page at a time (id - which page to show?)
-    pages.forEach(p => {       // goes through every page you have (p - each page name one by one)
-      const pg  = document.getElementById('page-' + p);  // pg variable, get page by id, page-home(p)   -html
-      const btn = document.getElementById('nav-' + p);    // btn variable, get page by id, nav-home(p)  - menu button
-      if (pg)  pg.classList.remove('active');     //hide page (displays all at once)
-      if (btn) btn.classList.remove('active');         //hide page  (highlight on nav-button)
+  function enterSite() {
+    document.getElementById("intro").style.display = "none";
+    document.getElementById("main").style.display = "block";
+  }
+  function showPage(page) {
+    document.querySelectorAll('.page').forEach(p => {
+      p.style.display = 'none';
     });
-    const target = document.getElementById('page-' + id);
-    const navBtn = document.getElementById('nav-' + id);
-    if (target) target.classList.add('active');
-    if (navBtn) navBtn.classList.add('active');
-    if (navLinks) navLinks.classList.remove('open');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
 
-  // ── Contact Form ──
-  // Create a function called when user submits the form
-  function handleContact() {
-     // ?. - safty check - continue only if element exists
-    const name  = document.getElementById('cname')?.value.trim();
-    const email = document.getElementById('cemail')?.value.trim();
-    const topic = document.getElementById('ctopic')?.value;
-    const msg   = document.getElementById('cmsg')?.value.trim();
-    // warning for missing information
-    if (!name || !email || !topic || !msg) {
-      alert('Please fill in all fields before submitting.');
-      return;
-    }
-    // Find the success message element and store it
-    const successEl = document.getElementById('contactSuccess');
-    // Find the success message element and store it
-    if (successEl) successEl.style.display = 'block';
-    // submitContactBtn - id of button
-    const btn = document.getElementById('submitContactBtn');
-    if (btn) {
-      // Change button text to ‘Sent
-      btn.textContent = '✅ Sent!';
-      // Disable the button (cannot click again)
-      btn.disabled = true;
-    }
-  }
-  // ── Company Quiz ──
-  // recommendation box 
-  // submit box
-  function submitQuiz() {  
-    ////// /* find the slected location option and store it in (loc)*/ //////
-    // const - create a variable - storage box
-    // loc - name of the box - short for location
-    // document - whole webpage
-    // querySelector - go find something on the page
-    // input - radio button/checkbox 
-    // name=location - group called location
-    // :checked - only selected one
-    const loc  = document.querySelector('input[name="location"]:checked');
-    ////// /* find the slected purpose option and store it in (purp)*/ //////
-    // purp - short for purpose
-    const purp = document.querySelector('input[name="purpose"]:checked');
-    ////// /* fget the text user typed in occupation box*/ //////
-    // occ - occupation
-    // value - get what user typed inside it
-    // ?. - safty check - continue only if element exists
-    const occ  = document.getElementById('occupation')?.value;
-
-    // if any checkbox is missing
-    //  || - or
-    // if condition
-    if (!loc || !purp || !occ) {
-      // alert
-      alert('Please answer all three questions first.');
-      // stop the function - end with the warning
-      return;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //find my provider button functioning
-    // let - creates a variable
-    // rec - recommendation
-    // '' - empty box fo now
-    /////// i will store the result here later/////////////
-    let rec = '';                // create an empty box called rec
-    // === - exactly equal to
-    if (loc.value === 'rural') {   
-      rec = '🛸 <strong>Starlink</strong> — ideal for your remote/high-altitude location, offering reliable satellite connectivity. The connectivity of B-mobile and TashiCell will give problem regarding connectivity due to distance from the tower, the compact housing structure, and limited number of infrastructure';
-    } else if (purp.value === 'business' || purp.value === 'work') {
-      rec = '📡 <strong>Bhutan Telecom Limited</strong> — best for business and remote work needs.';
-    } else {
-      rec = '📶 <strong>Tashi InfoComm (TashiCell)</strong> — great for everyday browsing, social media, and streaming.';
-    }
-
-    const el = document.getElementById('quizResult');
-    if (el) {
-      el.innerHTML = '✅ Based on your answers, we suggest: ' + rec;
-      el.style.display = 'block';
-      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
+    document.getElementById(page).style.display = 'block';
   }
 
 
@@ -1670,25 +1521,172 @@ function enterSite() {
 
 
 
+    // ── Page Router ──
+    // movement between section
+    const pages = ['home','about','dashboard','company','contact'];
 
-
-  function resetQuiz() {
-    // r → each radio butto, .checked - whether selected or not, false - unselect it
-    document.querySelectorAll('input[name="location"]').forEach(r => r.checked = false);
-    document.querySelectorAll('input[name="purpose"]').forEach(r => r.checked = false);
-    // find drop down box
-    const occ = document.getElementById('occupation');
-    // if dropdown exist, selected index, select the first option - reset by default
-    if (occ) occ.selectedIndex = 0;
-    // Find result message box
-    const el = document.getElementById('quizResult');
-    if (el) {
-      // Hide the result box
-      el.style.display = 'none';
-      // Remove previous result text completely,-- innerHTML contains a result text
-      el.innerHTML = '';
+    function showPage(id) {      // you are trying to show one page at a time (id - which page to show?)
+      pages.forEach(p => {       // goes through every page you have (p - each page name one by one)
+        const pg  = document.getElementById('page-' + p);  // pg variable, get page by id, page-home(p)   -html
+        const btn = document.getElementById('nav-' + p);    // btn variable, get page by id, nav-home(p)  - menu button
+        if (pg)  pg.classList.remove('active');     //hide page (displays all at once)
+        if (btn) btn.classList.remove('active');         //hide page  (highlight on nav-button)
+      });
+      const target = document.getElementById('page-' + id);
+      const navBtn = document.getElementById('nav-' + id);
+      if (target) target.classList.add('active');
+      if (navBtn) navBtn.classList.add('active');
+      if (navLinks) navLinks.classList.remove('open');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }
-</script>
-</body>
-</html>
+
+    // ── Contact Form ──
+    // Create a function called when user submits the form
+    function handleContact() {
+      // ?. - safty check - continue only if element exists
+      const name  = document.getElementById('cname')?.value.trim();
+      const email = document.getElementById('cemail')?.value.trim();
+      const topic = document.getElementById('ctopic')?.value;
+      const msg   = document.getElementById('cmsg')?.value.trim();
+      // warning for missing information
+      if (!name || !email || !topic || !msg) {
+        alert('Please fill in all fields before submitting.');
+        return;
+      }
+      // Find the success message element and store it
+      const successEl = document.getElementById('contactSuccess');
+      // Find the success message element and store it
+      if (successEl) successEl.style.display = 'block';
+      // submitContactBtn - id of button
+      const btn = document.getElementById('submitContactBtn');
+      if (btn) {
+        // Change button text to ‘Sent
+        btn.textContent = '✅ Sent!';
+        // Disable the button (cannot click again)
+        btn.disabled = true;
+      }
+    }
+    // ── Company Quiz ──
+    // recommendation box 
+    // submit box
+    function submitQuiz() {  
+      ////// /* find the slected location option and store it in (loc)*/ //////
+      // const - create a variable - storage box
+      // loc - name of the box - short for location
+      // document - whole webpage
+      // querySelector - go find something on the page
+      // input - radio button/checkbox 
+      // name=location - group called location
+      // :checked - only selected one
+      const loc  = document.querySelector('input[name="location"]:checked');
+      ////// /* find the slected purpose option and store it in (purp)*/ //////
+      // purp - short for purpose
+      const purp = document.querySelector('input[name="purpose"]:checked');
+      ////// /* fget the text user typed in occupation box*/ //////
+      // occ - occupation
+      // value - get what user typed inside it
+      // ?. - safty check - continue only if element exists
+      const occ  = document.getElementById('occupation')?.value;
+
+      // if any checkbox is missing
+      //  || - or
+      // if condition
+      if (!loc || !purp || !occ) {
+        // alert
+        alert('Please answer all three questions first.');
+        // stop the function - end with the warning
+        return;
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      //find my provider button functioning
+      // let - creates a variable
+      // rec - recommendation
+      // '' - empty box fo now
+      /////// i will store the result here later/////////////
+      let rec = '';                // create an empty box called rec
+      // === - exactly equal to
+      if (loc.value === 'rural') {   
+        rec = '🛸 <strong>Starlink</strong> — ideal for your remote/high-altitude location, offering reliable satellite connectivity. The connectivity of B-mobile and TashiCell will give problem regarding connectivity due to distance from the tower, the compact housing structure, and limited number of infrastructure';
+      } else if (purp.value === 'business' || purp.value === 'work') {
+        rec = '📡 <strong>Bhutan Telecom Limited</strong> — best for business and remote work needs.';
+      } else {
+        rec = '📶 <strong>Tashi InfoComm (TashiCell)</strong> — great for everyday browsing, social media, and streaming.';
+      }
+
+      const el = document.getElementById('quizResult');
+      if (el) {
+        el.innerHTML = '✅ Based on your answers, we suggest: ' + rec;
+        el.style.display = 'block';
+        el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function resetQuiz() {
+      // r → each radio butto, .checked - whether selected or not, false - unselect it
+      document.querySelectorAll('input[name="location"]').forEach(r => r.checked = false);
+      document.querySelectorAll('input[name="purpose"]').forEach(r => r.checked = false);
+      // find drop down box
+      const occ = document.getElementById('occupation');
+      // if dropdown exist, selected index, select the first option - reset by default
+      if (occ) occ.selectedIndex = 0;
+      // Find result message box
+      const el = document.getElementById('quizResult');
+      if (el) {
+        // Hide the result box
+        el.style.display = 'none';
+        // Remove previous result text completely,-- innerHTML contains a result text
+        el.innerHTML = '';
+      }
+    }
+  </script>
+  </body>
+  </html>
