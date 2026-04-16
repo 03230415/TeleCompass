@@ -198,6 +198,62 @@
 
     /* ══════════════ HERO ══════════════ */
     /* homepage screen overall*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #intro {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 999;
+}
+
+.intro-box {
+  max-width: 500px;
+  padding: 30px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 16px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #00C2A8;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
     .hero {
       min-height: calc(100vh - var(--nav-h));  /* height of home screen is vh - navbar height*/
       display:flex; 
@@ -700,6 +756,8 @@
     /* ══════════════ TABLE ══════════════ */
     /* main wording */
     .comp-table { 
+      gap:1rem; 
+      margin-bottom:2rem; 
       width:100%; 
       border-collapse:collapse; 
       font-size:0.95rem; 
@@ -862,6 +920,52 @@
   <main>
 
     <!-- ══════════════ HOME PAGE ══════════════ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="intro">
+  <div class="intro-box">
+    <h1>TeleCompass</h1>
+
+    <h2>Story</h2>
+
+    <p>
+      This project explores how people in Bhutan use mobile and internet services,
+      and how connectivity differs across regions.
+    </p>
+
+    <button onclick="enterSite()">Enter TeleCompass</button>
+  </div>
+</div>
+
+<!-- your main site -->
+<div id="main" style="display:none;">
+  <h1>Home Page</h1>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
      <!-- container for homepage -->
     <div class="page active" id="page-home">
 
@@ -925,12 +1029,12 @@
           </div>
           <div class="qlink-card" onclick="showPage('dashboard')">
             <div class="q-icon">📈</div>
-            <div class="q-title">Dashboard</div>
+            <div class="q-title">Data Insights</div>
             <div class="q-sub">Tableau insights from survey data</div>
           </div>
           <div class="qlink-card" onclick="showPage('company')">
             <div class="q-icon">🏢</div>
-            <div class="q-title">Companies</div>
+            <div class="q-title">Compare Networks</div>
             <div class="q-sub">BT, TashiCell &amp; Starlink</div>
           </div>
           <div class="qlink-card" onclick="showPage('contact')">
@@ -1372,7 +1476,7 @@
 
   <!-- ══════════════ FOOTER ══════════════ -->
 <footer>
-  © 2026 <strong>TeleCompass</strong> · Bhutan Connectivity Research &nbsp;|&nbsp; <span onclick="showPage('contact')">Contact</span>
+  © 2026 <strong>TeleCompass</strong> · Built for telecom data exploration in Bhutan
 </footer>
 </div> <!-- Closing main container -->
 
@@ -1393,6 +1497,31 @@
   // ////////// //
  // java script//
 // ////////// // 
+
+
+
+
+
+
+
+
+
+
+function enterSite() {
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("main").style.display = "block";
+}
+
+
+
+
+
+
+
+
+
+
+
 
   // ── Page Router ──
   // movement between section
