@@ -187,7 +187,7 @@
         width: 100%;
       }
       
-      /* ══════════════ HERO ══════════════ */
+      /* ══════════════ STORY ══════════════ */
       /* homepage screen overall*/
     #intro{
     position: fixed;
@@ -197,13 +197,54 @@
     justify-content: center;
     color: var(--cream);
     z-index: 999;
-    overflow-y: auto; /* IMPORTANT */
+    overflow-y: auto; 
+    /* IMPORTANT */
   }
   
   .intro-box {
     padding: 30px;
     border-radius: 16px;
   }
+      .story {
+        text-align:justify;
+        display:flex;
+        margin-top:30px;
+        padding: 50px 45px;
+        font-family: arial;
+        font-weight:400;
+        letter-spacing:0.12rem;
+        background:rgba(48, 56, 55, 0.7);
+        border-radius:2rem;
+        color:var(--white);
+        display:block;
+      }
+      .story-title{
+        text-align: center; 
+        background: linear-gradient(90deg, #ebd846, #f26118);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height:2;
+      }
+      .story h4{
+        margin-top:1.2rem;
+      }
+      .story p {
+        margin-top: 1.5rem;
+        font-family:arial;
+        font-size: 18px;
+        font-family:Comic Sans MS;
+             
+      }
+
+      .story-intro{
+        font-family:Arial, sans-serif; 
+        letter-spacing:0.02rem;
+        /* font-weight: normal; */
+        line-height: 1.6; 
+        font-size:20px;
+        padding-top:1.75rem;
+        padding-bottom:0.9rem;
+      }  
 
   button {
     margin-top: 20px;
@@ -219,6 +260,7 @@
       align-items:center;
       padding: clamp(3rem,8vw,6rem) clamp(1rem,5vw,3rem);
     }
+    
       /* centers text + image with each other */
       .hero-inner {
         max-width:1160px; 
@@ -275,46 +317,23 @@
         letter-spacing:0.04em; 
         box-shadow:var(--shadow-sm);
       }
-      .story {
-        text-align:justify;
-        display:flex;
-        margin-top:30px;
-        padding: 50px 45px;
-        font-family: arial;
-        font-weight:400;
-        letter-spacing:0.12rem;
-        background:rgba(48, 56, 55, 0.7);
-        border-radius:2rem;
-        color:var(--white);
-        display:block;
-      }
-      .story-title{
-        text-align: center; 
-        background: linear-gradient(90deg, #ebd846, #f26118);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        line-height:2;
-      }
-      .story h4{
-        margin-top:1.2rem;
-      }
-      .story p {
-        margin-top: 1.5rem;
-        font-family:arial;
-        font-size: 18px;
-        font-family:Comic Sans MS;
-             
-      }
 
-      .story-intro{
-        font-family:Arial, sans-serif; 
-        letter-spacing:0.02rem;
-        /* font-weight: normal; */
-        line-height: 1.6; 
-        font-size:20px;
-        padding-top:1.75rem;
-        padding-bottom:0.9rem;
-      }
+
+      .returnback{
+        display: inline-block;
+        border: 2px solid #e5e7eb;
+        color:var(--cream);
+        font-size:15px;
+        /* background: rgba(2, 100, 81,); */
+        background:transparent;
+        padding:15px;
+        font-weight:bold;
+        transition: 0.3s ease;
+
+       }
+       .returnback:hover{
+        transform:translateY(-2px); 
+       }
 
 
 
@@ -863,7 +882,6 @@
       </ul>
     </nav>
 
-    <main>
 
       <!-- ══════════════ HOME PAGE ══════════════ -->
   <div id="intro">
@@ -913,10 +931,17 @@
             </div>
         </section>
 
-      <button onclick="enterSite()">Enter TeleCompass</button>
+      <button class="returnback" onclick="enterSite()">Enter TeleCompass</button>
     </div>
   </div>
-     <!-- container for homepage -->
+
+  <main>
+
+  <div id="story">   
+  <button class="returnback" onclick="goBackToStory()"> « Back To Story</button></div>
+
+
+  <!-- container for homepage -->
       <div class="page active" id="page-home">
         <!-- the outermost box -->
         <section class="hero">
@@ -1481,6 +1506,12 @@ function clearForm() {
     document.getElementById("intro").style.display = "none";
     document.getElementById("main").style.display = "block";
   }
+
+  function goBackToStory() {
+    document.getElementById("story").style.display = "block";
+  }
+
+
 
   // ── Page Router ──
     // movement between section
