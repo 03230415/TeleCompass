@@ -1293,7 +1293,7 @@
                   <label><input type="radio" name="location" value="urban" /> Urban area (Thimphu, Phuentsholing, Gelephu.)</label>
                   <label><input type="radio" name="location" value="semi" /> Semi-urban (Dzongkhag town)</label>
                   <label><input type="radio" name="location" value="rural" /> Rural / Remote</label>
-                  <label><input type="radio" name="location" value="rural" /> High altitude area</label>
+                  <label><input type="radio" name="location" value="high altitude" /> High altitude area</label>
       <!-- Question 2 -->
                 </div>
               </div>
@@ -1622,19 +1622,77 @@ function clearForm() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       //find my provider button functioning
       // let - creates a variable
       // rec - recommendation
       // '' - empty box fo now
+      let rec = '';    //this is the recommendation box             // create an empty box called rec
       /////// i will store the result here later/////////////
-      let rec = '';                // create an empty box called rec
-      // === - exactly equal to
-      if (loc.value === 'rural') {   
-        rec = '🛸 <strong>Starlink</strong> — ideal for your remote/high-altitude location, offering reliable satellite connectivity. The connectivity of B-mobile and TashiCell will give problem regarding connectivity due to distance from the tower, the compact housing structure, and limited number of infrastructure';
-      } else if (purp.value === 'business' || purp.value === 'work') {
-        rec = '📡 <strong>Bhutan Telecom Limited</strong> — best for business and remote work needs.';
-      } else {
-        rec = '📶 <strong>Tashi InfoComm (TashiCell)</strong> — great for everyday browsing, social media, and streaming.';
+      if (loc.value === 'urban' || loc.value === 'semi'){
+        if (purp.value === 'social'){
+          if (occ.value === 'student' || occ.value === 'entrepreneur' || occ.value === 'other'){
+            rec = '📶 <strong>Tashi InfoComm (TashiCell)</strong> - Best in competitive pricing, and their main focus is on urban and semi-urban area.📡 <strong>Bhutan Telecom Limited</strong> - Best choice for 5G connectivity'}
+          else {
+            rec = '📡 <strong>Bhutan Telecom Limited</strong> — best for business with 5G connection and unlimited wifi broadband'
+          }}}
+
+        else if(purp.value === 'work'){
+          if (occ.value === 'student' || occ.value === 'other' || occ.value === 'civil' ||occ.value === 'private'){
+          rec = '📶 <strong>Tashi InfoComm (TashiCell)</strong> &amp📡 <strong>Bhutan Telecom Limited</strong> — best for business with 5G connection'
+        }
+          else{
+            rec = '📶 <strong>Tashi InfoComm (TashiCell)</strong> - competitive pricing advantage'
+          }
+      }
+        else if(purp.value === 'business'){
+          rec = '📡 <strong>Bhutan Telecom Limited</strong> — best for business with 5G connection and unlimited wifi broadband'
+        }
+        else {
+          rec = '📡 <strong>Bhutan Telecom Limited</strong> - go to internet service with better coverage 📶 <strong>Tashi InfoComm (TashiCell)</strong> — best fwith competitive pricing &amp 5G connection '
+        }
+      
+
+      else if (loc.value === 'rural'){
+        rec = '📡 <strong>Bhutan Telecom Limited</strong> - BT has large coverage across whole area in Bhutan.'
+      }
+      else{
+        rec = '🛸 <strong>Starlink</strong> — ideal for your remote/high-altitude location, offering reliable satellite connectivity.' 
       }
 
       const el = document.getElementById('quizResult');
@@ -1643,7 +1701,34 @@ function clearForm() {
         el.style.display = 'block';
         el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
-    }
+    
+
+              //  <option value="" disabled selected>Select Your Occupation…</option>
+              //   <option value="student">Student</option>
+              //   <option value="civil">Civil Servant / Government</option>
+              //   <option value="private">Private Sector Employee</option>
+              //   <option value="farmer">Farmer / Self-employed</option>
+              //   <option value="entrepreneur">Entrepreneur / Business Owner</option>
+              //   <option value="other">Digital Nomad</option>
+              //   <option value="other">Other...</option>
+              // </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
