@@ -293,13 +293,29 @@
         background: linear-gradient(90deg, #ebd846, #f26118);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        line-height:2;
       }
       .story h4{
         margin-top:1.2rem;
       }
       .story p {
         margin-top: 1.5rem;
+        font-family:arial;
+        font-size: 18px;
+        font-family:Comic Sans MS;
+             
       }
+
+      .story-intro{
+        font-family:Arial, sans-serif; 
+        letter-spacing:0.02rem;
+        /* font-weight: normal; */
+        line-height: 1.6; 
+        font-size:20px;
+        padding-top:1.75rem;
+        padding-bottom:0.9rem;
+      }
+
 
 
       /* ══════════════ QUICK-LINKS GRID ══════════════ */
@@ -853,20 +869,25 @@
   <div id="intro">
     <div class="intro-box">
   <section>
-          <span class="story">
+          <div class="story">
             <h1 class="story-title">Telecommunication Service Usage in Bhutan</h1>
-            <h4 class="story-title">TeleCompass — A Guide for Better Connectivity</h4>
-            <p>I am currently a third-year student pursuing a Bachelor of Business Intelligence at Gedu College of Business
-            Studies. As part of my internship programme, I am currently working on a project titled <strong>“Telecommunication Service 
+            <h3 class="story-title">TeleCompass — A Guide for Better Connectivity</h3>
+            <h3 class = "story-intro">Introduction</h3>
+            <p style="font-size:19px">I am currently a third-year student pursuing a Bachelor of Business Intelligence at Gedu College of Business
+            Studies. As part of my internship program, I am currently working on a project titled <strong>“Telecommunication Service 
             Usage in Bhutan.”</strong> This project focuses on analyzing user behavior and internet usage patterns across different
             needs and locations within the country. The aim of this web platform is to serve as a <strong>compass</strong> 
-            that helps users identify the most suitable network service based on their requirements.<br><br> When I got enrolled as an 
-            intern under Bhutan Data Scientist doing remote work, I depended heavily on 
+            that helps users identify the most suitable network service based on their requirements.</p><br>
+            
+            <h3 class="story-intro">Internship Experience</h3>
+            <p>When I got enrolled as an intern under Bhutan Data Scientist doing remote work, I depended heavily on 
             mobile data for everything—online research, Zoom meetings, and everyday online activities.<br><br>
             Because I was using mobile data for almost all my activities, the expenses was high. I was 
             spending around Nu. 699 in a week, and even when I tried a Nu. 1199 plan, I still had to recharge twice 
-            a month, and it still barely lasted. In total, I ended up spending more than Nu. 2500.<br><br>I wanted to
-            save some money and switch to Wi-Fi service or get a plan which has higher value and saves me few bucks but I 
+            a month, and it still barely lasted. In total, I ended up spending more than Nu. 2500.</p>
+            
+            <h3 class="story-intro">Problem Faced</h3>
+            <p>I wanted to save some money and switch to Wi-Fi service or get a plan which has higher value and saves me few bucks but I 
             often struggled with uncertainty. I was confused about which telecommunication service to choose or whether I should 
             continue with my current plan. My thoughts kept going back and forth, especially when trying to manage 
             internet costs. I even worried, “What if my investment in Wi-Fi fails?”<br><br>When I inquired at a service 
@@ -877,15 +898,19 @@
             more uncertain and overwhelmed, and for nearly a month, I kept going back and forth with my decision.<br><br>
             Over time, I had to become more careful about how I used the internet. I started limiting gaming, reducing 
             time on videos, and avoiding watching dramas freely because of data constraints.<br><br>I was always stressed about 
-            running out of data and not being able to watch videos or play music freely. Later, my cousin suggested that 
-            I try using Wi-Fi instead. So, she kindly let me use her router, and I started working through it.<br><br><br>The 
-            difference was clear.<br><br><br>With Wi-Fi, I could do my work smoothly, attend Zoom meetings without interruption, and 
+            running out of data and not being able to watch videos or play music freely.</p>
+            <h3 class="story-intro">Solution</h3>
+            <p>Later, my cousin suggested that I try using Wi-Fi instead. So, she kindly let me use her router, and I started working through it.
+            <br><br>
+            <p><strong>The difference was clear.</strong></p> 
+            <br><br>
+            <p>With Wi-Fi, I could do my work smoothly, attend Zoom meetings without interruption, and 
             freely use the internet for research and entertainment like YouTube, TikTok, games, and dramas without worrying 
             about running out of data.<br><br>It also became more affordable, costing around Nu. 1450 per month, which was much 
             better than what I was spending on mobile data.<br><br>This experience taught me that the type of internet connection 
             matters a lot, depending on how you use it. For remote work and daily usage, Wi-Fi was simply more stable, 
             practical, and cost-effective for me.</p>
-          </span>
+            </div>
         </section>
 
       <button onclick="enterSite()">Enter TeleCompass</button>
