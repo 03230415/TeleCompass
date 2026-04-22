@@ -1319,7 +1319,7 @@
                 <option value="private">Private Sector Employee</option>
                 <option value="farmer">Farmer / Self-employed</option>
                 <option value="entrepreneur">Entrepreneur / Business Owner</option>
-                <option value="other">Digital Nomad</option>
+                <option value="digital">Digital Nomad</option>
                 <option value="other">Other...</option>
               </select>
             </div>
@@ -1648,61 +1648,100 @@ function clearForm() {
 
 
 
-
-
-
-
-
-
-
-
-
-
       //find my provider button functioning
       // let - creates a variable
       // rec - recommendation
       // '' - empty box fo now
       let rec = '';    //this is the recommendation box             // create an empty box called rec
       /////// i will store the result here later/////////////
-      if (loc.value === 'urban' || loc.value === 'semi'){
-        if (purp.value === 'social'){
-          if (occ.value === 'student' || occ.value === 'entrepreneur' || occ.value === 'other'){
-            rec = '📶 <strong>Tashi InfoComm (TashiCell)</strong> - Best in competitive pricing, and their main focus is on urban and semi-urban area.📡 <strong>Bhutan Telecom Limited</strong> - Best choice for 5G connectivity'}
-          else {
-            rec = '📡 <strong>Bhutan Telecom Limited</strong> — best for business with 5G connection and unlimited wifi broadband'
-          }}}
-
-        else if(purp.value === 'work'){
-          if (occ.value === 'student' || occ.value === 'other' || occ.value === 'civil' ||occ.value === 'private'){
-          rec = '📶 <strong>Tashi InfoComm (TashiCell)</strong> &amp📡 <strong>Bhutan Telecom Limited</strong> — best for business with 5G connection'
-        }
-          else{
-            rec = '📶 <strong>Tashi InfoComm (TashiCell)</strong> - competitive pricing advantage'
+      if (loc.value === 'urban' || loc.value === 'semi') {
+        if (purp.value === 'social' || purp.value === 'gaming') {
+          if (  
+            occ.value === 'farmer' || 
+            occ.value === 'student' || 
+            occ.value === 'other'
+          ) {
+            rec = '📶 <strong>Tashi InfoComm (TashiCell)</strong>; 📡 <strong>Bhutan Telecom Limited</strong> — suitable for everyday use with good pricing and coverage.';
           }
-      }
-        else if(purp.value === 'business'){
-          rec = '📡 <strong>Bhutan Telecom Limited</strong> — best for business with 5G connection and unlimited wifi broadband'
+
+          else if (
+            occ.value === 'digital' ||
+            occ.value === 'civil' ||
+            occ.value === 'private' ||
+            occ.value === 'entrepreneur'
+          ) {
+            rec = '📶 <strong>Tashi InfoComm</strong> &amp; 📡 <strong>Bhutan Telecom (WiFi)</strong> — good for performance and stable connectivity.';
+          }
         }
+
+        // WORK OR BUSINESS
+        else if (purp.value === 'work' || purp.value === 'business') {
+
+          if (
+            occ.value === 'digital' ||
+            occ.value === 'civil' ||
+            occ.value === 'private' ||
+            occ.value === 'entrepreneur'
+          ) {
+            rec = '📡 <strong>Bhutan Telecom (WiFi)</strong> &amp; 📶 <strong>TashiCell</strong> — best for professional use and stable connection.';
+          }
+
+          else {
+            rec = '📡 <strong>Bhutan Telecom</strong> &amp; 📶 <strong>TashiCell</strong> — suitable for general work needs.';
+          }
+        }
+
+        // FALLBACK
         else {
-          rec = '📡 <strong>Bhutan Telecom Limited</strong> - go to internet service with better coverage 📶 <strong>Tashi InfoComm (TashiCell)</strong> — best fwith competitive pricing &amp 5G connection '
+          rec = '📶 <strong>TashiCell</strong> — general recommendation for urban and semi-urban users.';
         }
-      
-
-      else if (loc.value === 'rural'){
-        rec = '📡 <strong>Bhutan Telecom Limited</strong> - BT has large coverage across whole area in Bhutan.'
-      }
-      else{
-        rec = '🛸 <strong>Starlink</strong> — ideal for your remote/high-altitude location, offering reliable satellite connectivity.' 
       }
 
+      // ───── RURAL ─────
+      else if (loc.value === 'rural') {
+
+        if (
+          occ.value === 'farmer' ||
+          occ.value === 'student' ||
+          occ.value === 'other'
+        ) {
+          rec = '📡 <strong>Bhutan Telecom Limited</strong> — best coverage in rural areas.';
+        }
+
+        else if (
+          occ.value === 'digital' ||
+          occ.value === 'civil' ||
+          occ.value === 'private' ||
+          occ.value === 'entrepreneur'
+        ) {
+          rec = '📡 <strong>Bhutan Telecom (WiFi)</strong> &amp; 📶 <strong>TashiCell</strong> — better for professional and remote work needs.';
+        }
+
+        else {
+          rec = '📡 <strong>Bhutan Telecom</strong> — reliable rural connectivity.';
+        }
+      }
+
+      // ───── HIGH ALTITUDE ─────
+      else if (loc.value === 'high-altitude') {
+        rec = '🛸 <strong>Starlink</strong> — best for high-altitude and remote areas with weak signal.';
+      }
+
+      // ───── DEFAULT FALLBACK ─────
+      else {
+        rec = '📶 <strong>TashiCell</strong> — general recommendation.';
+      }
+
+
+    
       const el = document.getElementById('quizResult');
       if (el) {
         el.innerHTML = '✅ Based on your answers, we suggest: ' + rec;
         el.style.display = 'block';
         el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
+    }
     
-
               //  <option value="" disabled selected>Select Your Occupation…</option>
               //   <option value="student">Student</option>
               //   <option value="civil">Civil Servant / Government</option>
@@ -1758,7 +1797,7 @@ function clearForm() {
 
 
     
-
+    
     function resetQuiz() {
       // r → each radio butto, .checked - whether selected or not, false - unselect it
       document.querySelectorAll('input[name="location"]').forEach(r => r.checked = false);
@@ -1776,6 +1815,7 @@ function clearForm() {
         el.innerHTML = '';
       }
     }
+    
   </script>
   </body>
   </html>
