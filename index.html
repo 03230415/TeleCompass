@@ -937,8 +937,9 @@
 
   <main>
 
-  <div id="story">   
-  <button class="returnback" onclick="goBackToStory()"> « Back To Story</button></div>
+  <div id="main">   
+  <button class="returnback" onclick="goBackToStory()">« Back To Story</button>
+</div>
 
 
   <!-- container for homepage -->
@@ -1501,17 +1502,15 @@ function clearForm() {
   document.querySelector("form").reset();
 }
  
-  
   function enterSite() {
     document.getElementById("intro").style.display = "none";
     document.getElementById("main").style.display = "block";
   }
 
   function goBackToStory() {
-    document.getElementById("story").style.display = "block";
+    document.getElementById("main").style.display = "none";
+    document.getElementById("intro").style.display = "block";
   }
-
-
 
   // ── Page Router ──
     // movement between section
@@ -1589,64 +1588,6 @@ function clearForm() {
         // stop the function - end with the warning
         return;
       }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       //find my provider button functioning
       // let - creates a variable
@@ -1752,53 +1693,7 @@ function clearForm() {
               //   <option value="other">Digital Nomad</option>
               //   <option value="other">Other...</option>
               // </select>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
+   
     function resetQuiz() {
       // r → each radio butto, .checked - whether selected or not, false - unselect it
       document.querySelectorAll('input[name="location"]').forEach(r => r.checked = false);
