@@ -1578,7 +1578,7 @@ function clearForm() {
       // occ - occupation
       // value - get what user typed inside it
       // ?. - safty check - continue only if element exists
-      const occ  = document.getElementById('occupation')?.value;
+      const occ  = document.getElementById('occupation');
 
       // if any checkbox is missing
       //  || - or
@@ -1661,8 +1661,8 @@ function clearForm() {
             occ.value === 'student' || 
             occ.value === 'other'
           ) {
-            rec = '📶 <strong>Tashi InfoComm (TashiCell)</strong>; 📡 <strong>Bhutan Telecom Limited</strong> — suitable for everyday use with good pricing and coverage.';
-          }
+            rec = '📶 <strong>Tashi InfoComm (TashiCell)</strong> and 📡 <strong>Bhutan Telecom Limited</strong> — suitable for everyday use with good pricing and coverage.';
+          } 
 
           else if (
             occ.value === 'digital' ||
@@ -1683,7 +1683,7 @@ function clearForm() {
             occ.value === 'private' ||
             occ.value === 'entrepreneur'
           ) {
-            rec = '📡 <strong>Bhutan Telecom (WiFi)</strong> &amp; 📶 <strong>TashiCell</strong> — best for professional use and stable connection.';
+            rec = '📡 <strong>Bhutan Telecom</strong> &amp; 📶 <strong>TashiCell</strong>(Wi-Fi) — best for professional use and stable connection.';
           }
 
           else {
@@ -1696,6 +1696,7 @@ function clearForm() {
           rec = '📶 <strong>TashiCell</strong> — general recommendation for urban and semi-urban users.';
         }
       }
+    
 
       // ───── RURAL ─────
       else if (loc.value === 'rural') {
