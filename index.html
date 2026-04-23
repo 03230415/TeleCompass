@@ -321,12 +321,14 @@
 
       .returnback{
         display: inline-block;
+        display:flex;
+        align-items:flex-end;
         border: 2px solid #e5e7eb;
         color:var(--cream);
         font-size:15px;
         /* background: rgba(2, 100, 81,); */
         background:transparent;
-        padding:15px;
+        padding:11px;
         font-weight:bold;
         transition: 0.3s ease;
 
@@ -843,6 +845,8 @@
       }
   /* IMPORTANT: prevents anchor links (#section) from hiding under fixed navbar */
   /* scroll padding for sticky nav */    
+
+ 
     </style>
   </head>
 
@@ -891,43 +895,44 @@
             <h1 class="story-title">Telecommunication Service Usage in Bhutan</h1>
             <h3 class="story-title">TeleCompass — A Guide for Better Connectivity</h3>
             <h3 class = "story-intro">Introduction</h3>
-            <p style="font-size:19px">I am currently a third-year student pursuing a Bachelor of Business Intelligence at Gedu College of Business
-            Studies. As part of my internship program, I am currently working on a project titled <strong>“Telecommunication Service 
-            Usage in Bhutan.”</strong> This project focuses on analyzing user behavior and internet usage patterns across different
+            <p style="font-size:19px">I am a third-year student pursuing a Bachelor of Business Intelligence at Gedu College of Business
+            Studies. As part of my internship program, I worked on a project titled <strong>“Telecommunication Service 
+            Usage in Bhutan.”</strong> This project focused on analyzing user behavior and internet usage patterns across different
             needs and locations within the country. The aim of this web platform is to serve as a <strong>compass</strong> 
             that helps users identify the most suitable network service based on their requirements.</p><br>
             
-            <h3 class="story-intro">Internship Experience</h3>
-            <p>When I got enrolled as an intern under Bhutan Data Scientist doing remote work, I depended heavily on 
+            <h3 class="story-intro">Situation Overview</h3>
+            <p>When I got enrolled as an intern under Bhutan Data Scientist Pvt. Ltd. doing remote work, I depended heavily on 
             mobile data for everything—online research, Zoom meetings, and everyday online activities.<br><br>
-            Because I was using mobile data for almost all my activities, the expenses was high. I was 
+            Because I was using mobile data for almost all my activities, the expenses were high. I was 
             spending around Nu. 699 in a week, and even when I tried a Nu. 1199 plan, I still had to recharge twice 
             a month, and it still barely lasted. In total, I ended up spending more than Nu. 2500.</p>
             
             <h3 class="story-intro">Problem Faced</h3>
-            <p>I wanted to save some money and switch to Wi-Fi service or get a plan which has higher value and saves me few bucks but I 
-            often struggled with uncertainty. I was confused about which telecommunication service to choose or whether I should 
-            continue with my current plan. My thoughts kept going back and forth, especially when trying to manage 
-            internet costs. I even worried, “What if my investment in Wi-Fi fails?”<br><br>When I inquired at a service 
-            counter, I was advised to reconsider carefully. I was told that if the internet strength in my area was weak,
-            the Wi-Fi performance would also be poor, and in such cases, refunds would not be possible. At the same time,
+            <p>I wanted to save some money and switch to Wi-Fi service or get a plan with higher value that could save me a few 
+            bucks, but I often struggled with uncertainty. I was confused about which telecommunication service to choose or whether
+            I should continue with my current plan. My thoughts kept going back and forth, especially when trying to manage 
+            internet costs. I even worried, “What if my investment in Wi-Fi fails?”<br><br>
+            When I inquired at a service counter, I was advised to reconsider carefully. I was told that if the internet strength 
+            in my area is weak, the Wi-Fi performance would also be poor, and in such cases, refunds would not be possible. At the same time,
             I heard rumors circulating that Wi-Fi services were no longer as reliable as before, with some users 
-            requesting refunds and others complaining about cost and stability all over social media. This made me even 
+            requesting refunds and others complaining about cost and stability on social media. This made me even 
             more uncertain and overwhelmed, and for nearly a month, I kept going back and forth with my decision.<br><br>
-            Over time, I had to become more careful about how I used the internet. I started limiting gaming, reducing 
-            time on videos, and avoiding watching dramas freely because of data constraints.<br><br>I was always stressed about 
-            running out of data and not being able to watch videos or play music freely.</p>
+            Over time, I had to become more careful about how I used the internet. I started limiting my entertainment 
+            activities like gaming, online videos, and watching dramas because of data constraints.<br><br>
+            I was always stressed about running out of data and unhappy about not being able to watch videos or play music freely 
+            which also affected my work efficiency.</p>
+
             <h3 class="story-intro">Solution</h3>
-            <p>Later, my cousin suggested that I try using Wi-Fi instead. So, she kindly let me use her router, and I started working through it.
-            <br><br>
+            <p>Later, my cousin suggested that I try using Wi-Fi. She kindly let me use her router, and I started working through it.
             <p><strong>The difference was clear.</strong></p> 
-            <br><br>
             <p>With Wi-Fi, I could do my work smoothly, attend Zoom meetings without interruption, and 
-            freely use the internet for research and entertainment like YouTube, TikTok, games, and dramas without worrying 
-            about running out of data.<br><br>It also became more affordable, costing around Nu. 1450 per month, which was much 
-            better than what I was spending on mobile data.<br><br>This experience taught me that the type of internet connection 
-            matters a lot, depending on how you use it. For remote work and daily usage, Wi-Fi was simply more stable, 
-            practical, and cost-effective for me.</p>
+            freely use the internet for research and entertainment such as YouTube, TikTok, games, and dramas without worrying 
+            about running out of data.<br><br>
+            It also became more affordable, costing Nu. 1450 per month, which was much better than what I was spending on mobile data.
+            <br><br>
+            This experience taught me that the type of internet connection matters a lot depending on how it is used. For remote 
+            work and daily usage, Wi-Fi was simply more stable, practical, and cost-effective for me.</p>
             </div>
         </section>
 
@@ -935,7 +940,9 @@
     </div>
   </div>
 
-  <main>
+=========================================================================================================================================
+
+<main>
 
   <div id="main">   
   <button class="returnback" onclick="goBackToStory()">« Back To Story</button>
@@ -953,7 +960,8 @@
             <div class="hero-text">
 
               <!-- "badge" class - badge like icon on every section -->
-              <span class="badge" style="margin-bottom:1rem; display:inline-block;">🇧🇹 Bhutan Connectivity Study</span>
+              <span class="badge" style="margin-bottom:1rem; display:inline-block;">🇧🇹 Bhutan Connectivity Study</span><br>
+              <h2 style="font-size:13px; color:var(--white); border:2px solid rgb(246, 240, 240); display: inline-block;border-radius:20px; padding:0.25rem;" id="greeting"></h2>
               <h1>Kuzu <em>Zangpo La</em></h1> 
               <p style= "color:#74edeb;font-weight:bold;"class="subtitle";><strong style="font-family:italic;color:rgb(147, 237, 237);font-weight:bolder;">“This page is designed to guide you toward better connectivity choices that match your needs and lifestyle.”</strong><br><br>A guide for better connectivity — explore available internet service across Bhutan &amp; helping you choose the right internet service for your need.</p>
               <div style="display:flex; gap:1rem; flex-wrap:wrap;">
@@ -1497,6 +1505,24 @@
   // java script//
   // ////////// //
 
+  function getGreeting() {
+  const hour = new Date().getHours();
+  let greeting = '';
+
+  if (hour < 12) {
+    greeting = "Good Morning 🌻";
+  } else if (hour < 17) {
+    greeting = "Good Afternoon 🌤️";
+  } else {
+    greeting = "Good Evening 🌙";
+  }
+
+  return greeting;
+}
+
+document.getElementById("greeting").innerText = getGreeting();    
+  
+
   // Clear Answers 🧹 
 function clearForm() {
   document.querySelector("form").reset();
@@ -1602,7 +1628,7 @@ function clearForm() {
             occ.value === 'student' || 
             occ.value === 'other'
           ) {
-            rec = '📶 <strong>Tashi InfoComm (TashiCell)</strong> and 📡 <strong>Bhutan Telecom Limited</strong> — suitable for everyday use with good pricing and coverage.';
+            rec = '📶 <strong>Tashi InfoComm (TashiCell)</strong> - A good pricing competitive advantage and 📡 <strong>Bhutan Telecom Limited</strong> — Good coverage and for daily usage ';
           } 
 
           else if (
@@ -1611,7 +1637,7 @@ function clearForm() {
             occ.value === 'private' ||
             occ.value === 'entrepreneur'
           ) {
-            rec = '📶 <strong>Tashi InfoComm</strong> &amp; 📡 <strong>Bhutan Telecom (WiFi)</strong> — good for performance and stable connectivity.';
+            rec = '📶 <strong>Tashi InfoComm (Wi-Fi)</strong> &amp; 📡 <strong>Bhutan Telecom (WiFi)</strong> — good for performance and stable connectivity.';
           }
         }
 
@@ -1624,7 +1650,7 @@ function clearForm() {
             occ.value === 'private' ||
             occ.value === 'entrepreneur'
           ) {
-            rec = '📡 <strong>Bhutan Telecom</strong> &amp; 📶 <strong>TashiCell</strong>(Wi-Fi) — best for professional use and stable connection.';
+            rec = '📡 <strong>Bhutan Telecom (Wi-Fi)</strong> &amp; 📶 <strong>TashiCell</strong>(Wi-Fi) — best for professional use and stable connection.';
           }
 
           else {
@@ -1634,7 +1660,7 @@ function clearForm() {
 
         // FALLBACK
         else {
-          rec = '📶 <strong>TashiCell</strong> — general recommendation for urban and semi-urban users.';
+          rec = '📶 <strong>TashiCell</strong> — general recommendation for urban and semi-urban users with pricing competitive advantage.';
         }
       }
     
@@ -1647,7 +1673,7 @@ function clearForm() {
           occ.value === 'student' ||
           occ.value === 'other'
         ) {
-          rec = '📡 <strong>Bhutan Telecom Limited</strong> — best coverage in rural areas.';
+          rec = '📡 <strong>Bhutan Telecom Limited</strong> — Better coverage in rural areas.';
         }
 
         else if (
@@ -1656,7 +1682,7 @@ function clearForm() {
           occ.value === 'private' ||
           occ.value === 'entrepreneur'
         ) {
-          rec = '📡 <strong>Bhutan Telecom (WiFi)</strong> &amp; 📶 <strong>TashiCell</strong> — better for professional and remote work needs.';
+          rec = '📡 <strong>Bhutan Telecom (WiFi)</strong> - Better coverage &amp; 📶 <strong>TashiCell</strong> — Good for cost effectiveness.';
         }
 
         else {
@@ -1666,12 +1692,12 @@ function clearForm() {
 
       // ───── HIGH ALTITUDE ─────
       else if (loc.value === 'high altitude') {
-        rec = '🛸 <strong>Starlink</strong> — best for high-altitude and remote areas with weak signal.';
+        rec = '🛸 <strong>Starlink</strong> — best for high-altitude and plane remote areas having weak signal issues.';
       }
 
       // ───── DEFAULT FALLBACK ─────
       else {
-        rec = '📶 <strong>TashiCell</strong> — general recommendation.';
+        rec = '📶 <strong>Bhutan Telecom &amp TashiCell</strong> — general recommendation.';
       }
 
 
