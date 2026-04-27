@@ -247,8 +247,7 @@
       }  
 
       @media (max-width: 700px) {
-        .story p {
-          text-align: left;
+        p {
           font-size: 16px;
           line-height: 1.6;
         }
@@ -338,20 +337,18 @@
 
       .returnback{
         display: inline-block;
-        display:flex;
-        align-items:flex-end;
         border: 2px solid #e5e7eb;
         color:var(--cream);
         font-size:15px;
-        /* background: rgba(2, 100, 81,); */
         background:transparent;
         padding:11px;
         font-weight:bold;
         transition: 0.3s ease;
-
        }
        .returnback:hover{
         transform:translateY(-2px); 
+        box-shadow:var(--shadow-lg); 
+        background:rgb(139, 159, 159); 
        }
 
 
@@ -515,20 +512,20 @@
         color: var(--text-light);
         transition: transform var(--t), box-shadow var(--t);
       }
-      .glass-card:hover { 
+      /* .glass-card:hover { 
         transform:translateY(-4px); 
         box-shadow:var(--shadow-lg); 
-      }
+      } */
+       /* this is for the link for companies */
       .glass-card a {
         color:var(--text-light);
         text-decoration: none;
-
       }
       .glass-card a:hover{
         text-decoration:underline;
         text-decoration-thickness: 1.5px;
-        
       }
+
       /* project highlight card */
       .white-card {
         background: var(--card-bg); 
@@ -538,10 +535,10 @@
         color:var(--text-dark);
         transition: transform var(--t), box-shadow var(--t);
       }
-      .white-card:hover { 
+      /* .white-card:hover { 
         transform:translateY(-4px); 
         box-shadow:var(--shadow-lg); 
-      }
+      } */
 
       /* ══════════════ HIGHLIGHT LIST ══════════════ */
       .highlight-list { 
@@ -606,10 +603,10 @@
         border-top:4px solid var(--teal);
         transition:transform var(--t),box-shadow var(--t);
       }
-      .company-card:hover { 
+      /* .company-card:hover { 
         transform:translateY(-5px); 
         box-shadow:var(--shadow-md); 
-      }
+      } */
       /* icon emoji */
       .company-card .co-icon {
         width:52px; 
@@ -810,14 +807,6 @@
         color:rgba(255,255,255,0.45); 
         font-size:0.85rem; 
         letter-spacing:0.03em;
-      }
-      footer span { 
-        color:var(--teal-light); 
-        cursor:pointer; 
-      }
-      footer span:hover { 
-        color:var(--teal); 
-        text-decoration:underline; 
       }
 
       /* ══════════════ RESPONSIVE ══════════════ */
