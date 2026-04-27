@@ -247,7 +247,7 @@
       }  
 
       @media (max-width: 700px) {
-        p {
+        .story p {
           text-align: left;
           font-size: 16px;
           line-height: 1.6;
