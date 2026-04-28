@@ -220,22 +220,12 @@
       }
       .story-title{
         text-align: center; 
-        background: linear-gradient(90deg, #ebd846, #f26118);
+        /* background: linear-gradient(90deg, #ebd846, #f26118);
         -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        -webkit-text-fill-color: transparent; */
         line-height:2;
       }
-/* 
-      .story-subtitle {
-        text-align: center;
-        font-family: var(--display);
-        font-size: clamp(1rem, 2vw, 1.35rem);
-        font-weight: 400;
-        font-style: italic;
-        color: var(--ink-soft);
-        margin-bottom: 0.5rem;
-      } */
-      
+     
       .story h4{
         margin-top:1.2rem;
       }
