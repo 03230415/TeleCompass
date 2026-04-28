@@ -264,32 +264,21 @@
         .story { padding: 2rem 1.25rem; }
         .story p { font-size: 0.92rem; }
       }
-      /* .btn-go{
-        display: inline-block;
+      .btn-go{
+        display: block;
+        margin: 3rem auto;
         border: 2px solid #848d9f;
+        border-radius: 20px;
+        background:rgba(92, 80, 82, 0.5);
+        padding:11px;
         color:var(--cream);
         font-size:15px;
-        background:rgb(209, 184, 188, 0.5);
-        padding:11px;
         font-weight:bold;
-        transition: 0.3s ease;
-       } */
-        /* ENTER BUTTON */
-      .btn-go {
-        display: block;
-        margin: 2rem auto 0;
-        background: var(--sage);
-        color: var(--white);
-        border: 1.5px solid var(--sage);
-        border-radius: 100px;
-        font-family: var(--body);
-        font-size: 0.9rem;
-        font-weight: 600;
-        padding: 0.85rem 2.8rem;
         cursor: pointer;
         transition: all var(--t);
         letter-spacing: 0.04em;
       }
+
       .btn-go:hover {
         background: var(--sage-light);
         border-color: var(--sage-light);
@@ -297,32 +286,45 @@
         box-shadow: var(--shadow-md);
       }
 
-       .returnback:hover{
-          transform:translateY(-2px); 
-          box-shadow:var(--shadow-lg); 
-          background:rgb(139, 159, 159); 
-        }
-
         #greeting {
-          font-family: var(--body);
-          font-size: 0.78rem;
-          font-weight: 600;
-          color: var(--sage);
-          border: 1px solid rgba(45, 106, 90, 0.22);
+          font-family: 'Courier New', Courier, monospace;
+          font-size: 20px;
+          font-weight: 800;
+          color: rgb(174, 112, 148);
+          border: 2px solid rgb(174, 112, 148);
           display: inline-block;
           border-radius: 100px;
           padding: 0.35rem 1rem;
-          background: var(--sage-mist);
+          background: rgb(50, 38, 45);
           letter-spacing: 0.05em;
           margin-bottom: 1.25rem;
         }
 
+        .returnback{
+          display: inline-block;
+          display:flex;
+          justify-content:flex-end;
+          border: 2px solid #848d9f;
+          border-radius: 10px;
+          color:var(--cream);
+          font-size:15px;
+          background:rgb(209, 184, 188, 0.5);
+          padding:11px;
+          font-weight:bold;
+          transition: 0.3s ease;
+          padding: 0.5rem 1.1rem;
+          cursor: pointer;
+          transition: all var(--t);
+        }
+  
+        .returnback:hover {
+          transform:translateY(-2px); 
+          box-shadow:var(--shadow-lg);
+          background: var(--sage-mist);
+          border-color: var(--sage-light);
+        }
         #main {
-          display: none;
-          min-height: 100vh;
-          align-items: flex-start;
-          padding: 2rem;
-          background: var(--ivory);
+          padding: 1rem 5rem;
         }
 
       .clearForm {
@@ -333,49 +335,6 @@
         background: #cbeae6;
         cursor: pointer;
       }
-
-      /* .returnback{ */
-        /* display: inline-block; */
-        /* display:flex;
-        justify-content:flex-end;
-        border: 2px solid #848d9f;
-        border-radius: 10px;
-        color:var(--cream);
-        font-size:15px;
-        background:rgb(209, 184, 188, 0.5);
-        padding:11px;
-        font-weight:bold;
-        transition: 0.3s ease;
-       } */
-        /* BACK BUTTON */
-      .returnback {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        border: 1px solid var(--border);
-        border-radius: 100px;
-        color: var(--ink-soft);
-        font-family: var(--body);
-        font-size: 0.82rem;
-        font-weight: 500;
-        background: var(--white);
-        padding: 0.5rem 1.1rem;
-        cursor: pointer;
-        transition: all var(--t);
-      }
-
-       /* .returnback:hover{
-        transform:translateY(-2px); 
-        box-shadow:var(--shadow-lg); 
-        background:rgb(139, 159, 159); 
-       } */
-
-       .returnback:hover {
-        background: var(--sage-mist);
-        color: var(--sage);
-        border-color: var(--sage-light);
-      }
-
 
     .hero {
       min-height: calc(100vh - var(--nav-h));  /* height of home screen is vh - navbar height*/
