@@ -69,6 +69,32 @@ function clearForm() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // ── Contact Form ──
     // Create a function called when user submits the form
     function handleContact() {
@@ -95,6 +121,33 @@ function clearForm() {
         btn.disabled = true;
       }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // ── Company Quiz ──
     // recommendation box 
     // submit box
@@ -222,16 +275,7 @@ function clearForm() {
       }
     }
     
-              //  <option value="" disabled selected>Select Your Occupation…</option>
-              //   <option value="student">Student</option>
-              //   <option value="civil">Civil Servant / Government</option>
-              //   <option value="private">Private Sector Employee</option>
-              //   <option value="farmer">Farmer / Self-employed</option>
-              //   <option value="entrepreneur">Entrepreneur / Business Owner</option>
-              //   <option value="other">Digital Nomad</option>
-              //   <option value="other">Other...</option>
-              // </select>
-   
+  
     function resetQuiz() {
       // r → each radio butto, .checked - whether selected or not, false - unselect it
       document.querySelectorAll('input[name="location"]').forEach(r => r.checked = false);
