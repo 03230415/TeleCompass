@@ -40,9 +40,9 @@
         <!-- id="nav-home" - something to do with the highlight on home button -->
           <li><button type="button" onclick="showPage('home')" id="nav-home" class="active">Home</button></li>
           <li><button type="button" onclick="showPage('about')" id="nav-about">About Us</button></li>
-          <li><button type="button" onclick="showPage('dashboard')" id="nav-dashboard">Dashboard</button></li>
-          <li><button type="button" onclick="showPage('company')" id="nav-company">Companies</button></li>
-          <li><button type="button" onclick="showPage('contact')" id="nav-contact">Contact</button></li>
+          <li><button type="button" onclick="showPage('dashboard')" id="nav-dashboard">Studied <br> Dashboard</button></li>
+          <li><button type="button" onclick="showPage('company')" id="nav-company">Telecom <br> Companies</button></li>
+          <li><button type="button" onclick="showPage('contact')" id="nav-contact">Contact Us</button></li>
       </ul>
 
         <!-- ══════════════ ☰ (menu icon) ══════════════ -->
@@ -542,6 +542,28 @@
         </section>
       </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <!-- ══════════════ CONTACT PAGE ══════════════ -->
 <div class="page" id="page-contact">
 
@@ -570,7 +592,7 @@
         </p>
 
         <!-- form spree -->
-        <form action="https://formspree.io/f/mgorllgn" method="POST">
+        <form id="contactForm" action="https://formspree.io/f/mgorllgn" method="POST">
 
           <div class="form-group">
             <!-- for="cname" - connects label to input -->
@@ -613,8 +635,32 @@
         <button type="button" onclick="clearForm()" class="clearForm">
           Clear Answers 🧹
         </button>
+        <p id="contactSuccess" style="display:none; color:green; margin-top:10px;">
+          ✅ Message sent successfully!
+        </p>
         <!-- FORM END -->
       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       <!-- Sidebar -->
       <div style="display:flex;flex-direction:column;gap:1.25rem;">
