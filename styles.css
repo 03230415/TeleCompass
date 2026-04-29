@@ -640,6 +640,16 @@
         gap:2rem; 
       }
 
+      @keyframes pop {
+        from { transform: translateX(-50%) scale(0.8); opacity: 0; }
+        to { transform: translateX(-50%) scale(1); opacity: 1; }
+      }
+
+      @keyframes pop {
+        from { transform: translateX(-50%) scale(0.8); opacity: 0; }
+        to   { transform: translateX(-50%) scale(1); opacity: 1; }
+      }
+
       /* ══════════════ COMPANY SECTION ══════════════ */
       /* ══════════════ BADGE ══════════════ */ 
       /* Bhutan Connectivity - homepage and information badge - companies  */
@@ -737,6 +747,52 @@
         display:block; 
       }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       /* ══════════════ FORMS ══════════════ */
       /* the form from both companies and contact section */
       .form-group { 
@@ -814,6 +870,68 @@
         font-size:0.95rem; 
         margin-top:1rem;
       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
 
       /* ══════════════ TABLE ══════════════ */
       /* main wording */
